@@ -1,0 +1,13 @@
+// _theme-init.scss
+// _theme-init.scss contains 3rd party imports, custom mixins and settings
+// import this file if you need to create another standalone stylesheet for
+// for the theme so you can utilize all tools and settings
+
+// import once
+// box sizing
+@import '../../bower_components/inuit-box-sizing/generic.box-sizing';
+// normalize
+@import '../../bower_components/inuit-normalize.css/generic.normalize';
+
+@import 'theme-commons';
+

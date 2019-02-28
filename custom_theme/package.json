@@ -1,0 +1,26 @@
+{
+  "name": "Echidna Packages",
+  "version": "3.0.0",
+  "description": "Packages for Digtial Echidna Build Tools",
+  "author": "Digital Echidna",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^3.2.1",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-util": "^3.0.8",
+    "run-sequence": "^2.2.1"
+  },
+  "scripts": {
+    "postinstall": "find node_modules/ -name \"*.info\" -type f -delete",
+    "start": "gulp",
+    "sass": "gulp sass",
+    "js": "gulp js",
+    "images": "gulp images",
+    "fonts": "gulp fonts",
+  }
+}

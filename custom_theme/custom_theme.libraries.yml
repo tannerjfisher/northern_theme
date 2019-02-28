@@ -1,0 +1,14 @@
+base:
+  version: 1.0.0
+  css:
+    theme:
+      https://fonts.googleapis.com/css?family=Roboto:400,700: {}
+    component:
+      css/styles.css: {}
+      dist/css/custom_theme.css: {}
+  js:
+    dist/scripts/js/script.min.js: {}
+  dependencies:
+  - core/modernizr
+  - core/jquery
+  - core/drupal

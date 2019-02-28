@@ -1,0 +1,34 @@
+
+
+// Font Awesome Webfont Path
+
+$fa-font-path:        "../../bower_components/components-font-awesome/webfonts";
+
+@import '../../bower_components/components-font-awesome/scss/fontawesome.scss';
+@import '../../bower_components/components-font-awesome/scss/fa-solid.scss';
+@import '../../bower_components/components-font-awesome/scss/fa-regular.scss';
+@import '../../bower_components/components-font-awesome/scss/fa-brands.scss';
+
+
+// @type settings    ==============================================
+
+
+// Weights
+
+// $thin: 100;
+$light: 300;
+$normal: 400;
+// $medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$ultra-bold: 900;
+
+
+// Styles
+
+$italic: italic;
+
+
+// Font Sets
+
+$font-set-1: 'Roboto', Arial, sans-serif;

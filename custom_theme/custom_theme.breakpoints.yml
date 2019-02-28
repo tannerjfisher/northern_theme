@@ -1,0 +1,13 @@
+custom_theme.small:
+  label: small
+  mediaQuery: '(max-width: 607px)'
+  weight: 0
+  multipliers:
+    - 1x
+
+custom_theme.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 608px)'
+  weight: 1
+  multipliers:
+    - 1x

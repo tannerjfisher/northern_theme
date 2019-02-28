@@ -1,0 +1,17 @@
+
+
+// ++++++++++ Layout Container Mixin
+
+@mixin layout-container() {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: em(20);
+  padding-right: em(20);
+
+  @include breakpoint($m-break) {
+    max-width: $layout-container;
+    padding-left: em(40);
+    padding-right: em(40);
+  }
+}

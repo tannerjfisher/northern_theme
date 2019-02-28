@@ -1,0 +1,39 @@
+
+
+// ++++++++++++ Fade Up Animation
+
+@keyframes fade-up {
+  0% {
+    transform: translateY(25px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+// +++++++++++ Fade Up Margins Animation
+
+@keyframes fade-up-margins {
+  0% {
+    margin-top: 25px;
+  }
+
+  100% {
+    margin-top: 0px;
+  }
+}
+
+
+// ++++++++++ Fade Up Small
+
+@keyframes fade-up-small {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

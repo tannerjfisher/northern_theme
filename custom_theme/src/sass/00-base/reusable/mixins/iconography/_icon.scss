@@ -1,0 +1,19 @@
+
+
+// ++++++++++ Font Awesome Icon Mixin ====================
+
+// Icon variables can be found at (bower_components/components-font-awesome/scss/_variables.scss)
+
+@mixin icon($icon: $fa-var-cube, $type: solid) {
+  @include fa-icon();
+  content: fa-content($icon);
+
+  @if $type == solid {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+
+  @if $type == brand {
+    font-family: 'Font Awesome 5 Brands';
+  }
+}
