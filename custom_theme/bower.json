@@ -1,0 +1,20 @@
+{
+  "name": "custom_theme",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "breakpoint-sass": "^2.7.0",
+    "inuit-box-sizing": "^0.2.0",
+    "inuit-mixins": "^0.2.3",
+    "inuit-normalize.css": "inuit-normalize#^4.1.1",
+    "components-font-awesome": "^5.0.6"
+  }
+}

@@ -141,12 +141,6 @@ gulp.task('fonts', fontBuild);
 */
 
 gulp.task('watch', function() {
-  browserSync.init({
-    proxy: {
-      target: config.proxyTarget
-    },
-    open: true
-  });
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('src/scripts/js/**/*.js', ['js']);
   gulp.watch('src/img/**/*', ['images']);

@@ -1,8 +1,9 @@
 {
-  "name": "Echidna Packages",
+  "name": "custom_theme",
   "version": "3.0.0",
   "description": "Packages for Digtial Echidna Build Tools",
   "author": "Digital Echidna",
+  "private": true,
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -20,7 +21,6 @@
     "start": "gulp",
     "sass": "gulp sass",
     "js": "gulp js",
-    "images": "gulp images",
-    "fonts": "gulp fonts",
+    "images": "gulp images"
   }
 }
