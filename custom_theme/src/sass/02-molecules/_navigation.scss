@@ -1,0 +1,13 @@
+
+
+// ===== Navigation
+
+ul.menu { 
+  a {
+    color: $brand-primary-1;
+
+    &.is-active {
+      color: lighten($brand-primary-1, 30%);
+    }
+  }
+}

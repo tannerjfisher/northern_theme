@@ -1,0 +1,19 @@
+
+
+// ++++++++++ Branding Block
+
+.block-system-branding-block {
+
+  a {
+    display: block;
+    width: 70px;
+  }
+
+  img {
+    width: 100%;
+  }
+  
+  .site-name {
+    @include visually-hidden();
+  }
+}

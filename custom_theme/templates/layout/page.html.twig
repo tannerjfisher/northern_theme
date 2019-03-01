@@ -42,31 +42,31 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
+<header role="banner">
+  {{ page.header }}
+</header>
 
-  <header role="banner">
-    {{ page.header }}
-  </header>
+<main role="main">
+  <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-    <div class="layout-content">
+  <div class="layout-content">
+    <div class="layout-container">
       {{ page.content }}
-    </div>{# /.layout-content #}
 
-    {% if page.sidebar %}
-      <aside class="layout-sidebar-second" role="complementary">
-        {{ page.sidebar }}
-      </aside>
-    {% endif %}
+      {% if page.sidebar %}
+        <aside class="layout-sidebar-second" role="complementary">
+          {{ page.sidebar }}
+        </aside>
+      {% endif %}
+    </div>
+  </div>
 
-  </main>
+</main>
 
-  {% if page.footer %}
-    <footer role="contentinfo">
+{% if page.footer %}
+  <footer role="contentinfo">
+    <div class="layout-container">
       {{ page.footer }}
-    </footer>
-  {% endif %}
-
-</div>{# /.layout-container #}
+    </div>
+  </footer>
+{% endif %}

@@ -1,0 +1,32 @@
+
+
+// ++++++++++ Header Region
+
+header {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.region-header {
+  padding-left: 2em;
+  padding-right: 2em;
+
+  .region--inner {
+    display: flex;
+    align-items: center;
+  }
+
+
+  // ===== Branding Block
+
+  .block-system-branding-block {
+    flex: 1 1 auto;
+  }
+
+
+  // ===== Menu
+
+  .menu--main {
+    flex: 0 0 auto;
+  }
+}

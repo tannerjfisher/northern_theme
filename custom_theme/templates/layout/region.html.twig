@@ -20,6 +20,8 @@
 %}
 {% if content %}
   <div{{ attributes.addClass(classes) }}>
-    {{ content }}
+    <div class="region--inner">
+      {{ content }}
+    </div>
   </div>
 {% endif %}
