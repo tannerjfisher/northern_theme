@@ -46,12 +46,14 @@
   {{ page.header }}
 </header>
 
+{{ page.banner }}
+
 <main role="main">
   <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
   <div class="layout-content">
     <div class="layout-container">
-      {{ page.content }}
+      {# {{ page.content }} #}
 
       {% if page.sidebar %}
         <aside class="layout-sidebar-second" role="complementary">
