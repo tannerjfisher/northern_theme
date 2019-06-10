@@ -5,13 +5,14 @@
 header {
   padding-top: 1em;
   padding-bottom: 1em;
+  margin-bottom: 2em;
 }
 
-.region-header {
+.region--header {
   padding-left: 2em;
   padding-right: 2em;
 
-  .region--inner {
+  .region-inner {
     display: flex;
     align-items: center;
   }

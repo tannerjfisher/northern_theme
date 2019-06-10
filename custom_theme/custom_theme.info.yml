@@ -6,11 +6,12 @@ version: 1.0.0
 core: 8.x
 
 libraries:
+  - custom_theme/roboto
   - custom_theme/base
 
 regions:
   header: Header
-  banner: Banner
   content: Content
-  sidebar: Sidebar
+  sidebar_first: Sidebar first
+  sidebar_second: Sidebar second
   footer: Footer

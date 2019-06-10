@@ -20,8 +20,10 @@
   ]
 %}
 {% if content %}
-  <div{{ attributes.addClass(classes) }}>
-  {# <div{{ attributes.addClass(classes).setAttribute('id', 'derp') }}> #}
-    {{ content }}
+  {# <div{{ attributes.addClass(classes) }}> #}
+  <div{{ attributes.addClass(classes).setAttribute('id', 'masthead-primary') }}>
+    <div class="region-inner clearfix">
+      {{ content }}
+    </div>
   </div>
 {% endif %}

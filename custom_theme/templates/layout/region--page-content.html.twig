@@ -20,8 +20,8 @@
   ]
 %}
 {% if content %}
-  <div{{ attributes.addClass(classes) }}>
-  {# <div{{ attributes.addClass(classes).setAttribute('id', 'derp') }}> #}
+  {# <div{{ attributes.addClass(classes) }}> #}
+  <div{{ attributes.addClass(classes).setAttribute('id', 'content') }}>
     {{ content }}
   </div>
 {% endif %}

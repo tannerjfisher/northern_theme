@@ -2,9 +2,6 @@ base:
   version: 1.0.0
   css:
     theme:
-      https://fonts.googleapis.com/css?family=Roboto:400,700: {}
-    component:
-      css/styles.css: {}
       dist/css/custom_theme.css: {}
   js:
     dist/scripts/js/script.min.js: {}
@@ -12,3 +9,8 @@ base:
   - core/modernizr
   - core/jquery
   - core/drupal
+
+roboto:
+  css:
+    base: 
+      https://fonts.googleapis.com/css?family=Roboto:400,700: { external: true }

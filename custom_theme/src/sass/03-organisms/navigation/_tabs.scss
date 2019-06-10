@@ -1,0 +1,12 @@
+
+.tabs {
+  a {
+    &:hover {
+      background-color: $brand-primary-1;
+    }
+
+    &.is-active {
+      background-color: $brand-primary-1;
+    }
+  }
+}

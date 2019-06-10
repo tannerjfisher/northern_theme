@@ -19,6 +19,11 @@
  * Site identity:
  * - front_page: The URL of the front page. Use this instead of base_path when
  *   linking to the front page. This includes the language domain or prefix.
+ * - logo: The url of the logo image, as defined in theme settings.
+ * - site_name: The name of the site. This is empty when displaying the site
+ *   name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site. This is empty when displaying the site
+ *   slogan has been disabled in theme settings.
  *
  * Page content (in order of occurrence in the default page.html.twig):
  * - node: Fully loaded node, if there is an automatically-loaded node
@@ -28,6 +33,7 @@
  *
  * Regions:
  * - page.header: Items for the header region.
+ * - page.highlighted: Items for the highlighted region.
  * - page.primary_menu: Items for the primary menu region.
  * - page.secondary_menu: Items for the secondary menu region.
  * - page.highlighted: Items for the highlighted content region.
@@ -42,28 +48,33 @@
  * @see html.html.twig
  */
 #}
+
 <header role="banner">
   {{ page.header }}
 </header>
 
-{{ page.banner }}
+<div class="section-content">
+  <div class="layout-container">
+    <main id="main" class="column">
+      <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-<main role="main">
-  <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+      <div class="layout-content">
+          {{ page.content }}
+      </div>
+    </main>
+    {% if page.sidebar_first %}
+      <aside class="column sidebar layout-sidebar-first" role="complementary">
+        {{ page.sidebar_first }}
+      </aside>
+    {% endif %}
 
-  <div class="layout-content">
-    <div class="layout-container">
-      {# {{ page.content }} #}
-
-      {% if page.sidebar %}
-        <aside class="layout-sidebar-second" role="complementary">
-          {{ page.sidebar }}
-        </aside>
-      {% endif %}
-    </div>
+    {% if page.sidebar_second %}
+      <aside class="column sidebar layout-sidebar-second" role="complementary">
+        {{ page.sidebar_second }}
+      </aside>
+    {% endif %}
   </div>
-
-</main>
+</div>
 
 {% if page.footer %}
   <footer role="contentinfo">

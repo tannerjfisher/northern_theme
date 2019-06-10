@@ -1,0 +1,14 @@
+
+button, 
+input[type="button"], 
+input[type="reset"], 
+input[type="submit"] {
+  transition: all 0.2s;
+  background-color: $brand-primary-1;
+  border: 2px solid $brand-primary-1;
+  padding: 0.5em 0.8em;
+
+  &:hover {
+    border-color: $white;
+  }
+}

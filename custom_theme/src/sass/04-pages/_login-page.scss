@@ -1,0 +1,33 @@
+
+.path-user:not(.user-logged-in) {
+  .region--content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2em;
+    border: 1px solid $brand-primary-1;
+    border-radius: 5px;
+  }
+
+  .user-login-form {
+
+    .form-item {
+      margin-bottom: 1.5em;
+    }
+
+    label {
+      display: block;
+      overflow: hidden;
+      margin-bottom: 0.4em;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .description {
+      margin-top: 0.5em;
+    }
+  }
+}
