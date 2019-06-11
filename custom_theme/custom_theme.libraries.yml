@@ -1,7 +1,4 @@
 base:
-  css:
-    theme:
-      dist/css/custom_theme.css: {}
   js:
     dist/scripts/js/script.min.js: {}
   dependencies:

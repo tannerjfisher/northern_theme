@@ -1,8 +1,8 @@
 {
   "name": "custom_theme",
-  "version": "3.0.0",
-  "description": "Packages for Digtial Echidna Build Tools",
-  "author": "Digital Echidna",
+  "version": "1.0.0",
+  "description": "Packages for our theming tasks",
+  "author": "Tanner Fisher",
   "private": true,
   "dependencies": {},
   "devDependencies": {

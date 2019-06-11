@@ -1,2 +1,21 @@
 <?php
 
+/**
+ * Implement hook_preprocess_html()
+ */
+
+ function custom_theme_preprocess_html(&$variables){
+    if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+        $variables['attributes']['class'][] = 'two_sidebars';
+    }
+    elseif (!empty($variables['page']['sidebar_first'])) {
+        $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
+    }
+    elseif (!empty($variables['page']['sidebar_second'])) {
+        $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
+    }
+    else {
+        $variables['attributes']['class'][] = 'no_sidebars';
+    }
+ }
+ 
