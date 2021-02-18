@@ -1,13 +1,20 @@
 custom_theme.small:
-  label: small
-  mediaQuery: '(max-width: 607px)'
+  label: Small
+  mediaQuery: 'all and (max-width: 414px)'
   weight: 0
   multipliers:
     - 1x
 
 custom_theme.medium:
-  label: medium
-  mediaQuery: 'all and (min-width: 608px)'
+  label: Medium
+  mediaQuery: 'all and (min-width: 415px) and (max-width: 899px)'
+  weight: 0
+  multipliers:
+    - 1x
+
+custom_theme.large:
+  label: Large
+  mediaQuery: 'all and (min-width: 900px)'
   weight: 1
   multipliers:
     - 1x
