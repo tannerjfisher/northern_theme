@@ -5,9 +5,9 @@ description: A default theme focused on providing more fleshed out appearances f
 version: 1.0.0
 core_version_requirement: ^8 || ^9
 libraries:
-  # - de_theme/slick
-  - de_theme/fonts
-  - de_theme/base
+  # - custom_theme/slick
+  - custom_theme/fonts
+  - custom_theme/base
 
 libraries-override:
   classy/base:
@@ -42,12 +42,12 @@ libraries-override:
         css/components/form.css: {}
         css/components/button.css: {}
 
-  responsive_menu/responsive_menu.mmenu: de_theme/mmenu
-  responsive_menu/responsive_menu.config: de_theme/de_responsive_menu.config
+  responsive_menu/responsive_menu.mmenu: custom_theme/mmenu
+  responsive_menu/responsive_menu.config: custom_theme/de_responsive_menu.config
 
 libraries-extend:
   media_library/ui:
-    - de_theme/layout_builder.media_library
+    - custom_theme/layout_builder.media_library
   core/jquery.ui:
     - claro/claro.jquery.ui
 

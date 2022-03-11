@@ -1,4 +1,4 @@
-de_theme.x_small:
+custom_theme.x_small:
   label: X Small
   mediaQuery: '(max-width: 375px)'
   weight: -2
@@ -6,7 +6,7 @@ de_theme.x_small:
     - 1x
     - 2x
 
-de_theme.small_mid:
+custom_theme.small_mid:
   label: Small Mid
   mediaQuery: '(min-width: 376px) and (max-width: 767px)'
   weight: -1
@@ -14,7 +14,7 @@ de_theme.small_mid:
     - 1x
     - 2x
 
-de_theme.small:
+custom_theme.small:
   label: Small
   mediaQuery: '(max-width: 767px)'
   weight: 0
@@ -22,7 +22,7 @@ de_theme.small:
     - 1x
     - 2x
 
-de_theme.medium:
+custom_theme.medium:
   label: Medium
   mediaQuery: 'all and (min-width: 768px) and (max-width: 991px)'
   weight: 1
@@ -30,7 +30,7 @@ de_theme.medium:
     - 1x
     - 2x
 
-de_theme.medium_full:
+custom_theme.medium_full:
   label: Medium Full
   mediaQuery: 'all and (min-width: 768px)'
   weight: 2
@@ -38,7 +38,7 @@ de_theme.medium_full:
     - 1x
     - 2x
 
-de_theme.large:
+custom_theme.large:
   label: Large
   mediaQuery: 'all and (min-width: 992px)'
   weight: 3
@@ -46,7 +46,7 @@ de_theme.large:
     - 1x
     - 2x
 
-de_theme.all:
+custom_theme.all:
   label: All
   mediaQuery: 'all'
   weight: 4

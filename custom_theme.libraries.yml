@@ -6,7 +6,7 @@ fonts:
 base:
   css:
     theme:
-      dist/css/de_theme.css: {}
+      dist/css/custom_theme.css: {}
       dist/css/print.css: {}
   js:
     # dist/scripts/js/main.build.js: {}
