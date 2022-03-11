@@ -1,26 +1,56 @@
 {
-  "name": "custom_theme",
+  "name": "de_theme",
   "version": "1.0.0",
-  "description": "Packages for our theming tasks",
-  "author": "Tanner Fisher",
+  "license": "UNLICENSED",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-plumber": "^1.2.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^3.2.1",
-    "gulp-sass-glob": "^1.0.9",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-util": "^3.0.8",
-    "run-sequence": "^2.2.1"
+  "description": "Digital Echidna's customizable theme for client projects",
+  "author": "Digital Echidna",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "bootstrap": "^4.5.0",
+    "core-js": "^3.7.0"
   },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "beepbeep": "^1.3.0",
+    "breakpoint-sass": "^2.7.1",
+    "browser-sync": "^2.26.7",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-git": "^2.8.0",
+    "gulp-imagemin": "7.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-sass-lint": "^1.4.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svgmin": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp4-run-sequence": "^1.0.1",
+    "inuitcss": "^6.0.0",
+    "node-sass": "^5.0.0",
+    "readable-stream": "^3.6.0",
+    "source-map-loader": "^1.1.3",
+    "webpack": "^5.36.2",
+    "webpack-stream": "^6.1.2"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
   "scripts": {
-    "postinstall": "find node_modules/ -name \"*.info\" -type f -delete",
     "start": "gulp",
+    "build": "gulp build",
+    "clean": "gulp clean",
     "sass": "gulp sass",
     "js": "gulp js",
-    "images": "gulp images"
+    "images": "gulp images",
+    "fonts": "gulp fonts",
+    "fix-css": "gulp fix-css",
+    "lint-sass": "gulp lint-sass"
   }
 }

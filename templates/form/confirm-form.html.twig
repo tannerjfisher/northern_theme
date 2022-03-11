@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Theme override for confirm form.
+ *
+ * By default this does not alter the appearance of a form at all,
+ * but is provided as a convenience for themers.
+ *
+ * Available variables:
+ * - form: The confirm form.
+ */
+#}
+
+{% if form.description %}
+  <div class="form-item form-description">
+    {{ form.description }}
+  </div>
+{% endif %}
+
+{{ form|without('description') }}

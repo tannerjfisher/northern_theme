@@ -1,0 +1,22 @@
+
+
+// Fake A Full Width Background Colour
+
+@mixin fake-full-width($fake-bg: #666) {
+  position: relative;
+  z-index: 1;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -50vw;
+    width: 100vw;
+    background: $fake-bg;
+    z-index: -1;
+    background-size: cover;
+  }
+}

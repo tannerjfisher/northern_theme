@@ -1,0 +1,25 @@
+
+
+// ++++++++++ Reset table styles
+
+@mixin table-reset() {
+  table {
+    border: none;
+
+    th {
+      color: #000;
+    }
+
+    td, th {
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  table,
+  table tr,
+  table td,
+  table th {
+    background-color: transparent;
+  }
+}

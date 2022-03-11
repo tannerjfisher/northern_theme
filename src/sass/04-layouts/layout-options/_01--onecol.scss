@@ -1,0 +1,9 @@
+
+// ++++++++++ Layout Full Width
+
+.layout--onecol {
+  .layout__region--content {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+}

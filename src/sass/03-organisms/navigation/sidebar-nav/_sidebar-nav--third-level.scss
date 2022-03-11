@@ -1,0 +1,15 @@
+
+
+// ++++++++++ Sidebar Navigation Third Level
+
+.menu--main--sidebar .menu-level--3 {
+  background-color: darken($grey-xlight, 10%);
+
+  & > li > a,
+  & > li > .sub-menu--toggle {
+    &.show {
+      border-bottom-color: darken($grey-xlight, 20%);
+      box-shadow: 0px 2px 0px 0px darken($grey-xlight, 20%);
+    }
+  }
+}

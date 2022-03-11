@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Close Icon</title>
+    <desc>Created with Sketch.</desc>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon class="icon icon--close" fill="#000000" fill-rule="nonzero" points="11.82 1.36 7.18 6 11.82 10.64 10.64 11.82 6 7.18 1.36 11.82 0.18 10.64 4.82 6 0.18 1.36 1.36 0.18 6 4.82 10.64 0.18"></polygon>
+    </g>
+</svg>

@@ -1,0 +1,40 @@
+
+
+// ===== Content with the exception of Header and Footer
+
+.section-content {
+  flex: 1 0 auto;
+  background-color: white;
+
+  & > .container {
+    padding-bottom: rem(80);
+    // display: flex;
+    // flex-wrap: wrap;
+
+    // @include breakpoint($m-break) {
+    //   flex-direction: row;
+    //   flex-wrap: no-wrap;
+    // }
+  }
+
+
+  // ===== First Region in Content Section
+
+  & > *:first-child {
+    margin-top: rem(60);
+  }
+}
+
+
+// ===== Content Region
+
+.region--content {
+  overflow: visible;
+}
+
+
+// ===== Main Content In Sidebar Layout
+
+// .main-content {
+//   width: 100%;
+// }

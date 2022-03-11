@@ -1,0 +1,25 @@
+
+
+// ++++++++++ Main Navigation in Masthead Secondary Region
+
+
+// +++++ Block
+
+.region--masthead-secondary .block-responsive-menu-horizontal-menu {
+  border-bottom: 1px solid $grey-light;
+}
+
+
+// +++++ Menu
+
+.region--masthead-secondary .horizontal-menu {
+  max-width: $layout-container;
+  margin-left: auto;
+  margin-right: auto;
+
+  // ===== First Level
+
+  & > li {
+    flex: 1 1 auto;
+  }
+}

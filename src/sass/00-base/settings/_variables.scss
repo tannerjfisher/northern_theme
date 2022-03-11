@@ -1,0 +1,18 @@
+// variable for image path, could be different in the future.
+// (needs to be a JS variable too to be used in the gulpfile)
+
+$img: "../../dist/img";
+$icon-path: "../../dist/img/iconography";
+
+
+// ===== Header Height Vars
+
+$header-height--mobile: 88;
+$header-height--tablet: 112;
+$header-height--desktop: 130;
+
+
+// ===== Use Icon Font
+// Change this to false if you've removed the icon font library (ex. Icomoon)
+
+$use-icon-font: true;

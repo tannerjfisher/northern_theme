@@ -1,0 +1,56 @@
+
+
+// ++++++++++ Global Components (PRINT)
+
+@media print {
+
+  // ===== Breadcrumbs
+
+  .block-system-breadcrumb-block {
+    display: none !important;
+  }
+
+
+  // ===== Sidebar Menu
+
+  .region--sidebar-first .block-menu {
+    display: none !important;
+  }
+
+
+  // ===== Footer
+
+  .footer {
+    display: none !important;
+  }
+
+
+  // ===== Pager
+
+  .pager {
+    display: none !important;
+  }
+
+
+  // ===== More Link
+
+  .more-link {
+    display: none !important;
+  }
+
+
+  // ===== Images in the Body Field
+
+  .field--name-body {
+    img {
+      display: none !important;
+    }
+  }
+
+
+  // ===== Fix unexpected overlap when drupal toolbar is present
+
+  .mm-page {
+    padding-top: 0 !important;
+  }
+}

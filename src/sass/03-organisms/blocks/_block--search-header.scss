@@ -1,0 +1,177 @@
+
+
+// ++++++++++ Search block in the header
+
+#block-search-header {
+
+  @include breakpoint(max-width $m-break-max) {
+    transition: opacity 0.2s;
+    opacity: 0;
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: rem(18);
+    background-color: $white;
+    border-bottom: 1px solid $brand-primary-2;
+  }
+
+  // ===== Stacked search form
+
+  @include breakpoint($l-break) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+
+  &.show {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    animation: fade-in 0.3s forwards;
+  }
+
+
+  // ===== Reset spacing on form items
+
+  .form-item,
+  .form-actions {
+    margin: 0;
+    padding: 0;
+  }
+
+
+  // ===== Form item cotainer
+
+  form,
+  .form--inline {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+
+    @include breakpoint($s-break) {
+      flex-wrap: nowrap;
+    }
+
+    @include breakpoint($l-break) {
+      width: auto;
+      min-width: 400px;
+    }
+  }
+
+
+  // ===== Text field
+
+  .form-type-textfield {
+    position: relative;
+
+    @include breakpoint(max-width $xs-break-max) {
+      flex: 1 1 100%;
+      margin-bottom: rem(10);
+    }
+
+    input[type="text"] {
+      &:hover,
+      &:focus {
+        border-right-color: $brand-secondary-1;
+      }
+    }
+  }
+
+  label {
+    @include visually-hidden();
+  }
+
+
+  // ===== Submit button
+
+  .form-actions {
+    flex: 0 0 auto;
+
+    @include breakpoint(max-width $xs-break-max) {
+      flex: 1 1 100%;
+    }
+  }
+
+  .form-submit {
+    transition: all 0.2s;
+    font-size: 0;
+    padding: 0;
+    height: 100%;
+    width: 46px;
+    background-image: url('../../dist/img/iconography/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: rem(14) rem(14);
+    background-color: $brand-primary-1;
+    border-color: $brand-primary-1;
+    margin-left: -1px;
+
+    @include breakpoint(max-width $xs-break-max) {
+      width: 100%;
+      font-size: rem(16);
+      height: rem(42);
+      background-image: none;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $brand-secondary-3;
+      border-color: $brand-secondary-3;
+    }
+  }
+
+
+  // ===== Mobile Modal Controls
+
+  .mobile-modal-controls {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    padding: rem(32);
+
+    @include breakpoint($s-break) {
+      display: none;
+    }
+
+    .search-toggle {
+      width: 100%;
+      border: 1px solid $white;
+      background-color: transparent;
+      color: $white;
+      padding: rem(12) rem(10);
+      background-color: $brand-primary-2;
+      text-transform: uppercase;
+      font-size: rem(14);
+      opacity: 0;
+
+      &.open {
+        transition: opacity 0.3s 0.5s;
+        opacity: 1;
+      }
+
+      &:focus {
+        background-color: $brand-secondary-1;
+        border-color: $brand-secondary-1;
+        outline: none;
+      }
+    }
+  }
+}
+
+
+// +++++++++ Tabbing User
+
+.user-is-tabbing #block-globalsearch {
+  .form-submit:focus {
+    outline: none;
+    background-color: $brand-secondary-1;
+    border-color: $brand-secondary-1;
+  }
+}

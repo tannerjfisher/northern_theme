@@ -2,18 +2,40 @@
 
 // ++++++++++ Font Awesome Icon Mixin ====================
 
-// Icon variables can be found at (bower_components/components-font-awesome/scss/_variables.scss)
+// Icon variables can be found at (node_modules/@fortawesome/fontawesome-free/scss/_variables.scss)
 
-@mixin icon($icon: $fa-var-cube, $type: solid) {
-  @include fa-icon();
-  content: fa-content($icon);
+@mixin icon-base {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: -.125em;
+}
 
-  @if $type == solid {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+@mixin icon($icon: $icon-arrow-right, $type: solid, $file-name: null, $width: null, $height: null) {
+
+  @if $file-name == null or ($use-icon-font == true and $icon != background) {
+    @include icon-base();
+    content: $icon;
+    font-family: '#{$icomoon-font-family}';
   }
 
-  @if $type == brand {
-    font-family: 'Font Awesome 5 Brands';
+  @else {
+    content: '';
+    background-image: url('#{$icon-path}/#{$file-name}');
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @if $width != null {
+      width: $width;
+    }
+
+    @if $height != null {
+      height: $height;
+    }
   }
 }

@@ -1,0 +1,34 @@
+
+
+// ++++++++++ Footer Regions
+
+.region--footer-first {
+  background-color: $brand-primary-1;
+  padding-top: rem(16);
+  padding-bottom: rem(16);
+
+  .region__inner {
+    // @include layout-container;
+
+    // @include breakpoint($m-break) {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    // }
+  }
+}
+
+.region--footer-second {
+  padding-top: rem(16);
+  padding-bottom: rem(16);
+
+  .region__inner {
+    // @include layout-container;
+
+    // @include breakpoint($m-break) {
+    //   display: flex;
+    //   justify-content: center;
+    //   justify-content: none;
+    // }
+  }
+}
+

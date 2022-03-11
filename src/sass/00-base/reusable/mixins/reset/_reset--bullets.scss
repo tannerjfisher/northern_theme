@@ -1,0 +1,12 @@
+
+
+// ++++++++++ Reset For Bulleted lists
+
+@mixin reset-bullets {
+  li {
+    list-style-image: none;
+    list-style-type: none;
+    list-style: none;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,90 @@
+
+
+// ++++++++++ Search Facets
+
+.block-facets-block {
+  background-color: $white;
+  display: block;
+  overflow: hidden;
+  padding: rem(40) rem(40) rem(40) rem(40);
+  border: 1px solid $grey-light;
+
+  @include breakpoint(max-width $s-break-max) {
+    margin-bottom: rem(35);
+  }
+
+  @include breakpoint($m-break) {
+    padding: rem(60) rem(40) rem(60) rem(40);
+  }
+
+
+  // ===== Facet Block Title
+
+  & > h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: rem(18);
+    line-height: rem(24);
+    text-transform: none;
+  }
+
+
+  // ===== No Results Message
+
+  .no-results-message {
+    display: none;
+  }
+
+  & > h2 + .no-results-message {
+    display: block;
+    margin-top: rem(25);
+    font-size: rem(14);
+    font-style: $italic;
+  }
+
+
+  // ===== Facet groups
+
+  .facet-block {
+    padding-top: rem(28);
+    margin-top: rem(40);
+    border-top: 1px solid $grey-alt;
+  }
+
+  .hide-facets + .facet-block {
+    margin-top: rem(28);
+  }
+
+
+  // ===== Facet Block Title
+
+  // .facet-block__title {
+  //   font-family: $title-font-family;
+  //   font-weight: $bold;
+  //   text-transform: uppercase;
+  //   letter-spacing: 1px;
+  // }
+
+
+  // ===== Facet Lists
+
+  ul {
+    @include reset-list();
+  }
+
+
+  // ===== Labels
+
+  label {
+    margin-bottom: rem(14);
+    font-weight: $regular;
+  }
+
+
+  // ===== Checkbox Checked
+
+  input[type="checkbox"]:checked + label::before {
+    background-color: #3FA7BF;
+    border-color: #3FA7BF;
+  }
+}

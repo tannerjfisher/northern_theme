@@ -1,0 +1,40 @@
+
+
+// ++++++++++ Facet Summary Block
+
+.block-facets-summary {
+  @include breakpoint(max-width $s-break-max) {
+    margin-left: rem(13);
+    margin-right: rem(13);
+  }
+
+
+  ul {
+    @include reset-list();
+
+    li {
+      margin-left: 0;
+      margin-bottom: 0;
+    }
+  }
+
+
+  // ===== Reset Button
+
+  .facet-summary-item--clear {
+    a {
+      @include btn(secondary, small);
+      width: 100%;
+      justify-content: center;
+      padding-top: rem(11);
+      padding-bottom: rem(11);
+    }
+  }
+
+
+  // ===== Summary of Facets
+
+  .facet-summary-item--facet {
+    display: none;
+  }
+}

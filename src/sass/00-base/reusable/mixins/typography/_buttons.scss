@@ -1,0 +1,188 @@
+
+
+// ++++++++++ How to use +++++++++++++++++++++++++++++++++++++++++++++++++
+
+// ===== Settings
+
+// $type -- primary | secondary | tertiary
+// $size -- regular | small
+// $icon -- {path to file} | {font awesome icon variable or character} (define $icon-type as 'file' if using image file)
+// $icon-type -- icon-font | file
+// $icon-location -- left | right
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+@mixin btn($type: primary, $size: regular, $icon: null, $icon-type: icon-font, $icon-location: left) {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid $brand-secondary-1;
+  border-radius: 2px;
+
+  .icon {
+    transition: fill 0.2s;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+
+  // ++++++++++ Button Styles ======================================================
+
+  // === Primary
+
+  @if $type == primary {
+    background-color: $brand-primary-1;
+    border-color: $brand-primary-1;
+    color: $white;
+
+    .icon {
+      fill: $white;
+    }
+
+    &:visited {
+      color: $white;
+    }
+
+    &:hover {
+      background-color: darken($brand-primary-1, 20%);
+      color: $white;
+    }
+
+    &:focus,
+    &:active {
+      border-color: $brand-primary-2;
+      background-color: $brand-primary-2;
+      color: $white;
+    }
+  }
+
+  // === Secondary
+
+  @if $type == secondary {
+    border-color: $brand-secondary-1;
+    background-color: transparent;
+    color: $brand-secondary-1;
+
+    .icon {
+      fill: $brand-secondary-1;
+    }
+
+    &:visited {
+      color: $brand-secondary-1;
+    }
+
+    &:hover,
+    &:focus {
+      color: $brand-primary-1;
+      background-color: $grey-xlight;
+      border-color: $brand-primary-1;
+
+      .icon {
+        fill: $brand-primary-1;
+      }
+    }
+  }
+
+  // === Tertiary
+
+  @if $type == tertiary {
+    color: $brand-primary-1;
+    border-color: $brand-primary-1;
+    border-width: 1px;
+
+    .icon {
+      fill: $brand-primary-1;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $brand-secondary-1;
+      color: $brand-secondary-1;
+
+      .icon {
+        fill: $brand-secondary-1;
+      }
+    }
+
+    &:focus {
+      outline: 1px solid $brand-secondary-1;
+    }
+  }
+
+
+  // ++++++++++ Size =================================================================
+
+  // === Small
+
+  @if $size == small {
+    font-size: rem(14);
+    line-height: rem(14);
+    padding: rem(15) rem(23);
+  }
+
+  // === Regular
+
+  @if $size == regular {
+    font-size: rem(16);
+    line-height: rem(16);
+    padding: rem(15) rem(23);
+  }
+
+
+  // ++++++++++ Icons ================================================================
+
+  // === Has Icon
+
+  @if $icon != null and $icon-type == file {
+    &::before {
+      content: '';
+      background-image: url("#{$icon-path}/#{$icon}");
+      background-size: 100%;
+      background-position: center;
+      display: block;
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  @if $icon != null and $icon-type == icon-font {
+    &::before {
+      @include icon($icon-arrow-right);
+      content: $icon;
+      display: block;
+    }
+  }
+
+  // === Icon Left
+
+  @if $icon-location == left {
+    &::before {
+      margin-right: rem(10);
+    }
+
+    svg {
+      margin-right: rem(10);
+    }
+  }
+
+  // === Icon Right
+
+  @if $icon-location == right {
+    &::before {
+      order: 2;
+      margin-left: rem(10);
+    }
+
+    svg {
+      margin-left: rem(10);
+    }
+  }
+}
+
+
+

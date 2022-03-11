@@ -1,0 +1,21 @@
+
+
+// ++++++++++ Layout styles for one column blocks on landing pages
+
+.path-homepage,
+.is-landing-page {
+  .layout:not(:last-child) {
+    position: relative;
+    padding-bottom: rem(35);
+
+    &::after {
+      content: '';
+      border-bottom: 1px solid $grey-xlight;
+      position: absolute;
+      top: 100%;
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;
+    }
+  }
+}

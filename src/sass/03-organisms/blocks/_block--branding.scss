@@ -3,17 +3,69 @@
 // ++++++++++ Branding Block
 
 .block-system-branding-block {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: visible;
+  padding: rem(16) 0;
+}
 
-  a {
-    display: block;
-    width: 70px;
+// ===== Site Name
+
+.site-name {
+  @include visually-hidden();
+}
+
+// ===== Site name tab focus
+
+.user-is-tabbing .site-name {
+
+  a:focus {
+    outline: none;
+  }
+
+  a:focus::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    outline: 1px dashed $grey;
+  }
+}
+
+// ===== Site logo
+
+.site-logo {
+  position: relative;
+  transition: opacity 0.2s;
+  flex: 1 1 auto;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-right: rem(13);
+  max-width: rem(300);
+
+  @include breakpoint($xxxs-break) {
+    padding-right: rem(18);
   }
 
   img {
     width: 100%;
+    height: auto;
+    min-height: 1px;
+    max-width: 100%;
+    display: block;
+    overflow: hidden;
   }
-  
-  .site-name {
-    @include visually-hidden();
+
+  // ===== Print stylesheet logo
+
+  .logo--print {
+    display: none;
   }
+}
+
+// ===== Site logo tab focus
+
+.user-is-tabbing .site-logo:focus {
+  outline: 1px dashed $brand-secondary-3;
 }

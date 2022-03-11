@@ -1,0 +1,93 @@
+
+
+// +++++++++ Masthead Primary Region
+
+.masthead {
+  @include header-padding();
+  background-color: $white;
+  overflow: visible;
+  border-bottom: 1px solid $grey-light;
+
+  .region__inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.masthead__primary {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: rem($header-height--mobile);
+
+  @include breakpoint($s-break) {
+    height: rem($header-height--tablet);
+  }
+
+  @include breakpoint($m-break) {
+    height: rem($header-height--desktop);
+  }
+
+  .region {
+    overflow: visible;
+  }
+}
+
+// ===== Masthead Primary Left
+
+.masthead__primary-left {
+  display: flex;
+  align-items: center;
+}
+
+// ===== Masthead Primary Right
+
+.masthead__primary-right {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  overflow: visible;
+
+  @include breakpoint($l-break) {
+    flex: 1 1 auto;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+}
+
+// ===== Region Masthead Primary Right Top
+
+.region--masthead-primary__right-top {
+  flex: 1 1 auto;
+  display: flex;
+  width: 100%;
+
+  &:only-child {
+    align-self: center;
+  }
+
+  .region__inner {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+// ===== Region Masthead Primary Right Bottom
+
+.region--masthead-primary__right-bottom {
+  display: flex;
+  justify-content: flex-end;
+  overflow: visible;
+
+  &:only-child {
+    align-self: center;
+  }
+
+  @include breakpoint($l-break) {
+    width: 100%;
+  }
+}

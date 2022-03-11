@@ -1,0 +1,19 @@
+
+
+// +++++++++++ Text Modal Light Text On Dark Modal
+
+@mixin text-modal() {
+  display: block;
+  background-color: $grey-dark;
+  padding: rem(10) rem(5);
+  color: $white;
+  border-radius: $radius-3;
+  text-align: center;
+
+  &::before {
+    @include triangle(top, $grey-dark, 0.5em);
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translate(-50%, -100%);
+  }
+}

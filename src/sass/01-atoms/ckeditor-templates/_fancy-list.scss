@@ -1,0 +1,50 @@
+
+// +++++++++++ Fancy List template styles
+
+.template--fancy-list {
+  display: flex;
+  margin-bottom: rem(35);
+
+  .left-region {
+    flex: 0 0 72px;
+    display: flex;
+    align-items: flex-start;
+
+    .item-number {
+      font-size: rem(54);
+      font-weight: $bold;
+      line-height: rem(54);
+      color: $brand-primary-1;
+    }
+  }
+
+  .right-region {
+    flex: 1 1 0%;
+
+    .item-title {
+      font-size: rem(24);
+      font-weight: $extra-bold;
+      line-height: rem(29);
+      margin-top: rem(16);
+      margin-bottom: rem(20);
+      text-transform: none;
+
+      @include breakpoint($m-break) {
+        line-height: rem(36);
+      }
+    }
+
+    .item-label {
+      text-transform: none;
+      font-size: rem(18);
+      font-weight: $bold;
+      line-height: rem(27);
+      margin-top: 0;
+      margin-bottom: 0;
+
+      @include breakpoint($m-break) {
+        line-height: rem(33);
+      }
+    }
+  }
+}

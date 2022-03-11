@@ -1,0 +1,72 @@
+
+
+// ++++++++++ Alertnate Table Style for inclusion
+// This table appears more like modal elements on the site,
+// white cells, rounded corners, hard shadow
+// Include on table element
+
+@mixin table-alternate() {
+  @include table-reset();
+  border: none;
+  overflow: hidden;
+  background-color: $grey-dark;
+  border-spacing: 1px;
+  border-radius: $radius-4;
+  // border-color: transparent;
+  border-style: solid;
+  border-width: 1px 1px 3px 1px;
+  border-collapse: collapse;
+  overflow: hidden;
+
+  thead th,
+  th {
+    background-color: $white;
+    color: $grey-dark;
+    border-bottom: 0;
+    text-align: left;
+    padding-top: rem(25);
+    border-bottom: 2px solid $grey-dark;
+    border-top: 0px;
+
+    a {
+      color: $link-colour;
+    }
+  }
+
+  td, th {
+    border-left: 1px solid $grey-light;
+    border-top: 1px solid $grey-light;
+    background-color: $white;
+    vertical-align: middle;
+    // border-radius: 10px;
+  }
+
+  td:first-child, th:first-child {
+    border-left: none;
+  }
+
+
+  // ===== Rounding correct corners for IE11
+
+  thead th {
+    &:first-child {
+      border-top-left-radius: $radius-4;
+    }
+
+    &:last-child {
+      border-top-right-radius: $radius-4;
+    }
+  }
+
+  tr:last-child {
+    td {
+      &:first-child {
+        border-bottom-left-radius: $radius-4;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: $radius-4;
+      }
+    }
+  }
+}

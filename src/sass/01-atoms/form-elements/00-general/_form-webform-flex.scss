@@ -1,0 +1,30 @@
+
+
+// ++++++++++ Form Webform Flex
+
+.webform-flexbox {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.webform-flex--container {
+  margin-left: rem(8);
+  margin-right: rem(8);
+}
+
+// ===== Form Item
+
+.webform-flex--container > .form-item {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.webform-flex--container > fieldset.form-item {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.webform-flex--container > * > .form-item {
+  padding-left: 0;
+  padding-right: 0;
+}

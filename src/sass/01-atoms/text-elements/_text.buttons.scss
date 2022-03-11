@@ -1,0 +1,65 @@
+
+
+// ++++++++++ Button Class Use
+
+
+// ===== Btn classes applied are likely in the WYSIWYG and should be inline blocks
+
+a[class^="btn-"] {
+  display: inline-block;
+}
+
+
+// ===== Button
+
+.button {
+  @include btn(primary);
+  margin: rem(12) rem(12) rem(12) 0;
+}
+
+
+// ===== Primary
+
+.btn-primary,
+a[title="Button 1"] {
+  @include btn();
+}
+
+
+// ===== Primary Small
+
+.btn-primary--small {
+  @include btn(primary, small);
+}
+
+
+// ===== Secondary
+
+.btn-secondary,
+a[title="Button 2"] {
+  @include btn(secondary);
+}
+
+
+// ===== Secondary Small
+
+.btn-secondary--small {
+  @include btn(secondary, small);
+}
+
+
+// ===== Tertiary
+
+.btn-tertiary,
+a[title="Button 3"] {
+  @include btn(tertiary);
+}
+
+
+// ===== Tertiary Small
+
+.btn-tertiary--small {
+  @include btn(tertiary, small);
+}
+
+

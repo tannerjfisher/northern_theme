@@ -1,0 +1,29 @@
+
+
+// ++++++++++ Table Drag Changed Warning Indicator
+
+tr .tabledrag-changed {
+  position: absolute;
+  top: 0; left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: tint($debug-yellow, 80%);
+  color: darken($debug-yellow, 70%);
+  border: 1px solid $debug-yellow;
+  font-size: 0;
+  text-decoration: none;
+
+  &::before {
+    content: '';
+    display: block;
+    background-image: url('#{$icon-path}/icon--error-outlined--black.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: rem(14);
+    height: rem(14);
+  }
+}

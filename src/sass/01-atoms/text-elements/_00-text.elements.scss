@@ -1,0 +1,38 @@
+
+// ===== Global Default Font Styling
+
+body {
+  font-family: $default-font;
+  font-size: 16px;
+  line-height: rem(28);
+  color: $black;
+}
+
+
+// ===== Paragraphs
+
+figure, p, pre {
+  margin: 0 0 1.5rem;
+}
+
+
+// ===== Other
+
+strong,
+b {
+  font-weight:  $bold;
+}
+
+em {
+  font-style: italic;
+}
+
+sup,
+sub {
+  text-transform: uppercase;
+  font-weight: $bold;
+
+  @include breakpoint($m-break) {
+    font-size: rem(10);
+  }
+}

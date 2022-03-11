@@ -1,0 +1,42 @@
+
+
+// ++++++++++ Field with label inline
+
+.field--label-inline {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: rem(8);
+
+  .field__label,
+  .field__items,
+  .field__label + .field__item {
+    float: none;
+    margin-top: rem(5);
+    font-size: rem(12);
+  }
+
+  .field__items,
+  .field__label + .field__item {
+    font-weight: $bold;
+  }
+
+  .field__label {
+    flex: 0 0 auto;
+    padding-bottom: 0;
+    border-bottom: 0;
+    margin-bottom: 0;
+    font-weight: $regular;
+    text-transform: uppercase;
+  }
+
+  .field__item {
+    display: inline-block;
+
+    &:first-child:not(:only-child) {
+      &::after {
+        content: ',';
+        padding-left: 2px;
+      }
+    }
+  }
+}

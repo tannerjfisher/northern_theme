@@ -1,0 +1,15 @@
+
+
+// +++++++++ Label for required form element
+
+label.form-required,
+.fieldset-legend.form-required {
+  &::after {
+    content: '*';
+    font-size: rem(16);
+    margin-left: rem(3);
+    line-height: 0;
+    color: lighten($debug-red, 10%);
+    background-image: none;
+  }
+}

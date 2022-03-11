@@ -1,0 +1,17 @@
+
+
+// ++++++++++ Terms Of Service Form Element
+
+.form-type-webform-terms-of-service {
+  flex: 1 1 100%;
+
+  .option {
+    @include breakpoint(max-width $xxs-break-max) {
+      font-size: rem(14);
+    }
+
+    a {
+      margin-left: rem(6);
+    }
+  }
+}

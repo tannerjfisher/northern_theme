@@ -1,0 +1,12 @@
+
+
+// ++++++++++ Form Item Label
+
+.form-item__label {
+  display: table;
+  font-size: rem(14);
+  font-weight: $bold;
+  line-height: rem(18);
+  margin-top: rem(4);
+  margin-bottom: rem(4);
+}

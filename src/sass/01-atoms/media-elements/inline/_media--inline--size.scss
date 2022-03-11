@@ -1,0 +1,42 @@
+
+
+// ++++++++++ Inline Media Sizing
+
+.embedded-entity.view-mode-media-inline-75,
+.embedded-entity.view-mode-media-inline-75 + figcaption {
+  @include breakpoint($m-break) {
+    width: calc(75% - 25px);
+  }
+}
+
+
+.embedded-entity.view-mode-media-inline-66,
+.embedded-entity.view-mode-media-inline-66 + figcaption {
+  @include breakpoint($m-break) {
+    width: calc(66.666666% - 25px);
+  }
+}
+
+
+.embedded-entity.view-mode-media-inline-50,
+.embedded-entity.view-mode-media-inline-50 + figcaption {
+  @include breakpoint($m-break) {
+    width: calc(50% - 25px);
+  }
+}
+
+
+.embedded-entity.view-mode-media-inline-33,
+.embedded-entity.view-mode-media-inline-33 + figcaption {
+  @include breakpoint($m-break) {
+    width: calc(33.333333% - 25px);
+  }
+}
+
+
+.embedded-entity.view-mode-media-inline-25,
+.embedded-entity.view-mode-media-inline-25 + figcaption {
+  @include breakpoint($m-break) {
+    width: calc(25% - 25px);
+  }
+}

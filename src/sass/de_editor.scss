@@ -1,0 +1,61 @@
+/* de_editor.scss */
+
+// This file is used to bring in theme styles to
+// the Drupal backened for a more consistent editor experience.
+// You can include the _objects.scss partial if more specific
+// styles are requested to be shown while editing.
+
+
+// ===== Reusable Functions
+
+@import '00-base/reusable/functions/**/*.scss';
+
+
+// ===== Reusable Mixins
+
+@import '00-base/reusable/mixins/**/*.scss';
+
+
+// ===== Reusable Animations
+
+@import '00-base/reusable/animations/**/*.scss';
+
+
+// ===== Theme Init (Third Party Imports)
+
+@import '00-base/imports/theme-init';
+
+
+// ===== Settings (Variables)
+
+@import '00-base/settings/index';
+
+
+// ===== Master Settings (Settings to affect the theme appearance globally)
+
+@import '00-base/master-settings';
+
+
+// ===== Global Classes & Components
+
+@import '00-base/global/**/*.scss';
+
+
+// ===== CKEditor Overrides
+
+@import '05-misc/ckeditor-overrides';
+
+
+// ===== Atoms
+
+@import '01-atoms/**/*.scss';
+
+
+// ===== Atoms
+
+@import '02-molecules/**/*.scss';
+
+
+// ===== CKEditor Templates
+
+@import '03-organisms/cke-templates/**/*.scss';

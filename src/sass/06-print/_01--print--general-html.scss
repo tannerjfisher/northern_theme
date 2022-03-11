@@ -1,0 +1,204 @@
+
+
+// ++++++++++ General HTML (PRINT)
+
+@media print {
+
+  // ===== All
+
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  * {
+    font-size: 10pt !important;
+    line-height: 16pt !important;
+  }
+
+
+  // ===== Tables -- http://css-discuss.incutio.com/wiki/Printing_Tables
+
+  table {
+    max-width: 100% !important;
+    border: 1px solid #000 !important;
+    table-layout: fixed !important;
+
+    * {
+      max-width: 100% !important;
+      border-color: #000 !important;
+    }
+
+    caption {
+      border-width: 1px 1px 0px 1px;
+      border-style: solid;
+      border-color: #000;
+    }
+
+    thead {
+      display: table-header-group !important;
+      break-inside: auto;
+    }
+
+    tfoot {
+      display: table-row-group !important;
+    }
+
+    tr {
+      border-bottom: 1px solid #ebebeb !important;
+      page-break-inside: avoid;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    th:not(:last-child) {
+      border-right: 1px solid #000;
+    }
+
+    td:not(:last-child) {
+      border-right: 1px solid #000;
+    }
+
+    span {
+      display: inline-block !important;
+      max-width: 100% !important;
+    }
+  }
+
+
+  // ===== HTML & Body
+
+  html,
+  body {
+    // @include reset-font;
+    // font-family: Georgia, ‘Times New Roman’, serif;
+    font-size: 10pt;
+    line-height: 16pt;
+  }
+
+  body {
+    padding: 1em;
+  }
+
+
+  // ===== Headings
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include reset;
+    text-indent: 0 !important;
+    margin-bottom: rem(15);
+    margin-top: rem(35);
+    display: block !important;
+    width: 100%;
+    page-break-after: avoid;
+    break-inside: avoid;
+  }
+
+  h1,
+  #page-title,
+  h1 *,
+  #page-title * {
+    font-weight: bold;
+    font-size: 22pt !important;
+    line-height: 28pt !important;
+  }
+
+  h2,
+  h2 * {
+    font-weight: bold;
+    font-size: 18pt !important;
+    line-height: 24pt !important;
+  }
+
+  h3,
+  h3 * {
+    font-weight: bold;
+    font-size: 16pt !important;
+    line-height: 20pt !important;
+  }
+
+  h4,
+  h4 * {
+    font-weight: bold;
+    font-size: 14pt !important;
+    line-height: 18pt !important;
+  }
+
+  h5,
+  h5 * {
+    font-weight: bold;
+    font-size: 12pt !important;
+    line-height: 16pt !important;
+  }
+
+  h6,
+  h6 * {
+    font-weight: bold;
+  }
+
+
+  // ===== Strong
+
+  strong {
+    font-weight: $bold;
+  }
+
+
+  // ===== Links
+
+  a,
+  a:visited {
+      text-decoration: underline;
+  }
+
+
+  // ===== Text
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+
+  // ===== Images
+
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+
+  // ===== Block Quotes
+
+  pre,
+  blockquote {
+    font-weight: $bold !important;
+    font-style: $italic;
+    margin-top: rem(15) !important;
+    margin-bottom: rem(15) !important;
+    page-break-inside: avoid;
+    font-size: 12pt;
+
+    * {
+      font-size: 12pt;
+    }
+  }
+
+
+  // ===== Form
+
+  form {
+    display: block !important;
+  }
+}

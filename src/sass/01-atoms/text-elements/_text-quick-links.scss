@@ -1,0 +1,49 @@
+
+
+// ++++++++++ Quick Links
+
+.field--name-field-quick-link .field__item {
+  &:not(:last-child) .eck-entity {
+    margin-bottom: rem(20);
+  }
+
+  .eck-entity {
+    position: relative;
+  }
+
+
+  // ===== Icon
+
+  .field--name-field-icon {
+    display: flex;
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 46px;
+    background-color: $brand-primary-2;
+    color: $white;
+    padding: rem(10) rem(15);
+    border-top-left-radius: $radius-2;
+    border-bottom-left-radius: $radius-2;
+    align-items: center;
+  }
+
+
+  // ===== Link
+
+  .field--name-field-link {
+    background-color: $white;
+
+    a {
+      display: block;
+      position: relative;
+      border: 1px solid $brand-primary-1;
+      padding: rem(12) rem(20) rem(12) rem(66);
+      border-radius: $radius-2;
+      border-bottom-width: 3px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,136 @@
+
+
+// ++++++++++ Table Components
+
+.table-container {
+  max-width: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+table {
+  width:  100%;
+  border: 1px solid $grey;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: rem(30);
+  background-color: $white;
+  font-size: rem(12);
+  line-height: rem(20);
+
+  @include breakpoint($m-break) {
+    font-size: rem(14)
+  }
+
+
+  // ===== Head
+
+  th,
+  thead th{
+    font-size: rem(14);
+    border-bottom: 1px solid $grey;
+    background: $brand-secondary-1;
+    color: $white;
+    padding-top: rem(16);
+    padding-bottom: rem(16);
+    text-align: left;
+
+    @include breakpoint($m-break) {
+      font-size: rem(16)
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid $grey;
+    }
+
+    a {
+      color: $white;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+
+  // ===== Body
+
+  tbody {
+    border: none;
+  }
+
+
+  // ===== Cells
+
+  th,
+  td {
+    border: none;
+    vertical-align: top;
+    padding: rem(10) rem(10);
+  }
+
+  td {
+    &:not(:last-child) {
+      border-right: 1px solid $grey;
+    }
+  }
+
+
+  // ===== Rows
+
+  tr.odd{
+    background-color: $white;
+  }
+
+  tr:nth-child(odd) {
+    background-color: $white;
+  }
+
+  tr.even{
+    background-color: $grey-xlight;
+  }
+
+  tr:nth-child(even) {
+    background-color: $grey-xlight;
+  }
+
+
+  // ===== Caption
+
+  caption{
+    caption-side: top;
+    text-align: left;
+    position: sticky;
+    left: 0;
+    font-size: rem(18);
+    font-weight: $bold;
+    padding: rem(16) rem(12);
+  }
+
+
+  // ===== Table Sort
+
+  .tablesort {
+    background-image: none;
+    padding-left: rem(5);
+
+    // Sort Acending
+    &.tablesort--asc {
+      &::before {
+        // @include icon($icon-chevron-down);
+        font-size: rem(14);
+        display: block;
+      }
+    }
+
+    // Sort Decending
+    &.tablesort--desc {
+      &::before {
+        // @include icon($icon-chevron-up);
+        font-size: rem(14);
+        display: block;
+      }
+    }
+  }
+}

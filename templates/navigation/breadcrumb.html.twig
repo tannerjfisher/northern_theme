@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+
+{% if breadcrumb and breadcrumb|length > 1 %}
+  <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+    <ol>
+    {% for item in breadcrumb %}
+      <li>
+        {% if loop.index == 1 %}
+          <a href="{{ item.url }}">
+            {% include '@de_theme/SVG/icon--home--black.svg.twig' %}
+            <span class="text">{{ item.text }}</span>
+          </a>
+          <span class="breadcrumb-separator">/</span>
+        {% else %}
+          {% if item.url %}
+            <a href="{{ item.url }}">{{ item.text }}</a>
+            <span class="breadcrumb-separator">/</span>
+          {% else %}
+            <p>{{ item.text }}</p>
+          {% endif %}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

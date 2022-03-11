@@ -70,9 +70,12 @@
     node.isPromoted() ? 'node--promoted',
     node.isSticky() ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class
   ]
 %}
+
+{% set changedDate = node.getChangedTime|date('M jS, Y') %}
+
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
 
@@ -88,7 +91,7 @@
     <footer class="node__meta">
       {{ author_picture }}
       <div{{ author_attributes.addClass('node__submitted') }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {% trans %}Updated on <b>{{ changedDate }}</b>{% endtrans %}
         {{ metadata }}
       </div>
     </footer>

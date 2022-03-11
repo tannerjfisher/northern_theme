@@ -1,0 +1,100 @@
+
+
+// +++++++++++ Login Page
+
+.path-user:not(.user-logged-in) {
+
+
+  // ===== Header
+
+  #header {
+    padding-bottom: 0;
+  }
+
+
+  // ===== Hide the Account Menu on login screens
+
+  .block--system-menu-block-account {
+    display: none;
+  }
+
+
+  // ===== Errors/alerts
+
+  div[role="contentinfo"] {
+    margin-top: rem(30);
+  }
+
+
+  // ===== Breadcrumb Block
+
+  .block-system-breadcrumb-block {
+    display: none;
+  }
+
+
+  // ===== Local Tasks
+
+  .block-local-tasks-block {
+    margin-top: 0;
+
+    nav, ul {
+      margin-top: 0;
+    }
+  }
+
+
+  // ===== Page Title
+
+  .block-page-title-block {
+    @include visually-hidden();
+  }
+
+
+  // ===== Tabs
+
+  .tabs {
+    justify-content: center;
+    margin-top: rem(40);
+  }
+
+
+  // ===== Forms
+
+  .block-system-main-block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: rem(25);
+
+    // Login
+
+    .user-login-form,
+    .user-pass {
+      flex: 0 1 450px;
+      max-width: 450px;
+      width: 100%;
+    }
+
+    // Reset Password
+
+    .user-pass {
+      .form-item-name {
+        flex: 1 1 100%;
+      }
+
+      .form-item-name + p {
+        padding-left: rem(5);
+        padding-right: rem(5);
+      }
+    }
+
+    .user-pass-reset {
+      margin-top: rem(35);
+
+      p {
+        flex: 1 1 100%;
+      }
+    }
+  }
+}

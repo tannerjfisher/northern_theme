@@ -1,12 +1,92 @@
 
-.tabs {
-  a {
-    &:hover {
-      background-color: $brand-primary-1;
+
+// ++++++++++ Tabs
+
+.block-local-tasks-block {
+  z-index: 0;
+  margin-bottom: rem(14);
+
+  h2.visually-hidden {
+    font-size: 0;
+    line-height: 0;
+  }
+  
+  ul.tabs {
+    @include reset-list();
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: - rem(5);
+    margin-right: - rem(5);
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li {
+      flex: 1 1 auto;
+      list-style: none;
+      margin-left: rem(5);
+      margin-right: rem(5);
+      margin-bottom: rem(12);
+
+      @include breakpoint($s-break) {
+        flex: 0 0 auto;
+      }
+
+      a {
+        transition: $default-transition;
+        display: block;
+        padding: rem(6) rem(14);
+        background-color: $white;
+        border: 1px solid $brand-secondary-1;
+        border-bottom: 2px solid $brand-secondary-1;
+        color: $brand-secondary-1;
+        font-weight: $regular;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+
+          &:not(.is-active) {
+            color: $brand-primary-1;
+            border-color: $brand-primary-1;
+          }
+        }
+
+        // === Active Tab
+
+        &.is-active {
+          position: relative;
+          background-color: $brand-primary-1;
+          border-color: $brand-primary-1;
+          color: $white;
+
+          &::after {
+            @include triangle(bottom, $brand-primary-1, 0.8em);
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+      }
     }
 
-    &.is-active {
-      background-color: $brand-primary-1;
+    &.tabs-secondary {
+      border-top: 1px solid $grey-xlight;
+      padding-top: rem(20);
+      margin-top: 0;
     }
+  }
+}
+
+
+// ===== Tabs On Homepage
+
+.path-homepage .block-local-tasks-block {
+  margin-top: rem(20);
+
+  ul.tabs {
+    margin-bottom: 0;
   }
 }

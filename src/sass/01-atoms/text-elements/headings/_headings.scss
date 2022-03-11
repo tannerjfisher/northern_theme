@@ -1,0 +1,91 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: rem(50) 0 rem(29) 0;
+  color: $grey-dark;
+}
+
+h1 {
+  font-size: rem(34);
+  line-height: rem(40);
+  letter-spacing: -0.5px;
+  text-transform: none;
+  font-weight: $regular;
+
+  @include breakpoint($m-break) {
+    font-size: rem(42);
+    line-height: rem(50);
+  }
+}
+
+h2 {
+  font-size: rem(27);
+  line-height: rem(33);
+
+  @include breakpoint($m-break) {
+    font-size: rem(34);
+    line-height: rem(40);
+  }
+}
+
+h3 {
+  font-size: rem(24);
+  line-height: rem(29);
+  font-weight: $extra-bold;
+
+  @include breakpoint($m-break) {
+    font-size: rem(30);
+    line-height: rem(36);
+  }
+}
+
+h4 {
+  font-size: rem(22);
+  line-height: rem(27);
+
+  @include breakpoint($m-break) {
+    font-size: rem(27);
+    line-height: rem(33);
+  }
+}
+
+h5 {
+  font-weight: $extra-bold;
+  font-size: rem(19);
+  line-height: rem(24);
+}
+
+h6 {
+  font-size: rem(19);
+  line-height: rem(24);
+}
+
+
+// ===== First headings in body
+
+.field--name-body,
+.cke_editable {
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6 {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  // Needed so that the margin doesn't return when the CKEditor 'Magic Line' element is appended as the first child
+  & > span:first-child + h1,
+  & > span:first-child + h2,
+  & > span:first-child + h3,
+  & > span:first-child + h4,
+  & > span:first-child + h5,
+  & > span:first-child + h6 {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,23 @@
+
+
+// ++++++++++ File Upload Inputs
+
+.form-type-webform-image-file {
+  max-width: 400px;
+
+  .file,
+  .form-file,
+  .form-submit {
+    margin-bottom: rem(10);
+    margin-right: rem(10);
+  }
+
+  .form-submit {
+    padding: rem(10) rem(20);
+    margin-left: 0;
+  }
+
+  .description {
+    margin-top: 0;
+  }
+}

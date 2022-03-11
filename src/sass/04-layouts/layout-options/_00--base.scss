@@ -1,0 +1,24 @@
+
+
+// ++++++++++ Base Styles for Layouts ============================
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include breakpoint($m-break) {
+    flex-wrap: nowrap;
+  }
+
+  & > .layout__region {
+    max-width: 100%;
+
+    & .draggable {
+      cursor: move;
+    }
+  }
+}
+
+.layout__region {
+  flex: 0 1 100%;
+}

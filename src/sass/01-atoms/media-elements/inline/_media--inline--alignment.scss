@@ -1,0 +1,59 @@
+
+
+// ++++++++++ Inline Media Alignment
+
+
+// ===== Align Left
+
+.embedded-entity.align-left,
+.align-left .embedded-entity,
+.align-left figcaption {
+  @include breakpoint($m-break) {
+    float: left;
+    clear: left;
+    margin-right: rem(30);
+  }
+
+  @include breakpoint($l-break) {
+    margin-right: rem(50);
+  }
+
+  .one_sidebar & {
+    @include breakpoint($l-break) {
+      margin-right: rem(30);
+    }
+  }
+}
+
+
+// ===== Align Right
+
+.embedded-entity.align-right,
+.align-right .embedded-entity,
+.align-right figcaption {
+  @include breakpoint($m-break) {
+    float: right;
+    clear: right;
+    margin-left: rem(30);
+  }
+
+  @include breakpoint($l-break) {
+    margin-left: rem(50);
+  }
+
+  .one_sidebar & {
+    @include breakpoint($l-break) {
+      margin-left: rem(30);
+    }
+  }
+}
+
+
+// ===== Align Center
+
+.embedded-entity.align-center,
+.align-center .embedded-entity,
+.align-center figcaption {
+  margin-left: auto;
+  margin-right: auto;
+}

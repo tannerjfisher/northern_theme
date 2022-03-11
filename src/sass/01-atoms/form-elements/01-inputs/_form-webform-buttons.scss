@@ -1,0 +1,13 @@
+
+
+// ++++++++++ Webform Buttons Form Element
+
+fieldset.js-webform-type-webform-buttons {
+  label {
+    margin-bottom: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+}

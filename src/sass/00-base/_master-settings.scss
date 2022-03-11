@@ -1,0 +1,41 @@
+
+// ================== Master Theme Settings ========================
+// Adjust variables found here to quickly customize the sites appearance
+// =================================================================
+
+
+// ++++++++++ Layout Container =====================================
+
+// .layout-container {
+//   @include layout-container();
+// }
+
+
+// ++++++++++ Global Font Rules ====================================
+
+
+// === Default Font
+
+$default-font: $base-font-family;
+
+
+// ++++++++++ Radius Values ========================================
+// Change these to 0 to remove the radius appearance from the the entire theme
+
+
+$radius-1: 3px;
+$radius-2: 5px;
+$radius-3: 8px;
+$radius-4: 11px;
+$radius-5: 15px;
+$radius-100: 100%;
+
+
+// ++++++++++ Global Default Transition ==================================
+// Change this to affect the transition style and timing of most things (some elements transition differently)
+
+
+$default-transition: all 0.2s;
+
+
+

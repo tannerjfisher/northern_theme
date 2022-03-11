@@ -1,0 +1,88 @@
+
+
+// ++++++++++ CKEditor Frame Overrides
+
+
+// ===== Set CKEditor body default styles
+
+body.cke_editable {
+  font-family: $base-font-family;
+  display: block;
+  padding: rem(10);
+}
+
+
+// ===== Combo Panels (Like styles dropdown)
+
+.cke_panel_list {
+
+  li {
+    padding: rem(5);
+    overflow: visible;
+
+    &:hover {
+      background-color: $grey-light;
+    }
+
+
+    // === Selected list item
+
+    &.cke_selected {
+      position: relative;
+      padding-left: rem(10);
+      border-left: 3px solid $grey-dark;
+
+      &::before {
+        @include triangle(right, $grey-dark, 5px);
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+        display: inline-block;
+        position: absolute;
+        top: 50%; left: 0;
+        transform: translateY(-50%);
+      }
+
+
+      &:hover {
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: 2;
+          top: 0; left: 0; bottom: 0;
+          width: 8px;
+          background-color: red;
+          transform: translateX(-3px);
+
+          background-image: url('#{$icon-path}/subtract-circle--white.svg');
+          background-repeat: no-repeat;
+          background-size: 80%;
+          background-position: center;
+        }
+      }
+    }
+
+
+    // === Add Links For Each Item
+
+    a {
+      overflow: visible;
+    }
+  }
+}
+
+
+// ===== Image Resize Wrapper
+
+span.cke_image_resizer_wrapper {
+  display: block;
+}
+
+
+// ===== Media Drupal Entities In CKEditor
+
+.cke_widget_element {
+  width: 100%;
+}
+
+

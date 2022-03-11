@@ -1,0 +1,12 @@
+
+
+// ++++++++++ Highlighted Text (Used in the wysiwyg styls dropdown)
+
+.highlighted-text {
+  display: block;
+  background-color: tint($debug-blue, 95%);
+  color: mix($debug-blue, $grey-dark, 30);
+  padding: rem(20) rem(30);
+  border-radius: $radius-2;
+  border: 1px solid tint($debug-blue, 40%);
+}

@@ -1,0 +1,22 @@
+
+// ++++++++++ Placeholder image for teaser images
+
+@mixin teaser-placeholder-image() {
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    margin-bottom: rem(20);
+    padding-bottom: 56.25%;
+    background-color: $grey-light;
+
+    background-image: url('#{$icon-path}/image-placeholder-icon--white.svg');
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

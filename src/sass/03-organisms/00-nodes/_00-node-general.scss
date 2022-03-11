@@ -1,0 +1,73 @@
+
+
+// +++++++++++ General Node Styles
+
+.node--view-mode-teaser,
+.node--view-mode-compact {
+  h2 {
+    font-size: rem(20);
+    margin-top: 0;
+    margin-bottom: rem(8);
+  }
+
+  .node__submitted,
+  .announcement-date,
+  .field--name-field-date .datetime,
+  .field--name-field-date-range {
+    padding-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+    font-size: rem(14);
+
+    @include breakpoint($m-break) {
+      font-size: rem(14);
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+
+  // ===== Body Field
+
+  .field--name-body {
+    .more-link {
+      display: inline;
+      padding-left: rem(2);
+      font-weight: $bold;
+    }
+  }
+}
+
+
+// ===== Nodes not using layout builder
+
+.node--view-mode-full {
+  margin-top: rem(20);
+
+  @include breakpoint($m-break) {
+    margin-top: rem(27);
+  }
+}
+
+
+
+// ++++++++++ Layout Option Overrides
+
+// ===== Sidebar & Three column regions
+
+.layout--twocol-sidebar-first .region-small,
+.layout--twocol-sidebar-second .region-small,
+.layout--threecol-split .region-small {
+  .node--view-mode-teaser,
+  .node--view-mode-compact {
+    .node__submitted,
+    .announcement-date {
+      @include breakpoint($m-break) {
+        font-size: rem(12);
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+
+
+// ++++++++++ Date/Time Form Element
+
+.js-form-type-datetime {
+  margin-bottom: 0;
+
+  .container-inline {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: - rem(5);
+    margin-right: - rem(5);
+  }
+}
+
+input[type="datetime"],
+input[type="time"],
+.js-form-type-date input {
+  max-width: 100%;
+  width: 100%;
+  border: 1px solid $grey-light;
+  padding: rem(10) rem(16);
+  border-radius: $radius-1;
+
+  @include breakpoint($m-break) {
+    padding: rem(12) rem(20);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $grey-dark;
+  }
+}
+
+input[type="time"] {
+  font-size: rem(14);
+}

@@ -1,0 +1,34 @@
+
+
+// ++++++++++ Blockquote styles
+
+blockquote {
+  border-left: 8px solid $grey-xlight;
+  padding-left: rem(20);
+  margin-top: rem(30);
+  margin-bottom: rem(30);
+  margin-left: 0;
+  margin-right: 0;
+
+  @include breakpoint($m-break) {
+    padding-left: rem(30);
+  }
+
+  p {
+    font-size: rem(16);
+    line-height: rem(22);
+    margin: 0;
+
+    @include breakpoint($m-break) {
+      font-size: rem(32);
+      line-height: rem(38);
+    }
+  }
+
+  .small {
+    font-size: rem(16);
+    line-height: rem(22);
+    font-weight: $regular;
+    margin-top: rem(20);
+  }
+}

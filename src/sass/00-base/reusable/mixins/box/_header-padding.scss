@@ -1,0 +1,18 @@
+
+
+// +++++++++++ Heading Padding for adding padding to full width elements
+
+@mixin header-padding() {
+  padding-left: rem(16);
+  padding-right: rem(16);
+
+  @include breakpoint($s-break) {
+    padding-left: rem(25);
+    padding-right: rem(25);
+  }
+
+  @include breakpoint($m-break) {
+    padding-left: rem(47);
+    padding-right: rem(47);
+  }
+}

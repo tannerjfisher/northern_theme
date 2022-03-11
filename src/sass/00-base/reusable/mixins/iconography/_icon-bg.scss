@@ -1,0 +1,19 @@
+
+
+// ++++++++++ Background Icon ====================
+
+@mixin icon-bg($file-name, $width: null, $height: null) {
+  content: '';
+  background-image: url('#{$icon-path}/#{$file-name}');
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @if $width != null {
+    width: $width;
+  }
+
+  @if $height != null {
+    height: $height;
+  }
+}

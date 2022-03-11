@@ -1,0 +1,19 @@
+
+
+// +++++++++++ Labels
+
+label {
+  display: block;
+}
+
+
+// ===== Field labels
+
+.field__label {
+  font-size: rem(18);
+  font-weight: $bold;
+  padding-bottom: rem(10);
+  margin-bottom: rem(10);
+  margin-top: rem(30);
+  border-bottom: 1px solid $grey-light;
+}

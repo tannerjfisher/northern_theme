@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a search toggle button.
+ */
+#}
+<button class="search-toggle" aria-pressed="false" aria-expanded="false">
+  {% include '@de_theme/SVG/icon--search.svg.twig' %}
+  {% include '@de_theme/SVG/icon--close.svg.twig' %}
+  <span class="sr-only">{{ 'Toggle Search'|t }}</span>
+</button>

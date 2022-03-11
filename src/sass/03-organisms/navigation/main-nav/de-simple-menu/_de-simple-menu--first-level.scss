@@ -1,0 +1,35 @@
+
+
+// ++++++++++ Main Navigation Style For Three Level Dropdown ( First Level )
+
+.de-simple-menu > ul,
+.de-simple-menu nav > ul {
+  justify-content: flex-end;
+  
+  & > li {
+    flex: 0 1 auto;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+
+    &::before {
+      @include triangle(top, lighten($brand-primary-1, 50%), 10px);
+    }
+
+    &::after {
+      @include triangle(top, $brand-primary-1, 10px);
+      margin-top: 1px;
+    }
+
+    .downarrowclass {
+      display: none;
+    }
+  }
+}

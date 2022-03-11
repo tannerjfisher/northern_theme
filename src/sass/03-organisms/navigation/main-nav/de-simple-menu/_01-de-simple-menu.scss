@@ -1,0 +1,62 @@
+
+
+// ++++++++++ Main Navigation Style For Three Level Dropdown
+
+.de-simple-menu > ul,
+.de-simple-menu nav > ul {
+  
+
+  // ===== Links
+
+  a {
+    text-decoration: none;
+    line-height: rem(22);
+  }
+
+
+  // ===== List
+
+  ul {
+    border: 1px solid lighten($brand-primary-1, 50%);
+  }
+
+
+  // ===== List Items
+
+  li {
+    position: relative;
+
+
+    // ===== Directional Arrows
+
+    &::before,
+    &::after {
+      display: block;
+      opacity: 0;
+    }
+
+
+    // ===== Hover and show child list items and direction indicator
+
+    &.show-children {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+
+      & > ul {
+        display: block;
+      }
+    }
+
+
+    // ===== Menu items that expand to the left
+
+    &.menu-item--expanded.menu-left {
+      ul {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+
+
+// ++++++++++ Form Actions
+
+.views-exposed-form__item--actions,
+.form-actions {
+  padding-top: rem(12);
+
+  .button {
+    margin-left: rem(8);
+    margin-right: rem(8);
+  }
+
+  .button + .button {
+    margin-left: 0;
+  }
+}

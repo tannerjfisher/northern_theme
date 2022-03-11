@@ -1,0 +1,28 @@
+
+
+// ++++++++++ A Custom mixin to add modal styles to a container element
+
+@mixin modal() {
+  position: relative;
+  background-color: $white;
+  border-radius: $radius-3;
+  overflow: visible;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: $white;
+    border-radius: $radius-3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px; bottom: -3px; left: -1px;
+    z-index: -2;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: calc(#{$radius-4} - 2px);
+  }
+}

@@ -1,0 +1,17 @@
+
+
+// +++++++++++ CKEditor Layout Templates
+
+.wysiwyg-layout--row {
+  margin-bottom: rem(24);
+}
+
+.wysiwyg-layout--col {
+  margin-bottom: rem(24);
+
+  &:last-child {
+    @include breakpoint(max-width $s-break-max) {
+      margin-bottom: 0px;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+/* _print.scss */
+// contains default boilerplate print resets, echidna default theme specific
+// resets, and project theme specific rests.
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+   
+
+// ===== Reusable Functions
+
+@import '00-base/reusable/functions/**/*.scss';
+
+
+// ===== Reusable Mixins
+
+@import '00-base/reusable/mixins/**/*.scss';
+
+
+// ===== Settings (Variables)
+
+@import '00-base/settings/index';
+
+
+// ===== Print Partials
+
+@import '06-print/**/*.scss';
+
+
+

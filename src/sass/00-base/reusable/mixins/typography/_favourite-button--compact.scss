@@ -1,0 +1,54 @@
+
+
+// ++++++++++ Compact Version of Favourite Button
+// Include as override
+
+
+// ===== Animation
+
+@keyframes scale-star-compact {
+  0% {
+    background-size: rem(17);
+  }
+
+  100% {
+    background-size: 350%;
+  }
+}
+
+
+// ===== Mixin
+
+@mixin favourite-flag-compact() {
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    font-size: 0;
+
+    &::before {
+      font-size: 18px;
+      padding: rem(12);
+      margin-right: 0;
+    }
+
+    &:hover {
+      padding-top: 0;
+
+      &::before {
+        padding-top: calc(0.75em + 2px);
+        padding-bottom: calc(0.75em - 2px);
+      }
+    }
+  }
+
+  &.action-unflag {
+    a {
+      &::after {
+        animation: scale-star-compact 0.4s forwards cubic-bezier(.91,.01,.8,1);
+        background-size: 350%;
+        background-position: center;
+      }
+    }
+  }
+}

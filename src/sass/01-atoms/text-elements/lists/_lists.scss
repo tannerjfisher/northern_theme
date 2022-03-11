@@ -1,0 +1,24 @@
+
+
+// ++++++++++ List Elements
+
+ul,
+ol {
+  margin: 0 0 rem(24) rem(24);
+  padding: 0;
+
+  li {
+    margin-bottom: rem(16);
+  }
+
+  ul,
+  ol {
+    margin-top: rem(24);
+  }
+}
+
+ol {
+  li {
+    padding-left: rem(5);
+  }
+}

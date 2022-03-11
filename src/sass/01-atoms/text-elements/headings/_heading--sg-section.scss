@@ -1,0 +1,12 @@
+
+
+// +++++++++ Style Guide Section Heading
+
+.sg-section-header {
+  display: block;
+  color: $grey-dark;
+  font-weight: $bold;
+  border-bottom: 1px solid $grey-light;
+  padding-bottom: rem(29);
+  margin-top: rem(65);
+}

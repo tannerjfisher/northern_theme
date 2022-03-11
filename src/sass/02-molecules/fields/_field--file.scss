@@ -1,0 +1,19 @@
+
+
+// ++++++++++ Fiel Field
+
+.field--type-file,
+.field--name-field-media-file {
+  clear: both;
+  
+  a {
+    @include btn(tertiary, small, $icon-file);
+    text-transform: none;
+    text-align: left;
+    word-break: break-word;
+  }
+
+  .file {
+    display: none;
+  }
+}

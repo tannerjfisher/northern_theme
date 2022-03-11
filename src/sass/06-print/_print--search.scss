@@ -1,0 +1,39 @@
+
+
+// ++++++++++ Search (PRINT)
+
+@media print {
+
+  // ===== Search Toggle
+
+  .search-toggle-wrapper {
+    display: none !important;
+  }
+
+
+  // ===== Search Overlay
+
+  .search-overlay {
+    display: none !important;
+  }
+
+
+  // ===== Facets
+
+  .block-facets {
+    display: none !important;
+  }
+
+
+  // ===== Search View
+
+  .search-view {
+    .view-header {
+      display: none !important;
+    }
+
+    .view-filters {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,205 @@
+
+
+// ++++++++++ Details with Summary Elements
+
+details {
+  &,
+  .cke_editable & {
+    height: var(--collapsed);
+    transition: height 300ms cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    padding: 0;
+    border-radius: 0;
+    border: 0;
+    margin-top: 0;
+    margin-bottom: rem(25);
+    border-bottom: 1px solid $grey-light;
+  }
+
+  *:not(details) + & summary {
+    border-top: 1px solid $grey-light;
+  }
+
+
+  // ===== Summary
+
+  summary {
+    display: block;
+
+    &:focus {
+      outline: none;
+
+      a {
+        border-color: lighten($brand-primary-1, 50%);
+      }
+    }
+  }
+
+  &:not(.collapse-processed) > summary,
+  .cke_editable summary,
+  & > summary > a {
+    position: relative;
+    display: block;
+    transition: background-color 0.2s;
+    background-color: $white;
+    border: 1px solid transparent;
+    color: $grey-dark;
+    font-size: rem(16);
+    line-height: rem(24);
+    font-weight: $bold;
+    padding: rem(16) rem(40) rem(16) 0;
+    text-decoration: none;
+
+    @include breakpoint($m-break) {
+      font-size: rem(22);
+      line-height: rem(27);
+      padding: rem(25) rem(80) rem(25) rem(25);
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%; right: rem(20);
+      transform: translate(50%, -50%) rotate(0deg);
+      font-size: rem(28);
+      color: $brand-primary-1;
+
+      @include breakpoint($m-break) {
+        right: rem(40);
+      }
+    }
+
+    &::before {
+      transition: all 0.2s;
+      @include icon($icon-plus);
+      opacity: 1;
+    }
+
+    &::after {
+      transition: all 0.2s;
+      @include icon($icon-minus);
+      transform: translate(50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    &:hover {
+      background-color: $grey-xlight;
+    }
+
+    &:focus {
+      outline: 0;
+      border-color: lighten($brand-primary-1, 50%);
+    }
+  }
+
+  &.collapse-processed > summary {
+    padding: 0;
+  }
+
+
+  // ===== Accordion Content
+
+  summary ~ * {
+    display: block !important;
+  }
+
+  .details-wrapper {
+    padding: 0;
+
+    & > *:not(details) {
+      padding-left: rem(8);
+      padding-right: rem(8);
+    }
+  }
+
+
+  // ===== Accordion OPEN (Has Open Attribute)
+
+  .cke_editable &[open],
+  &[open] {
+    height: var(--expanded);
+    padding: rem(16) 0;
+
+    @include breakpoint($m-break) {
+      padding: rem(25);
+    }
+
+    // Summary
+
+    & > summary {
+      margin-top: - rem(16);
+      margin-bottom: rem(10);
+
+      @include breakpoint($m-break) {
+        margin-left: - rem(25);
+        margin-top: - rem(25);
+        margin-right: - rem(25);
+      }
+
+      &::before,
+      a::before {
+        transform: translate(50%, -50%) rotate(90deg) ;
+        opacity: 0;
+      }
+
+      &::after,
+      a::after {
+        opacity: 1;
+        transform: translate(50%, -50%) rotate(180deg);
+      }
+    }
+
+    // Accordion Content
+
+    & > summary ~ * {
+      animation: fade-in 1s forwards;
+      visibility: visible;
+      opacity: 0;
+    }
+  }
+
+
+  // ===== Polyfill
+
+  &:not([open]) > summary:first-child ~ * {
+    display: none;
+  }
+
+  // Hide native indicator and use pseudo-element instead
+  summary::-moz-list-bullet {
+    list-style-type: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+
+// ===== Sibling Details Elements
+
+details + details {
+  margin-top: - rem(25);
+}
+
+
+// ===== CKEditor Instance
+
+.cke_editable details {
+  padding: 0;
+  background-color: transparent;
+}
+
+
+// ++++++++++ Print
+
+@media print {
+  details {
+    summary {
+      .cke_editable &,
+      a {
+        font-weight: $bold;
+        font-size: 16pt !important;
+        line-height: 20pt !important;
+      }
+    }
+  }
+}

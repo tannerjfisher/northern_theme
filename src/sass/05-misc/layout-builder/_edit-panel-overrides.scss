@@ -1,0 +1,279 @@
+
+#drupal-off-canvas {
+
+  // ++++++++++ Forms
+
+  form:not(.js-off-canvas-computed-ignore) {
+    position: relative;
+
+    * {
+      // max-width: 100% !important;
+    }
+
+    // === Text Inputs
+
+    input[type="text"]:not(.js-off-canvas-computed-ignore) {
+      max-width: 100%;
+      width: 100%;
+    }
+
+
+    // ===== Button Inputs
+
+    input.button {
+      width: auto;
+      white-space: break-spaces;
+      border-color: #777 !important;
+
+      &:hover,
+      &:focus {
+        background-color: #2B2B2B;
+      }
+    }
+
+
+    // ===== Form Items
+
+    .form-item {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+
+    // === Fieldsets
+
+    fieldset.form-item:not(.js-off-canvas-computed-ignore) {
+      margin-top: rem(30);
+      width: 100%;
+      overflow: hidden;
+      display: block;
+
+      div {
+        width: 100%;
+        display: block;
+      }
+
+      .form-wrapper {
+        display: block;
+        overflow: hidden;
+        margin-top: rem(20);
+        margin-bottom: rem(20);
+      }
+
+      .fieldset-wrapper  {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .fieldset-wrapper > .form-wrapper {
+        border-bottom: 1px solid $grey-neutral;
+
+        &:first-child {
+          border-top: 1px solid $grey-neutral;
+        }
+      }
+    }
+
+
+    // === Checkboxes
+
+    .js-form-type-checkbox {
+      input {
+        position: absolute;
+      }
+
+      label {
+        display: inline-block;
+      }
+    }
+
+
+    // === Descriptions
+
+    .description,
+    .details-description {
+      &:not(.js-off-canvas-computed-ignore) {
+        font-size: rem(11);
+      }
+    }
+
+
+    // === Submit Button
+
+    .form-submit {
+      margin-top: rem(30);
+    }
+  }
+
+
+  // ++++++++++ Block Description
+
+  .layout-builder-update-block > .form-item:first-child {
+    margin-top: rem(30);
+    margin-bottom: rem(30);
+    font-size: rem(20);
+  }
+
+
+  // ++++++++++ Inline Block Options
+
+  .inline-block-create-button {
+    padding-top: rem(10) !important;
+    padding-bottom: rem(10) !important;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .inline-block-list {
+
+    a {
+      padding-top: rem(10);
+      padding-bottom: rem(10);
+      border-bottom: 1px solid $grey-neutral;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    li:last-child {
+      margin-bottom: rem(25);
+    }
+  }
+
+
+  // ++++++++++ Category list
+
+  .block-categories {
+
+    summary {
+      a {
+        background-color: transparent;
+      }
+    }
+
+    .links {
+      background-color: transparent;
+
+      a:not(.js-off-canvas-computed-ignore) {
+        display: block;
+        background-color: transparent;
+        padding-top: rem(10);
+        padding-bottom: rem(10);
+
+        &:hover {
+
+        }
+      }
+
+      li {
+        position: relative;
+        background-color: transparent;
+
+        &:not(:last-child) {
+          a:not(.js-off-canvas-computed-ignore) {
+            border-bottom: 1px solid $grey-dark;
+          }
+        }
+      }
+    }
+  }
+
+
+  // ++++++++++ Autocomplete List
+
+  .ui-autocomplete:not(.js-off-canvas-computed-ignore) {
+    background-color: $white !important;
+
+    * {
+      background-color: $white;
+    }
+
+    svg {
+      background-color: transparent;
+      margin-right: rem(5);
+
+      path {
+        fill: $grey-neutral;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        text-decoration: none;
+        background-color: $grey-xxlight;
+      }
+    }
+  }
+
+
+  // +++++++++ Reusable Block Checkbox Field
+
+  .form-item-reusable {
+    flex-wrap: wrap;
+  }
+
+
+  // +++++++++ Details with Summary
+
+  details {
+    summary {
+      list-style-type: none;
+
+      &::marker {
+        display: none;
+      }
+
+      &::before {
+        display: none;
+      }
+
+      a::before,
+      a::after {
+        color: $white;
+        right: 0;
+      }
+
+      &,
+      & * {
+        font-weight: $bold;
+        transition: none;
+        background-color: #2E2E2E;
+      }
+
+      // Hover / Focus
+
+      &:hover,
+      &:hover *,
+      &:focus,
+      &:focus * {
+        background-color: #2B2B2B !important;
+      }
+    }
+
+    // Control Max width within details
+
+    .details-wrapper {
+      margin: 0;
+      padding: 0;
+
+      .form-wrapper {
+        max-width: 100%;
+      }
+    }
+  }
+
+
+  // +++++++++ Draggable Tables
+
+  .draggable {
+    & > td {
+      width: auto;
+    }
+  }
+}

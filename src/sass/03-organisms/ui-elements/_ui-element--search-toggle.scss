@@ -1,0 +1,69 @@
+
+
+// ++++++++++ Search Toggle UI Element
+
+.block-de-search-toggle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  margin-right: -1px;
+
+  @include breakpoint($m-break) {
+    display: none;
+  }
+
+  .search-toggle {
+    position: relative;
+    transition: all 0.2s;
+    font-size: 0;
+    background-image: none;
+    background-color: transparent;
+    width: rem(54);
+    height: rem(54);
+    padding: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+
+    svg {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: rem(22);
+      height: auto;
+    }
+
+    .icon {
+      transition: fill 0.2s;
+      fill: $brand-primary-1;
+    }
+
+    .icon--search {
+      visibility: visible;
+    }
+
+    .icon--close {
+      visibility: hidden;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $brand-secondary-1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.open {
+      .icon--search {
+        visibility: hidden;
+      }
+
+      .icon--close {
+        visibility: visible;
+      }
+    }
+  }
+}

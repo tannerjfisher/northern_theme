@@ -1,0 +1,38 @@
+
+
+// ++++++++++ Layout Overrides for node teasers
+
+.layout:not(.layout--onecol):not(.layout--twocol-25-75):not(.layout--twocol-75-25) .node--view-mode-teaser .layout {
+  flex-wrap: wrap;
+
+  .layout__region {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+.layout--twocol-25-75 .layout__region-sidebar .node--view-mode-teaser .layout,
+.layout--twocol-75-25 .layout__region-sidebar .node--view-mode-teaser .layout {
+  flex-wrap: wrap;
+
+  .layout__region {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+.layout--twocol-25-75 .layout__region-main .node--view-mode-teaser .layout,
+.layout--twocol-75-25 .layout__region-main .node--view-mode-teaser .layout {
+  @include breakpoint(max-width $m-break-max) {
+    flex-wrap: wrap;
+  }
+
+  .layout__region {
+    @include breakpoint(max-width $m-break-max) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}

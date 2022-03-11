@@ -1,0 +1,24 @@
+
+
+// +++++++++ General Block Styling
+
+.block {
+  flex: 1 1 auto;
+}
+
+
+// ===== Blocks in sidebar
+
+.region--sidebar-second,
+.region--sidebar-first {
+  .block {
+    margin-bottom: rem(40);
+  }
+}
+
+
+// ===== Layout Builder Blocks
+
+.layout__region .block {
+  margin-bottom: rem(40);
+}

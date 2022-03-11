@@ -1,0 +1,13 @@
+
+
+// ++++++++++ Alternate Block Title Mixin
+
+@mixin alt-block-title() {
+  margin-bottom: rem(20);
+  padding-left: 0;
+  padding-right: 0;
+
+  h2 {
+    font-size: rem(28);
+  }
+}

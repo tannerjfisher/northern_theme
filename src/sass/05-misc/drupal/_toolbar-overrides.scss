@@ -1,0 +1,14 @@
+
+
+// ++++++++++ Drupal Toolbar Overrides
+
+.toolbar {
+  ul {
+    font-size: rem(13);
+
+    li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+  }
+}

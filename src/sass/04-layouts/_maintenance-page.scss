@@ -1,0 +1,72 @@
+
+
+// +++++++++ Maintenance Page
+
+.maintenance-page {
+  min-height: 100vh;
+
+  .dialog-off-canvas-main-canvas,
+  .maintenance-page--inner {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// ===== Inner element
+
+.maintenance-page--inner {
+
+  // ===== Header
+
+  #header {
+    flex: 0 0 auto;
+  }
+
+
+  // ===== Main Content Section
+
+  .section-content {
+    flex: 1 1 auto;
+    display: block;
+    overflow: hidden;
+
+    background-color: $brand-primary-1;
+    background-size: 180%;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    @include breakpoint($xs-break) {
+      background-size: 150%;
+    }
+
+    @include breakpoint($m-break) {
+      background-size: 100%;
+    }
+  }
+
+  main {
+    background-color: $white;
+    border: 1px solid darken($brand-primary-1, 30%);
+    margin-top: rem(50);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    h1 {
+      margin-top: 0;
+      line-height: rem(40);
+    }
+  }
+
+  .main--inner {
+    padding: rem(25);
+  }
+
+
+  // ===== Off Canvas Overlay
+
+  .off-canvas-overlay {
+    display: none;
+  }
+}

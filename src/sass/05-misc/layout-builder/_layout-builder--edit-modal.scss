@@ -1,0 +1,180 @@
+
+
+// ++++++++++ Layout Builder Edit Modal
+
+.layout-builder-configure-block {
+  & > .field,
+  & > .form-wrapper,
+  & > .form-item {
+    flex: 1 1 100%;
+  }
+
+  .form-element {
+    width: auto;
+  }
+
+
+  // ===== Buttons
+
+  .button {
+    align-self: flex-end;
+  }
+
+
+    // ===== 100% width fields
+
+  .form-textarea {
+    width: 100%;
+  }
+
+
+  // ===== Warning messages
+
+  .messages--warning {
+    padding-left: rem(50);
+    margin-top: rem(7);
+
+    .warning {
+      top: 50%;
+      left: rem(25);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .tabledrag-changed {
+    border: none;
+
+    &::before {
+      background-color: $debug-yellow;
+      border-radius: 100%;
+    }
+  }
+
+
+  // ===== Weight toggle button
+
+  .tabledrag-toggle-weight {
+    font-size: rem(14);
+  }
+
+
+  // ===== Draggable Tables
+
+  .field-multiple-table {
+    border: none;
+    margin-bottom: 0 !important;
+
+    // ===== Label
+
+    .field-label {
+      border-right: 0;
+      padding: 0;
+      border-bottom: 0;
+
+      .label {
+        @extend .form-item__label;
+        text-transform: none;
+        font-size: rem(20) !important;
+        line-height: rem(25) !important;
+      }
+    }
+
+
+    // ===== Table elements
+
+    table {
+      background-color: transparent;
+    }
+
+    td {
+      border: none;
+    }
+
+    thead {
+      th {
+        background-color: transparent;
+      }
+
+      tr {
+        background-color: transparent;
+      }
+    }
+
+    tbody {
+      border: 1px solid $black;
+    }
+
+
+    // ===== Paragraphs
+
+    .paragraph-type-title {
+      @extend .form-item__label;
+
+      &.form-wrapper {
+        display: flex;
+        align-items: center;
+        font-size: rem(18);
+        line-height: rem(23);
+      }
+    }
+
+    .paragraphs-subform {
+      display: flex;
+      flex-wrap: wrap;
+
+      & > * {
+        flex: 1 1 100%;
+      }
+    }
+
+    .paragraph-type-top {
+      @extend .form-item;
+      flex: 1 1 100%;
+    }
+
+
+    // ===== Icon Picker
+
+    .icons-selector {
+
+      .selector {
+        width: rem(140);
+        height: rem(100);
+      }
+
+      .selector-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .selected-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(100);
+
+      svg {
+        height: rem(50);
+      }
+    }
+
+
+    // ===== Details accordion
+
+    details {
+      margin: rem(12) rem(8);
+
+      summary > a {
+        color: $black;
+        font-size: rem(18);
+        line-height: rem(23);
+      }
+    }
+
+    details + details {
+      margin-top: - rem(12);
+    }
+  }
+}

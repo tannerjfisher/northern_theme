@@ -1,0 +1,27 @@
+
+
+// ++++++++++ Table Drag Handle
+
+tr.draggable {
+  position: relative;
+  float: left;
+}
+
+tr.draggable a.tabledrag-handle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  top: 0; left: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+
+  .handle {
+    background-size: 100%;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+  }
+}

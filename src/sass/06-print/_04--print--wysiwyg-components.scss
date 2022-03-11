@@ -1,0 +1,36 @@
+
+
+// ++++++++++ WYSIWYG Components (PRINT)
+
+@media print {
+  
+  // ===== Iframe
+
+  .iframe-container {
+    display: none !important;
+  }
+
+
+  // ===== Responsive Video Embed
+
+  .video-embed-field-responsive-video {
+    display: none !important;
+  }
+
+
+  // ===== Embedded Entity
+
+  .embedded-entity {
+    display: none !important;
+  }
+
+
+  // ===== Fancy Lists
+
+  .template--fancy-list {
+    .item-number {
+      font-size: 36pt !important;
+      line-height: 36pt !important;
+    }
+  }
+}

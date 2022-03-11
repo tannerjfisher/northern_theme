@@ -4,48 +4,39 @@
 
 // Primary
 
-$brand-primary-1: #FF005D; // SICK Pink
-$brand-primary-2: #5E6A71; // Blue-ish Grey
-$brand-primary-3: #007ECF; // Neutral Blue
-$brand-primary-4: #003359; // Dark Blue
-$brand-primary-5: #7AB800; // Light Green
+$brand-primary-1: #0C1E37; // Dark Navy
+$brand-primary-2: #D8232A; // Brand Red
+
+$brand-secondary-1: #3D456D; // Dark Neutral Violet
+$brand-secondary-2: #6672B0; // Neutral Violet
+$brand-secondary-3: #3B55D5; // Vibrant Violet
+$brand-secondary-4: #3B55D5; // Vibrant Violet Light
 
 
 // @greyscale palette  ==============================================
 
-$black: #000;
-$white: #fff;
-$darkest-grey:   #333333;
-$darker-grey:    #414042;
-$dark-grey:      #565859;
-$neutral-grey:   #6E7272; // ( Lightest accessible grey with white text )
-$light-grey:     #BBBAB9;
-$light-grey-alt: #CDCFD0; // More Blue
-$lighter-grey:   #eff0f1;
-$lightest-grey:  #F5F7FA;
+$black:            #000000;
+$white:            #ffffff;
+$grey-dark:        #17171A;
+$grey-neutral:     #737487;
+$grey:             #8E919F;
+$grey-alt:         #BDBFC7;
+$grey-light:       #D0D2D9;
+$grey-xlight:      #E8E9ED;
+$grey-xxlight:     #F2F3F7;
 
 
 // Descriptive Colours
 
-$red: #D6132B;
-$yellow: #FFD424;
-$green: #88E422;
-$blue: #005CA6;
-
-
-// Gold
-
-$gold-light: #FFED73;
-$gold-mid: #ECD221;
-$gold-mid-dark: #C1A206;
-$gold-dark: #453403;
+$debug-red: rgb(160, 0, 0);
+$debug-yellow: #FFD424;
+$debug-green: rgb(0, 160, 0);
+$debug-blue: rgb(0, 0, 160);
 
 
 // Link Colour
 
-$link-colour: $brand-primary-3;
+$link-colour: #337AB7; // Neutral blue
 
-
-// Base Background Colour
-
-$base-background: #17022D;
+// Shadow Color
+$shadow: rgba($black, 0.5);

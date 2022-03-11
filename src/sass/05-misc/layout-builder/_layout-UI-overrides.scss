@@ -1,0 +1,196 @@
+
+
+// ===== Add Block Button
+
+.new-block {
+  position: relative;
+}
+
+
+// ++++++++++ Form
+
+.node-layout-builder-form,
+.group-layout-builder-form {
+
+
+  // ===== Form Actions
+
+  & > .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex: 1 1 100%;
+    margin-left: - rem(5);
+    margin-right: - rem(5);
+
+    // Submit Buttons
+
+    input[type="submit"] {
+      margin-left: rem(5);
+      margin-right: rem(5);
+      margin-bottom: rem(16);
+    }
+
+    // Content Preview Toggle
+
+    #edit-preview-toggle {
+      display: flex;
+      align-items: center;
+      flex: 1 1 100%;
+      margin-bottom: rem(16);
+      margin-left: rem(5);
+
+      @include breakpoint($l-break) {
+        flex: 0 0 auto;
+      }
+    }
+
+    // Revert Button
+
+    #edit-revert {
+      margin-right: rem(19);
+    }
+
+    .form-item-toggle-content-preview {
+      margin-bottom: 0;
+
+      label {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+  // ===== Maderation
+
+  .field--name-moderation-state {
+    margin-bottom: 0;
+
+    & > .form-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: - rem(5);
+      margin-right: - rem(5);
+    }
+
+    .form-item {
+      flex: 0 0 auto;
+    }
+
+    // Current Moderation State
+
+    .form-item-moderation-state-0-current {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        display: block;
+        flex: 1 1 100%;
+      }
+
+      .form-item--content {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        padding: rem(10) rem(16);
+        background-color: tint($debug-green, 80%);
+        border: 1px solid $debug-green;
+        color: darken($debug-green, 60%);
+
+        @include breakpoint($m-break) {
+          padding: rem(12) rem(16); 
+        }
+      }
+    }
+
+    // Change To Moderation State
+
+    .form-item-moderation-state-0-state {
+      label {
+        display: block;
+        margin-bottom: rem(10);
+      }
+    }
+  }
+
+
+  // ===== Layout Builder Messages
+
+  .layout-builder__message--overrides {
+    flex: 1 1 100%;
+
+    div[data-drupal-selector="edit-message"] {
+      width: 100%;
+    }
+  }
+
+  .layout-builder__message {
+    .messages {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+
+  // ===== Layout Builder Layout
+
+  .field--name-layout-builder__layout {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+
+  // ===== Vertical Tabs
+
+  .form-type-vertical-tabs {
+    .vertical-tabs {
+      @include breakpoint(max-width $s-break-max) {
+        margin: 0;
+      }
+    }
+
+    details {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: rem(10);
+    }
+
+    summary::-webkit-details-marker {
+      display:none;
+    }
+
+    summary {
+      @include breakpoint(max-width $s-break-max) {
+        padding-left: rem(10);
+        padding-right: rem(10);
+        padding-bottom: rem(10);
+      }
+    }
+
+    // Revision Info Item
+
+    .form-item-revision {
+      flex-wrap: wrap;
+      padding-left: 0;
+      padding-right: 0;
+
+      label {
+        flex: 1 1 100%;
+      }
+
+      .description {
+        margin-top: 0;
+      }
+    }
+
+    .vertical-tabs__menu {
+      margin-top: -1px;
+      margin-bottom: -1px;
+    }
+  }
+}

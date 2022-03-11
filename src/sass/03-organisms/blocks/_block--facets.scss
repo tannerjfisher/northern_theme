@@ -1,0 +1,197 @@
+
+
+// ++++++++++ Facet Blocks Containers And Controls
+
+.facet-blocks-toggle--container {
+  margin-bottom: rem(25);
+
+  .facet-blocks-toggle {
+    display: none;
+
+    @include breakpoint(max-width $s-break-max) {
+      position: relative;
+      display: flex;
+      width: 100%;
+      font-size: rem(14);
+      font-weight: $bold;
+      color: $grey-dark;
+      padding: rem(12) rem(20);
+      background-color: transparent;
+      border: 1px solid $grey-neutral;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: center;
+      width: rem(14);
+      height: rem(14);
+      position: absolute;
+      top: 50%; right: rem(20);
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      background-image: url('#{$icon-path}/icon--plus--white.svg');
+      visibility: visible;
+    }
+
+    &::after {
+      background-image: url('#{$icon-path}/icon--minus--white.svg');
+      visibility: hidden;
+    }
+
+    &:hover,
+    &:focus {
+      @include breakpoint(max-width $s-break-max) {
+        border-color: $grey-dark;
+      }
+    }
+
+    &:focus {
+      @include breakpoint(max-width $s-break-max) {
+        outline: 1px solid $grey-dark;
+      }
+    }
+
+    &.accordion-open {
+      @include breakpoint(max-width $s-break-max) {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        background-image: url('#{$icon-path}/icon--plus--white.svg');
+        visibility: hidden;
+      }
+  
+      &::after {
+        background-image: url('#{$icon-path}/icon--minus--white.svg');
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.facet-blocks--container {
+  @include breakpoint(max-width $s-break-max) {
+    display: none;
+  }
+
+  &.accordion-open {
+    @include breakpoint(max-width $s-break-max) {
+      display: block;
+    }
+  }
+}
+
+
+
+// ++++++++++ Facets Block
+
+.block-facets-block {
+
+  // ====== Empty Facet
+  .facet-empty {
+    display: none;
+  }
+
+  // ===== Facet Block Title
+
+  .facet-block__title {
+    font-weight: $bold;
+    margin-bottom: rem(10);
+  }
+
+  // ====== Facet Boxes
+
+  .facet-block {
+
+    // ===== Facet Group Label
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: - rem(7);
+      margin-right: - rem(7);
+    }
+
+    button {
+      transition: background-color 0.2s, border-color 0.2s;
+      position: relative;
+      appearance: none;
+      background-color: transparent;
+      width: 100%;
+      font-size: rem(15);
+      font-family: $title-font-family;
+      font-weight: $bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: left;
+      padding-top: rem(12);
+      padding-bottom: rem(12);
+      border: 1px solid transparent;
+      padding-right: rem(28);
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center;
+        width: rem(14);
+        height: rem(14);
+        position: absolute;
+        top: 50%; right: rem(5);
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        background-image: url('#{$icon-path}/icon--plus--white.svg');
+        visibility: hidden;
+      }
+  
+      &::after {
+        background-image: url('#{$icon-path}/icon--minus--white.svg');
+        visibility: visible;
+      }
+
+      &:hover {
+        border-color: $grey-dark;
+      }
+
+      &:focus {
+        outline: 1px solid $brand-primary-1;
+      }
+    }
+
+    ul {
+      // border-top: 1px solid $brand-primary-3;
+      padding-top: rem(10);
+    }
+
+
+    // ===== Facets are not showing
+
+
+    &.hide-facets {
+      ul {
+        display: none;
+      }
+
+      button {
+        &::before {
+          visibility: visible;
+        }
+
+        &::after {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
+

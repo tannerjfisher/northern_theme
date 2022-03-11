@@ -1,0 +1,191 @@
+
+
+// ++++++++++ Page while off canvas menu is active
+
+.mm-wrapper_opening .mm-page {
+  border-right: 1px solid $brand-primary-1;
+}
+
+.mm-wrapper_opening .mm-menu_position-right.mm-menu_opened~.mm-slideout {
+  transform: translate3d(-100vw,0,0);
+
+  @include breakpoint(em(550)) {
+    transform: translate3d(- rem(550),0,0);
+  }
+}
+
+.mm-menu_offcanvas {
+  width: 100%;
+  max-width: 100%;
+
+  @include breakpoint(em(550)) {
+    width: rem(550);
+  }
+}
+
+
+// ===== Canvas Overlay
+
+.mm-menu_opened.mm-menu_pagedim~.mm-wrapper__blocker {
+  background-color: $brand-primary-1;
+}
+
+
+
+// ++++++++++ Mobile Menu
+
+.mm-panels,
+.mm-panel {
+  background-color: $white;
+}
+
+.mm-menu {
+
+
+  // ===== Nav wrapper
+
+  .mm-panels-wrapper {
+    height: 100%;
+  }
+
+
+  // ===== Anchors
+
+  a {
+    text-decoration: none;
+  }
+
+
+  // ===== Panel
+
+  .mm-panel_has-navbar {
+    padding-top: 51px;
+
+    &::before {
+      display: none;
+    }
+  }
+
+
+  // ===== Top Nav Bar / Title
+
+  .mm-navbar {
+    background-color: $white;
+    height: auto;
+    border-bottom: 1px solid $brand-primary-1;
+
+    button {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      color: $brand-primary-1;
+      padding-bottom: rem(15);
+      padding-top: rem(15);
+    }
+
+    h2 {
+      font-size: rem(16);
+      line-height: rem(20);
+      margin: 0;
+    }
+  }
+
+
+  // ===== Previous level button
+
+  .mm-btn_prev {
+    &::before {
+      border-color: $brand-primary-1;
+    }
+  }
+
+
+  // ===== Close menu Button
+
+  .close-menu {
+    font-size: 0;
+
+    &:active {
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    &:focus {
+      background-color: $grey-xlight;
+      outline: none;
+    }
+  }
+
+
+  // ===== Menu
+
+  .mm-listview {
+    margin-top: 0 !important;
+
+    // List items
+
+    li {
+      &::after {
+        display: none;
+      }
+    }
+
+    // Linked items
+
+    a {
+      border-bottom: 1px solid $brand-primary-1;
+      border-color: $grey-xlight;
+      color: $brand-primary-1;
+      padding-top: rem(14);
+      padding-bottom: rem(14);
+
+      &:hover,
+      &:focus {
+        background-color: $grey-xlight;
+      }
+
+      &.mm-btn_next::after {
+        border-color: $brand-primary-1;
+      }
+
+      &.is-active {
+        background-color: $grey-xlight;
+      }
+    }
+
+    .menu-item--active-trail {
+      .mm-listitem__text {
+        position: relative;
+
+        &::before {
+          content: '';
+          display: block;
+          background-color: $white;
+          position: absolute;
+          top: 0; bottom: 0 ; left: 0;
+          height: 100%;
+          width: 5px;
+          background-color: $brand-primary-2;
+        }
+
+        &.is-active {
+          background-color: $grey-xlight;
+
+          &:focus {
+            background-color: $grey-light;
+          }
+        }
+      }
+    }
+  }
+
+
+  // ===== List Item Text
+
+  .mm-listitem__text {
+    @include breakpoint($xxs-break) {
+      white-space: normal;
+      font-size: rem(24);
+      line-height: rem(32);
+    }
+  }
+}

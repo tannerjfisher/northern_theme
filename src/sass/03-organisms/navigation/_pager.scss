@@ -1,0 +1,102 @@
+
+
+// ++++++++++ Pager Component
+
+.pager {
+  margin: rem(16) 0;
+
+  .pager__items {
+    @include reset;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -2px;
+    margin-right: -2px;
+  }
+
+  .pager__item {
+    @include reset;
+    flex: 0 0 auto;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 5px;
+
+    a {
+      width: rem(38);
+      height: rem(38);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: rem(14);
+      border: 1px solid transparent;
+
+      &:hover,
+      &:focus {
+        border-color: $brand-secondary-1;
+      }
+
+      &:focus {
+        outline: 1px solid $brand-secondary-1;
+      }
+    }
+
+
+    // ===== Active Pager Item
+
+    &.is-active {
+      a {
+        font-weight: $bold;
+        border-color: $brand-primary-1;
+        text-decoration: none;
+      }
+
+      &.mini {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: rem(10);
+        padding-right: rem(10);
+        font-weight: $bold;
+      }
+    }
+
+
+    // ===== Pager UI Elements
+
+    &.pager__item--first,
+    &.pager__item--previous,
+    &.pager__item--next,
+    &.pager__item--last {
+      a {
+        font-size: 0;
+        text-decoration: none;
+        vertical-align: middle;
+
+        .icon {
+          fill: $link-colour;
+        }
+      }
+    }
+
+
+    // ===== Ellipsis Pager Item
+
+    &.pager__item--ellipsis {
+      font-size: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(38);
+      height: rem(38);
+
+      .icon {
+        fill: $grey-dark;
+      }
+    }
+  }
+
+  span {
+    display: flex;
+  }
+}

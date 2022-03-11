@@ -1,0 +1,15 @@
+
+
+// ++++++++++ 3 Column Split Layout
+
+.layout--threecol-split {
+
+  .layout__region--first,
+  .layout__region--second,
+  .layout__region--third {
+    @include breakpoint($m-break) {
+      flex: 0 1 33.3333%;
+      max-width: 33.3333%;
+    }
+  }
+}

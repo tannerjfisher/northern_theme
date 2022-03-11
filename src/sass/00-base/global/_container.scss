@@ -1,0 +1,13 @@
+
+
+// ++++++++++ Global Container Override
+
+.container {
+  padding-left: rem(30);
+  padding-right: rem(30);
+
+  @include breakpoint($l-break) {
+    padding-left: rem(50);
+    padding-right: rem(50);
+  }
+}

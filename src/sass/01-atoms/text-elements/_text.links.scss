@@ -1,0 +1,25 @@
+
+
+// +++++++++ Links
+
+a {
+  color: $link-colour;
+  transition: all 0.2s;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 1px dashed $grey-neutral;
+  }
+}
+
+
+// ===== User Is Tabbing
+
+// .user-is-tabbing a:focus {
+//   outline: 1px dashed $grey-neutral;
+// }
+

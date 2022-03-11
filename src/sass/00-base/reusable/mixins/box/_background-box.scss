@@ -1,0 +1,25 @@
+
+
+// ++++++++++ Background styles for elements that should appear in a box.
+
+@mixin background-box($padding: null) {
+  background-color: $white;
+  border-radius: $radius-4;
+  border: 1px solid $grey-light;
+  margin-bottom: rem(20);
+
+  @if $padding != null {
+    padding: $padding;
+  }
+}
+
+
+// ===== Default padding for the background box
+
+@mixin background-box-padding() {
+  padding: rem(24) rem(20);
+
+  @include breakpoint($xxs-break) {
+    padding: rem(24) rem(32);
+  }
+}

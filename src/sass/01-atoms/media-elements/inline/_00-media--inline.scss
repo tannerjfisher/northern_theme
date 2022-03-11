@@ -1,0 +1,14 @@
+
+
+// ++++++++++ Inline media in the WYSIWYG
+
+.embedded-entity,
+.caption .embedded-entity + figcaption {
+  width: 100%;
+  display: block;
+  margin-bottom: rem(25);
+}
+
+.embedded-entity .field--name-field-media-image {
+  margin-bottom: 0;
+}

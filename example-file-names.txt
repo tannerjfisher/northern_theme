@@ -1,0 +1,23 @@
+///////////////////////////////////
+///// sass file name examples /////
+///////////////////////////////////
+
+_node-news.scss
+_view-news.scss
+_view-page.scss
+_view-block.scss
+_view-block--recent-news.scss
+_view-page--archived-news.scss
+_block--news-subscribe.scss
+
+///////////////////////////////////
+///// css class name examples /////
+///////////////////////////////////
+
+.card {}
+  .card__inner {}
+  .card__title {}
+  .card__title-text {}
+  .card__supporting-text {}
+  .card__actions {}
+  .card__button {}

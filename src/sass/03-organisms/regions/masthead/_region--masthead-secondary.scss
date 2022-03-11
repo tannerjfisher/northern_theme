@@ -1,0 +1,11 @@
+
+
+// +++++++++ Masthead Secondary Region
+
+.region--masthead-secondary {
+  overflow: visible;
+
+  .region__inner {
+    justify-content: flex-end;
+  }
+}

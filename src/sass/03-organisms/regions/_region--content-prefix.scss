@@ -1,0 +1,12 @@
+
+
+// ++++++++++ Content Prefix Region
+
+.region--content-prefix {
+  width: 100%;
+  margin-top: rem(60);
+
+  .container > *:not(.block-system-breadcrumb-block):last-child {
+    margin-bottom: rem(25);
+  }
+}

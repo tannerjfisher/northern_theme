@@ -1,0 +1,15 @@
+
+
+// ++++++++++ Form Items
+
+.form-item {
+  flex: 1 1 100%;
+  padding-left: rem(8);
+  padding-right: rem(8);
+  margin-top: rem(12);
+  margin-bottom: rem(12);
+
+  @include breakpoint($m-break) {
+    flex: 1 1 auto;
+  }
+}

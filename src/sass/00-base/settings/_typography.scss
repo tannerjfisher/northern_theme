@@ -1,34 +1,29 @@
 
 
-// Font Awesome Webfont Path
+// ++++++++++ Typography Variables
 
-$fa-font-path:        "../../bower_components/components-font-awesome/webfonts";
-
-@import '../../bower_components/components-font-awesome/scss/fontawesome.scss';
-@import '../../bower_components/components-font-awesome/scss/fa-solid.scss';
-@import '../../bower_components/components-font-awesome/scss/fa-regular.scss';
-@import '../../bower_components/components-font-awesome/scss/fa-brands.scss';
-
-
-// @type settings    ==============================================
-
-
-// Weights
+// ===== Weights
 
 // $thin: 100;
-$light: 300;
-$normal: 400;
+// $light: 300;
+$regular: 400;
 // $medium: 500;
-$semi-bold: 600;
+// $semi-bold: 600;
 $bold: 700;
-$ultra-bold: 900;
+$extra-bold: 900;
 
 
-// Styles
+// ===== Styles
 
 $italic: italic;
 
 
-// Font Sets
+// ===== Font Sets
 
-$font-set-1: 'Roboto', Arial, sans-serif;
+$base-font-size: 16px;
+$base-line-height: 24px;
+$base-font-weight: 400;
+$base-font-family: 'Nunito Sans', Arial, sans-serif; // All Text
+
+$title-font-weight: 700;
+$title-font-family: $base-font-family;

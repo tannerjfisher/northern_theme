@@ -1,0 +1,269 @@
+<?php
+
+use Drupal\block\Entity\Block;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
+
+/**
+ * @file
+ * Functions to support theming in de_theme.
+ */
+
+/**
+ * Helper function to remove HTML comments and spaces from rendered content.
+ */
+function _de_theme_process_drupal_render($content = '') {
+  return trim(strip_tags(render($content),'<img><drupal-render-placeholder>'));
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function de_theme_preprocess_html(&$variables) {
+
+  // Process Sidebar rendered content to determine whether it's truly empty
+  if (!empty($variables['page']['sidebar_first'])) {
+    $variables['page']['processed_sidebar_first'] = [
+      'value' => _de_theme_process_drupal_render($variables['page']['sidebar_first']),
+    ];
+  }
+  if (!empty($variables['page']['sidebar_second'])) {
+    $variables['page']['processed_sidebar_second'] = [
+      'value' => _de_theme_process_drupal_render($variables['page']['sidebar_second']),
+    ];
+  }
+
+  // Sidebar class logic.
+  if (!empty($variables['page']['processed_sidebar_first']['value']) && !empty($variables['page']['processed_sidebar_second']['value'])) {
+    $variables['attributes']['class'][] = 'two_sidebars';
+  }
+  elseif (!empty($variables['page']['processed_sidebar_first']['value'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
+  }
+  elseif (!empty($variables['page']['processed_sidebar_second']['value'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'no_sidebars';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Pass block region value to content so this can be used in
+ * MYTHEME_theme_suggestions_menu_alter.
+ */
+function de_theme_preprocess_block(&$variables) {
+  if (isset($variables['elements']['#id'])) {
+    $region = Block::load($variables['elements']['#id'])->getRegion();
+    $variables['content']['#attributes']['region'] = $region;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Provide region based menu suggestions.
+ */
+function de_theme_theme_suggestions_menu_alter(&$suggestions, array $variables) {
+  if (isset($variables['attributes']['region'])) {
+    $suggestion = 'menu__' . $variables['menu_name'] . '__' . $variables['attributes']['region'];
+    $suggestion = str_replace('-', '_', $suggestion);
+    $suggestions[] = $suggestion;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for hook_theme_suggestions_block_alter().
+ *
+ * Add block suggestions for custom block bundles:
+ * - block--[BUNDLE].html.twig.
+ * - block--[BUNDLE]--[BLOCK_ID].html.twig.
+ */
+function de_theme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $block_bundle = $variables['elements']['content']['#block_content']->bundle();
+    // block--[BUNDLE].html.twig.
+    array_splice($suggestions, 1, 0, 'block__' . $block_bundle);
+
+    if (isset($variables['elements']['#id'])) {
+      $block_id = $variables['elements']['#id'];
+      // block--[BUNDLE]--[BLOCK_ID].html.twig.
+      array_splice($suggestions, 2, 0, 'block__' . $block_bundle . '__' . $block_id);
+    }
+  }
+
+  if (isset($variables['elements']['#id']) && isset($variables['elements']['#plugin_id'])) {
+    $plugin_id = str_replace(':', '__', $variables['elements']['#plugin_id']);
+    $region = Block::load($variables['elements']['#id'])->getRegion();
+    // block--[PLUGIN_ID]--[REGION].html.twig.
+    array_splice($suggestions, 3, 0, 'block__' . $plugin_id . '__' . $region);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for hook_theme_suggestions_taxonomy_term_alter().
+ *
+ * Add block suggestions for taxonomy term view modes:
+ * - taxonomy-term--[VIEW_MODE].html.twig.
+ * - taxonomy-term--[BUNDLE]--[VIEW_MODE].html.twig.
+ * - taxonomy-term--[TERM_ID]--[VIEW_MODE].html.twig.
+ */
+function de_theme_theme_suggestions_taxonomy_term_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['#taxonomy_term'])) {
+    /** @var \Drupal\taxonomy\TermInterface $term */
+    $term = $variables['elements']['#taxonomy_term'];
+
+    if (isset($variables['elements']['#view_mode'])) {
+      $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+      // taxonomy-term--[VIEW_MODE].html.twig.
+      $suggestions[] = 'taxonomy_term__' . $sanitized_view_mode;
+      // taxonomy-term--[BUNDLE]--[VIEW_MODE].html.twig.
+      $suggestions[] = 'taxonomy_term__' . $term->bundle() . '__' . $sanitized_view_mode;
+      // taxonomy-term--[TERM_ID]--[VIEW_MODE].html.twig.
+      $suggestions[] = 'taxonomy_term__' . $term->id() . '__' . $sanitized_view_mode;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK for views_exposed_form.
+ */
+function de_theme_preprocess_views_exposed_form(&$variables) {
+  $form = &$variables['form'];
+
+  // Add BEM classes for items in the form.
+  // Sorted keys.
+  $child_keys = Element::children($form, TRUE);
+  $last_key = NULL;
+  $child_before_actions_key = NULL;
+
+  foreach ($child_keys as $child_key) {
+    if (!empty($form[$child_key]['#type'])) {
+      if ($form[$child_key]['#type'] === 'actions') {
+        // We need the key of the element that precedes the actions element.
+        $child_before_actions_key = $last_key;
+        $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item';
+        $form[$child_key]['#attributes']['class'][] = 'views-exposed-form__item--actions';
+      }
+
+      if (!in_array($form[$child_key]['#type'], ['hidden', 'actions'])) {
+        $form[$child_key]['#wrapper_attributes']['class'][] = 'views-exposed-form__item';
+        $last_key = $child_key;
+      }
+    }
+  }
+
+  if ($child_before_actions_key) {
+    // Add a modifier class to the item that precedes the form actions.
+    $form[$child_before_actions_key]['#wrapper_attributes']['class'][] = 'views-exposed-form__item--preceding-actions';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ * To provide theme suggestion for input templates based on form ID
+ */
+function de_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  foreach (\Drupal\Core\Render\Element::children($form) as $key) {
+    $form[$key]['#attributes']['data-twig-suggestion'] = $form['#id'];
+  }
+
+  $form['actions']['submit']['#attributes']['data-twig-suggestion'] = $form['#id'];
+}
+
+/**
+ * Implements hook_theme_suggestions_input_alter().
+ * To provide theme suggestion for input templates based on form ID
+ */
+function de_theme_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestion_suffix = str_replace(['-'], '_', $element['#attributes']['data-twig-suggestion']);
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $suggestion_suffix;
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for input.
+ */
+function de_theme_preprocess_input(&$variables) {
+  if (
+    !empty($variables['element']['#title_display']) &&
+    $variables['element']['#title_display'] === 'attribute' &&
+    !empty((string) $variables['element']['#title'])
+  ) {
+    $variables['attributes']['title'] = (string) $variables['element']['#title'];
+  }
+
+  $type_api = $variables['element']['#type'];
+  $type_html = $variables['attributes']['type'];
+  $text_types_html = [
+    'text',
+    'email',
+    'tel',
+    'number',
+    'search',
+    'password',
+    'date',
+    'time',
+    'file',
+    'color',
+    'datetime-local',
+    'url',
+    'month',
+    'week',
+  ];
+
+  if (in_array($type_html, $text_types_html)) {
+    $variables['attributes']['class'][] = 'form-element';
+    $variables['attributes']['class'][] = Html::getClass('form-element--type-' . $type_html);
+    $variables['attributes']['class'][] = Html::getClass('form-element--api-' . $type_api);
+
+    if (!empty($variables['element']['#autocomplete_route_name'])) {
+      $variables['autocomplete_message'] = t('Loading…');
+    }
+  }
+
+  if (in_array($type_html, ['checkbox', 'radio'])) {
+    $variables['attributes']['class'][] = 'form-boolean';
+    $variables['attributes']['class'][] = Html::getClass('form-boolean--type-' . $type_html);
+  }
+
+  // Handle Search Input.
+  if (!empty($variables['attributes']['id']) && $variables['attributes']['id'] == 'edit-keywords') {
+    $variables['attributes']['placeholder'] = t('Enter search terms...');
+    $variables['attributes']['class'][] = 'keyword-search-input';
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for textarea.
+ */
+function de_theme_preprocess_textarea(&$variables) {
+  $variables['attributes']['class'][] = 'form-element';
+  $variables['attributes']['class'][] = 'form-element--type-textarea';
+  $variables['attributes']['class'][] = 'form-element--api-textarea';
+}
+
+/**
+ * Implements template_preprocess_HOOK() for select.
+ */
+function de_theme_preprocess_select(&$variables) {
+  if (!empty($variables['element']['#title_display']) && $variables['element']['#title_display'] === 'attribute' && !empty((string) $variables['element']['#title'])) {
+    $variables['attributes']['title'] = (string) $variables['element']['#title'];
+  }
+
+  $variables['attributes']['class'][] = 'form-element';
+  $variables['attributes']['class'][] = $variables['element']['#multiple'] ?
+    'form-element--type-select-multiple' :
+    'form-element--type-select';
+
+  if (in_array('block-region-select', $variables['attributes']['class'])) {
+    $variables['attributes']['class'][] = 'form-element--extrasmall';
+  }
+}

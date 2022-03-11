@@ -1,0 +1,103 @@
+
+
+// ++++++++++ Styles to handle media library when rendered on the front end via the layout buider UI
+
+// ===== Settings (Variables)
+
+@import '../../00-base/settings/index';
+
+
+.media-library-widget-modal {
+
+
+  // ===== Sidebar Menu
+
+  .media-library-menu {
+    li {
+      margin-bottom: 0;
+    }
+  }
+
+
+  // ===== Item Grid
+
+  .views-row.media-library-item.media-library-item--grid {
+    margin: 0 !important;
+    padding-bottom: rem(8);
+    border-bottom: 0;
+
+    &::before {
+      width: calc(100% - 14px);
+      height: calc(100% - 14px);
+    }
+
+    &.is-hover:before,
+    &.checked:before,
+    &.is-focus:before {
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+    }
+  }
+
+
+  // ===== File Name
+
+  .media-library-item__attributes {
+    line-height: 20px;
+  }
+
+
+  // ===== Entity
+
+  .views-field-rendered-entity {
+    position: relative;
+
+    svg {
+      max-width: 100%;
+    }
+  }
+
+
+  // ===== Checkbox
+
+  .view-media-library .form-type-checkbox {
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    left: 16px;
+    display: block;
+    margin: 0;
+
+    input {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      opacity: 1;
+      z-index: 1;
+      background-color: #fff;
+      border: 1px solid $grey-dark;
+
+      &:checked {
+        background: #0074bd;
+        box-shadow: inset 0 0 0 3px #fff;
+      }
+    }
+  }
+
+
+  // ===== Media add/edit forms
+
+  li > .button {
+    align-self: flex-start;
+  }
+
+  .form-item.form-type-managed-file {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .form-item .form-item__label.form-required::after, 
+  .form-item .fieldset__label.form-required::after {
+    vertical-align: baseline;
+  }
+}

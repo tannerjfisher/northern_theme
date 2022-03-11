@@ -1,0 +1,36 @@
+
+
+// ++++++++++ Text Form Elements
+
+.form-element {
+  background: #fff;
+  font-size: rem(16);
+  line-height: rem(24);
+  max-width: 100%;
+  min-height: rem(48);
+  width: 100%;
+  border: 1px solid $grey-light;
+  padding: rem(11) rem(15);
+  border-radius: rem(2);
+  appearance: none;
+
+  &:hover,
+  &:focus {
+    border-color: $grey-dark;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &[disabled] {
+    border-color: $grey-light;
+    background-color: $grey-light;
+  }
+
+  &.has-error {
+    border-color: $debug-red;
+    background-color: rgba($debug-red, 0.1);
+    color: $debug-red;
+  }
+}

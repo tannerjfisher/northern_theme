@@ -1,0 +1,14 @@
+
+
+// ++++++++++ Date List Form Element
+
+.js-form-type-datelist {
+  flex: 1 1 100%;
+
+  .container-inline {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: - rem(5);
+    margin-right: - rem(5);
+  }
+}

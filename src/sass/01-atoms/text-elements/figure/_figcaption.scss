@@ -1,0 +1,39 @@
+
+
+// ++++++++++ Figure Caption elements
+
+figure figcaption {
+  display: block;
+  font-size: rem(13);
+  line-height: rem(22);
+  font-style: $italic;
+  background-color: $grey-xlight;
+  margin-top: 0;
+  padding: rem(12) rem(10);
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: $grey-light;
+}
+
+// ++++++++++ Captioned Elements
+
+.caption-drupal-entity {
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+  display: inline;
+
+  .embedded-entity {
+    margin-bottom: 0;
+  }
+}
+
+// ++++++++++ File Caption
+
+.bundle--file + figcaption {
+  background-color: transparent;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}

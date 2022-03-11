@@ -1,0 +1,79 @@
+
+
+// ++++++++++ Breadcrumb Block
+
+.block-system-breadcrumb-block {
+  margin-top: 0;
+
+  h2 {
+    margin: 0;
+  }
+
+  nav {
+    padding-bottom: 0;
+    margin-bottom: rem(10);
+  }
+
+  ol {
+    @include reset-list();
+    display: block;
+    margin-bottom: 0;
+  }
+
+  li {
+    display: inline;
+
+    &:first-child {
+      margin-left: 0;
+
+      a {
+        font-size: 0;
+        display: inline-block;
+        line-height: 0;
+        vertical-align: - rem(2);
+      }
+    }
+
+    &:not(:first-child) {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .breadcrumb-separator {
+    display: inline;
+    font-size: rem(14);
+    color: $grey-light;
+  }
+
+  a,
+  p {
+    display: inline-block;
+    font-size: rem(14);
+    line-height: rem(20);
+    padding: rem(5);
+    text-decoration: none;
+    color: $grey-neutral;
+
+    .icon {
+      transition: fill 0.2s;
+      fill: $grey-neutral;
+    }
+  }
+
+  a {
+    &:hover,
+    &:focus {
+      color: $brand-primary-2;
+
+      .icon {
+        fill: $brand-primary-2;
+      }
+    }
+  }
+
+  p {
+    color: $black;
+  }
+}

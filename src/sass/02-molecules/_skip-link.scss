@@ -1,0 +1,23 @@
+
+
+// ++++++++++ Skip Link for keyboard navigation
+
+.skip-link {
+  display: flex;
+  align-items: center;
+  padding: rem(10) rem(10);
+  text-align: center;
+  background-color: $brand-primary-2;
+  border: 2px solid $white;
+  color: $white;
+  text-decoration: none;
+  font-weight: $bold;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: $white;
+  }
+}

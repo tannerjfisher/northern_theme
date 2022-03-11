@@ -1,0 +1,19 @@
+
+
+// ++++++++++ Drupal UI Elements (PRINT)
+
+@media print {
+
+  // ===== Local Tasks Block
+
+  .block-local-tasks-block {
+    display: none !important;
+  }
+
+
+  // ===== Messages
+
+  .messages {
+    display: none !important;
+  }
+}

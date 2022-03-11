@@ -1,0 +1,160 @@
+
+
+// ++++++++++ Main Navigation Style For Three Level Dropdown ( Dropdowns )
+
+.de-simple-menu > ul ul,
+.de-simple-menu nav > ul ul {
+  width: 300px;
+  height: auto;
+  padding-left: 0;
+  position: absolute;
+  background-color: $white;
+  z-index: 1;
+  margin-top: 0;
+
+
+  // ===== Menu Direction Arrows
+
+  .icon {
+    flex: 0 0 12px;
+    position: static;
+    margin-left: rem(10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    transform: rotate(270deg);
+  }
+
+
+  // ===== Links
+
+  .menu-item a {
+    color: $white;
+    background-color: $brand-primary-1;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    border-bottom: 1px solid $brand-secondary-1;
+    padding: rem(12);
+
+    &:focus {
+      outline: none;
+
+      .link-inner {
+        outline: 1px dashed lighten($brand-primary-1, 50%);
+      }
+    }
+
+    &.is-active {
+      background-color: lighten($brand-primary-1, 25%);
+      font-weight: $bold;
+    }
+
+    .link-inner {
+      flex: 1 1 auto;
+      display: block;
+    }
+  }
+
+  .menu-item--active-trail > a {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 1px;
+      width: 3px;
+      background-color: lighten($brand-primary-1, 50%);
+    }
+  }
+
+  .show-children > a,
+  a:hover {
+    background-color: lighten($brand-primary-1, 5%);
+    color: $white;
+  }
+
+
+  // ===== List Items
+
+  li {
+    position: relative;
+
+    &:last-child > a {
+      border-bottom: 0;
+    }
+
+
+    // ===== Item with children
+
+    &.menu-item--expanded {
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
+        z-index: 2;
+      }
+    }
+
+
+    // ===== Menu expands to the right
+
+    &.menu-item--expanded.menu-right {
+      &::before,
+      &::after {
+        right: 0;
+      }
+
+      &::before {
+        @include triangle(left, lighten($brand-primary-1, 50%), 7px);
+      }
+
+      &::after {
+        @include triangle(left, $brand-primary-1, 7px);
+        margin-right: -1px;
+      }
+
+      ul {
+        left: 100%;
+        right: auto;
+      }
+    }
+
+
+    // ===== Menu expands to the left
+
+    &.menu-item--expanded.menu-left {
+      &::before,
+      &::after {
+        left: 0;
+      }
+
+      &::before {
+        @include triangle(right, lighten($brand-primary-1, 50%), 7px);
+      }
+
+      &::after {
+        @include triangle(right, $brand-primary-1, 7px);
+        margin-left: -1px;
+      }
+
+      & > a {
+        justify-content: flex-start;
+        
+        .icon {
+          order: -1;
+          margin-left: 0;
+          margin-right: rem(10);
+          transform: rotate(90deg);
+        }
+      }
+
+      ul {
+        left: auto;
+        right: 100%;
+      }
+    }
+  }
+}

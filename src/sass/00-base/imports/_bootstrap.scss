@@ -1,0 +1,35 @@
+
+
+// ++++++++++ Bootstrap Imports
+
+$enable-flex:               true;
+$enable-grid-classes:       true;
+
+$grid-columns:      12;
+$grid-gutter-width: 30px;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: $s-break,
+  // Medium screen / tablet
+  md: $m-break,
+  // Large screen / desktop
+  lg: $l-break,
+  // Extra large screen / wide desktop
+  xl: $xl-break
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 1270px
+);
+
+// ===== Imports
+
+@import '../../../../node_modules/bootstrap/scss/_functions.scss';
+@import '../../../../node_modules/bootstrap/scss/_variables.scss';
+@import '../../../../node_modules/bootstrap/scss/_mixins.scss';
+@import '../../../../node_modules/bootstrap/scss/_grid.scss';

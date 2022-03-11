@@ -1,0 +1,27 @@
+
+
+// ++++++++++ Main Navigation
+
+.block-responsive-menu-horizontal-menu,
+.block--menu--main {
+  display: none;
+  flex: 1 1 100%;
+  transition: none;
+  z-index: 3;
+
+  @include breakpoint($l-break) {
+    display: block;
+  }
+
+  ul {
+    margin-left: 0;
+  }
+}
+
+.horizontal-menu,
+.block--menu--main .menu-level--1 {
+  @include reset-list();
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+}

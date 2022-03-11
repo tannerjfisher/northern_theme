@@ -1,0 +1,20 @@
+
+
+// ++++++++++ Reset the background styles for blocks that appear as a box
+
+@mixin reset-background-box() {
+  background-color: transparent;
+  border: none;
+
+  & > .block-content {
+    padding: 0;
+
+    @include breakpoint($m-break $layout-container-pre) {
+      padding: 0;
+    }
+  }
+}
+
+@mixin reset-background-box-padding() {
+  padding: 0;
+}

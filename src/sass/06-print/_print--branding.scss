@@ -1,0 +1,37 @@
+
+
+// ++++++++++ Site Branding (PRINT)
+
+@media print {
+
+
+  // ===== System Branding Block
+
+  .block-system-branding-block {
+    display: block !important;
+
+    .site-logo {
+      display: block;
+      position: relative;
+      width: 100%;
+
+      &::before {
+        display: block;
+      }
+
+      .logo--default {
+        display: none !important;
+      }
+
+      .logo--print {
+        display: block !important;
+        width: 300px !important;
+        height: auto !important;
+      }
+    }
+
+    .site-name {
+      display: none !important;
+    }
+  }
+}

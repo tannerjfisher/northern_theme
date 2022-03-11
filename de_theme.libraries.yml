@@ -1,0 +1,64 @@
+fonts:
+  css:
+    theme:
+      https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900,900i&display=swap: { type: external }
+
+base:
+  css:
+    theme:
+      dist/css/de_theme.css: {}
+      dist/css/print.css: {}
+  js:
+    # dist/scripts/js/main.build.js: {}
+    dist/scripts/js/ui-togglers.min.js: {}
+    dist/scripts/js/de-search-toggle.min.js: {}
+    dist/scripts/js/de-search-facets.min.js: {}
+    dist/scripts/js/de-simple-menu.min.js: {}
+    dist/scripts/js/tab-site-nav-identifier.min.js: {}
+    dist/scripts/js/de-simple-sidebar-menu.min.js: {}
+    dist/scripts/js/table-wrap.min.js: {}
+    dist/scripts/js/details-accordion--animation.min.js: {}
+    dist/scripts/js/search-facets-accordion--handler.min.js: {}
+    dist/scripts/js/iframe-ratio--handler.min.js: {}
+    dist/scripts/js/accessibility-modifications.min.js: {}
+  dependencies:
+    - core/modernizr
+    - core/jquery
+    - core/drupal
+
+layout_builder.media_library:
+  css:
+    theme:
+      dist/css/modular/layout-builder--media-library/layout-builder--media-library.css: {}
+  dependencies:
+    - claro/media_library.theme
+
+mmenu:
+  version: VERSION
+  js:
+    src/libraries/mmenu/dist/mmenu.js: {}
+  css:
+    theme:
+      src/libraries/mmenu/dist/mmenu.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - core/jquery.once
+    - core/drupal
+
+de_responsive_menu.config:
+  js:
+    dist/scripts/js/de-responsive-menu-config.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - core/jquery.once
+    - core/drupal
+
+slick:
+  version: VERSION
+  js:
+    src/libraries/slick-1.8.1/slick/slick.min.js: {}
+  css:
+    theme:
+      src/libraries/slick-1.8.1/slick/slick.css: {}

@@ -1,0 +1,21 @@
+
+
+// ++++++++++ Signature Form Element
+
+.js-form-type-webform-signature {
+  flex: 1 1 100%;
+
+  .webform-signature-pad {
+    background-color: transparent;
+
+    &::before {
+      background-color: $grey-light;
+      margin-bottom: rem(10);
+    }
+  }
+
+  .form-submit {
+    margin-left: rem(10);
+    margin-bottom: rem(10);
+  }
+}

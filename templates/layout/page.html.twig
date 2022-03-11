@@ -24,6 +24,7 @@
  *   name has been disabled in the theme settings.
  * - site_slogan: The slogan of the site. This is empty when displaying the site
  *   slogan has been disabled in theme settings.
+ * - print_logo: A value to define a different print logo.
  *
  * Page content (in order of occurrence in the default page.html.twig):
  * - node: Fully loaded node, if there is an automatically-loaded node
@@ -49,37 +50,85 @@
  */
 #}
 
-<header role="banner">
-  {{ page.header }}
+{# Grid Classes #}
+{%
+  set grid_classes__content = [
+    'col-12',
+    page.processed_sidebar_first.value and page.processed_sidebar_second.value ? 'col-lg-6',
+    page.processed_sidebar_first.value and page.processed_sidebar_second.value is empty ? 'col-lg-9',
+    page.processed_sidebar_second.value and page.processed_sidebar_first.value is empty ? 'col-lg-9',
+    page.processed_sidebar_first.value is empty and page.processed_sidebar_second.value is empty ? 'col-lg-12'
+  ]
+%}
+
+{%
+  set grid_classes__sidebar_first = [
+    'col-12',
+    page.processed_sidebar_first.value and page.processed_sidebar_second.value ? 'col-lg-3',
+    page.processed_sidebar_first.value and page.processed_sidebar_second.value is empty ? 'col-lg-3',
+  ]
+%}
+
+{%
+  set grid_classes__sidebar_second = [
+    'col-12',
+    page.processed_sidebar_first.value and page.processed_sidebar_second.value ? 'col-lg-3',
+    page.processed_sidebar_second.value and page.processed_sidebar_first.value is empty ? 'col-lg-3',
+  ]
+%}
+
+<header id="header">
+  <div id="masthead" class="masthead">
+    {{ page.masthead_prefix }}
+    <div class="masthead__primary">
+      <div class="masthead__primary-left">
+        {{ page.masthead_primary__left }}
+      </div>
+      <div class="masthead__primary-right">
+        {{ page.masthead_primary__right_top }}
+        {{ page.masthead_primary__right_bottom }}
+      </div>
+    </div>
+  </div>
+  {{ page.masthead_secondary }}
 </header>
 
 <div class="section-content">
-  <div class="layout-container">
-    <main id="main" class="column">
-      <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+  {{ page.masthead_suffix }}
+  {{ page.content_prefix }}
 
-      <div class="layout-content">
-          {{ page.content }}
-      </div>
-    </main>
-    {% if page.sidebar_first %}
-      <aside class="column sidebar layout-sidebar-first" role="complementary">
-        {{ page.sidebar_first }}
-      </aside>
-    {% endif %}
+  <div class="container">
+    <div class="row">
 
-    {% if page.sidebar_second %}
-      <aside class="column sidebar layout-sidebar-second" role="complementary">
-        {{ page.sidebar_second }}
-      </aside>
-    {% endif %}
+      {% if page.processed_sidebar_first.value is not empty %}
+        <aside class="sidebar layout-sidebar-first {{ grid_classes__sidebar_first|join(' ') }}" role="complementary">
+          {{ page.sidebar_first }}
+        </aside>
+      {% endif %}
+
+      <main id="main" class="main-content {{ grid_classes__content|join(' ') }}">
+        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+        <div class="layout-content">
+            {{ page.content }}
+        </div>
+      </main>
+
+      {% if page.processed_sidebar_second.value is not empty %}
+        <aside class="sidebar layout-sidebar-second {{ grid_classes__sidebar_second|join(' ') }}" role="complementary">
+          {{ page.sidebar_second }}
+        </aside>
+      {% endif %}
+
+    </div>
   </div>
+
+  {{ page.content_suffix }}
 </div>
 
-{% if page.footer %}
-  <footer role="contentinfo">
-    <div class="layout-container">
-      {{ page.footer }}
-    </div>
+{% if page.footer_first %}
+  <footer id="footer" class="footer">
+    {{ page.footer_first }}
+    {{ page.footer_second }}
   </footer>
 {% endif %}
+

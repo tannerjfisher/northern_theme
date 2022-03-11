@@ -1,0 +1,117 @@
+
+
+// +++++++++++ Accordion template styles
+
+.template--accordion {
+  display: block;
+  border-bottom: 1px solid $brand-primary-1;
+  margin-bottom: rem(35);
+
+  &:first-child {
+    .accordion-trigger {
+      margin-top: 0;
+    }
+  }
+
+  .accordion-trigger {
+    position: relative;
+    display: flex;
+    font-size: rem(20);
+    padding: rem(18) rem(72) rem(18) rem(18);
+    margin-bottom: 0;
+    margin-top: rem(17);
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: center;
+      width: rem(16);
+      height: rem(16);
+      position: absolute;
+      top: 50%; right: rem(16);
+      transform: translateY(-50%);
+
+      @include breakpoint($m-break) {
+        width: rem(24);
+        height: rem(24);
+        right: rem(25);
+      }
+    }
+
+    &::before {
+      background-image: url('#{$icon-path}/icon--plus--white.svg');
+      visibility: hidden;
+    }
+
+    &::after {
+      background-image: url('#{$icon-path}/icon--minus--white.svg');
+      visibility: visible;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $grey-xlight;
+    }
+
+    &:focus {
+      outline: 1px solid $brand-primary-1;
+      background-color: $grey-xlight;
+    }
+  }
+
+  .accordion-content {
+    padding: rem(18) rem(18) rem(38);
+  }
+}
+
+
+// ===== Not in editor
+
+body:not(.cke_editable) .template--accordion {
+  .accordion-trigger {
+    &::before {
+      visibility: visible;
+    }
+
+    &::after {
+      visibility: hidden;
+    }
+
+    &.accordion-open {
+      background-color: $grey-xlight;
+
+      &::before {
+        visibility: hidden;
+      }
+
+      &::after {
+        visibility: visible;
+      }
+    }
+  }
+
+  .accordion-content {
+    &.accordion-closed {
+      @include visually-hidden();
+    }
+  }
+}
+
+
+// ===== Adjacent sibling accordions
+
+.template--accordion + .template--accordion {
+  .accordion-trigger {
+    margin-top: - rem(35);
+  }
+}
+
+
+// ===== Adjacent sibling anything
+
+// .template-accordion + * {
+//   margin-top: rem(30);
+// }

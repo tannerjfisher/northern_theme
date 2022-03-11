@@ -1,0 +1,152 @@
+
+
+// ++++++++++ Main Navigation First Level
+
+.horizontal-menu > li,
+.block--menu--main .menu-level--1 > li {
+  flex: 0 1 auto;
+
+  &.show-children > a,
+  & > a:hover,
+  & > a:focus,
+  &.show-children > span,
+  & > span:hover,
+  & > span:focus {
+    outline: none;
+    text-decoration: none;
+    color: $white;
+
+    &::after {
+      color: $white;
+    }
+  }
+
+  &.show-children > a,
+  &.show-children > span {
+    background-color: $brand-primary-1;
+    border-color: $brand-primary-1;
+  }
+
+  & > a:hover,
+  & > a:focus,
+  & > span:hover,
+  & > span:focus {
+    background-color: lighten($brand-primary-1, 5%);
+    border-color: lighten($brand-primary-1, 5%);
+  }
+
+  & > a,
+  & > span {
+    color: $brand-primary-1;
+    border-width: 1px 1px;
+    border-style: solid;
+    border-color: transparent;
+    font-size: rem(14);
+    line-height: rem(19);
+    font-weight: $bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: rem(12) rem(14);
+    text-decoration: none;
+    min-height: 60px;
+
+    @include breakpoint($l-break) {
+      max-width: rem(250px);
+    }
+
+    @include breakpoint($l-break) {
+      font-size: rem(16);
+      line-height: rem(22);
+      padding: rem(16) rem(18);
+    }
+
+    &:focus {
+      outline: none;
+
+      .link-inner {
+        outline: 1px dashed lighten($brand-primary-1, 50%);
+      }
+    }
+
+    .icon {
+      font-size: rem(19);
+      width: rem(12);
+      height: auto;
+      position: absolute;
+      right: rem(14);
+
+      @include breakpoint($l-break) {
+        right: rem(22);
+      }
+    }
+  }
+
+
+  // ===== Item has Children
+
+  &.menu-item--expanded {
+    & > a ,
+    & > span {
+      padding-right: rem(34);
+      
+      @include breakpoint($l-break) {
+        padding-right: rem(42);
+      }
+    }
+
+    &.show-children > a,
+    & > a:hover,
+    & > a:focus,
+    &.show-children > span,
+    & > span:hover,
+    & > span:focus {
+      .icon {
+        fill: $white;
+      }
+    }
+  }
+
+
+  // ===== Active Trail Item
+
+  &.menu-item--active-trail {
+    & > a,
+    & > span {
+      position: relative;
+
+      &::before {
+        transition: all 0.2s;
+        content: '';
+        background-color: $brand-primary-2;
+        position: absolute;
+        bottom: -2px; left: 0; right: 0;
+        height: 3px;
+      }
+    }
+
+    &.show-children > a,
+    & > a:hover,
+    &.show-children > span,
+    & > span:hover {
+      &::before {
+        background-color: lighten($brand-primary-1, 50%);
+        left: -1px; right: -1px;
+      }
+    }
+  }
+}
+
+
+// ===== In Masthead Secondary Region
+
+.region--masthead-secondary {
+  .horizontal-menu,
+  .block--menu--main .menu-level--1 {
+    @include header-padding();
+    border-bottom: 1px solid $grey-light;
+  }
+}

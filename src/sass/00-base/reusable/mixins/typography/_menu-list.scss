@@ -1,0 +1,38 @@
+
+
+// ++++++++++ A Menu List style for inclusion in a list of links
+
+@mixin menu-list() {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+
+
+
+  // ===== List Item
+
+  li {
+    &:not(:last-child) {
+      a {
+        border-bottom: 1px solid $grey-light;
+      }
+    }
+  }
+
+
+
+  // ===== Link
+
+  a {
+    transition: $default-transition;
+    display: block;
+    padding: rem(10) rem(15);
+    border: 1px solid transparent;
+
+    &:hover {
+      text-decoration: none;
+      background-color: $grey-light;
+    }
+  }
+}

@@ -1,0 +1,217 @@
+
+
+// ++++++++++ Sidebar Navigation
+
+.menu--main--sidebar {
+  @include breakpoint(max-width $m-break-max) {
+    display: none;
+  }
+
+  & > h2 {
+    display: none;
+  }
+
+  ul {
+    @include reset-list();
+    margin-bottom: 0;
+    max-width: 100%;
+
+    &.show {
+      margin-top: 2px;
+    }
+  }
+
+  li {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  a {
+    transition: background-color 0.2s, color 0.2s;
+    position: relative;
+    display: block;
+    padding: rem(10) rem(16);
+    text-decoration: none;
+    border-bottom: 1px solid $grey-xlight;
+    color: $brand-primary-1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      border: 1px solid transparent;
+    }
+
+    &:hover,
+    &:focus {
+      color: $brand-primary-2;
+      background-color: $grey-xxlight;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::before {
+        border-color: $brand-secondary-1;
+      }
+    }
+  }
+
+
+  // ===== Menu Items With Children
+
+  .menu-item--expanded {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > a {
+      flex: 1 1 0;
+    }
+
+    & > ul {
+      flex: 0 0 100%;
+    }
+  }
+
+
+  // ===== Active Trail Item
+
+  .menu-item--active-trail {
+
+    & > a:not(.is-active),
+    & > a:not(.is-active) + .sub-menu--toggle {
+      border-bottom-color: $brand-primary-2;
+
+      &.show {
+        border-bottom-color: $brand-primary-2;
+        box-shadow: 0px 2px 0px 0px $brand-primary-2;
+      }
+    }
+
+    & > a:not(.is-active) {
+      border-left: 5px solid $brand-primary-2;
+    }
+  }
+
+
+  // ===== Active Item
+
+  .menu-item--active-trail .is-active,
+  .menu-item--active-trail .is-active + .sub-menu--toggle {
+    background-color: $grey-xxlight;
+    font-weight: $bold;
+
+
+    &::before,
+    &::after {
+      color: $white;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $grey-xxlight;
+      color: $brand-primary-1;
+    }
+  }
+
+
+  // ===== Sub Menu Toggle
+
+  .sub-menu--toggle {
+    position: relative;
+    transition: background-color 0.2s;
+    flex: 0 0 rem(35);
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid $grey-xlight;
+    padding: 0;
+
+    // Icon
+
+    .icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      font-size: rem(19);
+    }
+
+    // Borders
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: rem(16);
+      color: $brand-primary-1;
+      border: 1px solid transparent;
+      box-shadow: -1px 0px 0px 0px $grey-xlight;
+    }
+
+    &:before {
+      display: none;
+    }
+
+    &::after {
+      display: block;
+    }
+
+    &:hover,
+    &:focus {
+      color: $brand-primary-2;
+      background-color: $grey-xxlight;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::before,
+      &::after {
+        border-color: $brand-secondary-1;
+      }
+    }
+
+    // Showing Children
+
+    &.show {
+      .icon {
+        transform: translate(-50%, -50%) rotate(-180deg);
+      }
+
+      &:before {
+        display: flex;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+
+  // ===== Javascript is working
+
+  .js & {
+    .menu-item--expanded {
+      & > ul:not(.show) {
+        // @include visually-hidden();
+        display: none;
+      }
+    }
+  }
+
+
+  // ===== Menus not the firsth level
+
+  ul ul {
+    padding-left: rem(15);
+    margin-top: 1px;
+
+    li {
+      background-color: $white;
+    }
+  }
+}

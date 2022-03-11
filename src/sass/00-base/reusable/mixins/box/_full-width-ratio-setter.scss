@@ -1,0 +1,20 @@
+
+
+// ++++++++++ Full width ratio setter
+
+// LIMITATION: only for use in an element that is 100% of the width of the viewport
+
+// Use this on a pseudo element that is within a flex layout to set a minumum height
+// that is a percentage of the width to emulate an image ratio
+
+// The main reason for this approach rather than applying a min height
+// to the element directly is to allow for a maximum height on larger screens
+
+@mixin full-width-ratio-setter($width: 16, $height: 9) {
+  $ratio-percentage: $height / $width;
+  content: '';
+  display: block;
+  flex: 0 0 0px;
+  height: calc(100vw * #{$ratio-percentage});
+  width: 0px;
+}

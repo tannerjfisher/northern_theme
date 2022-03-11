@@ -1,0 +1,16 @@
+
+
+// ++++++++++ Placeholder image for profile images
+
+@mixin profile-image--placeholder() {
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: darken($brand-primary-2, 50%);
+  background-image: url('#{$icon-path}/user-icon.svg');
+  background-size: 80%;
+  background-position: bottom -1px center;
+  background-repeat: no-repeat;
+  border: 1px solid $brand-secondary-1;
+  border-radius: $radius-100;
+}

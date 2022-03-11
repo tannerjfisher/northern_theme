@@ -1,0 +1,22 @@
+
+
+// ++++++++++ Webform Progress Visual (steps)
+
+.webform-progress {
+  width: 100%;
+
+
+  // ===== Progress Tracker
+
+  .progress-tracker {
+    margin-top: 0;
+    margin-bottom: rem(40);
+  }
+
+
+  // ===== Progress Marker
+
+  .progress-marker {
+    display: block;
+  }
+}

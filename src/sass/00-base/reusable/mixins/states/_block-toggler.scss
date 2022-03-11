@@ -1,0 +1,68 @@
+
+
+// ++++++++++ Block toggler 
+// Toggle block content by clicking it's block title
+// This approach is accessible to screen readers
+// Include in block properties
+
+@mixin block-toggler() {
+
+  // ===== Block Title
+
+  .block-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    // === Block title appear clickable
+
+    &:hover {
+      cursor: pointer;
+
+      &::after,
+      h2 {
+        color: $grey-dark;
+      }
+    }
+
+    // === Chevron
+
+    &::after {
+      @include icon($icon-chevron-down);
+      transition: all 0.2s;
+      font-size: rem(20);
+      color: $link-colour;
+    }
+
+    // === Block content is hidden
+
+    &:not(.open) {
+      border-bottom: 0;
+    }
+
+    // === Block content is visible
+
+    &.open {
+      &::after {
+        content: fa-content($icon-chevron-up);
+      }
+    }
+
+    h2 {
+      transition: all 0.2s;
+      color: $link-colour;
+    }
+  }
+
+
+  // ===== Block Content
+
+  .block-content {
+
+    // === Not Visible (Visible to screenreaders)
+
+    &:not(.show) {
+      @include visually-hidden();
+    }
+  }
+}

@@ -1,0 +1,20 @@
+
+
+// ++++++++++ Teaser Placeholder Images for views
+
+.region-full { 
+  .teaser-image--placeholder {
+    @include breakpoint($m-break) {
+      @include teaser-placeholder-image();
+    }
+  }
+}
+
+.region-large { 
+  .teaser-image--placeholder {
+    @include breakpoint($l-break) {
+      @include teaser-placeholder-image();
+    }
+  }
+}
+

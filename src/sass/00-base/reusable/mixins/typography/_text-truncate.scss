@@ -1,0 +1,11 @@
+
+
+// Requires the element to be block or inline-block.
+// Only works for 1 line elements
+
+@mixin text-truncate {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

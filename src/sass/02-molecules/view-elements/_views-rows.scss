@@ -1,0 +1,20 @@
+
+
+// ++++++++++ Views Rows
+
+.view[class*="page"],
+.view[class*="search"] {
+
+  .views-row {
+    padding-bottom: rem(35);
+
+    h2 {
+      margin-top: 0;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(35);
+      border-bottom: 1px solid $grey-xlight;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+
+
+// ++++++++++ Adds a triangle pointing upward to a modal element container
+
+@mixin modal-triangle($triangle-size: 1em) {
+  &::before {
+    @include triangle(top, $white, $triangle-size);
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%,-100%);
+    z-index: 2;
+  }
+
+  &::after {
+    @include triangle(top, rgba(0,0,0,0.7), $triangle-size);
+    position: absolute;
+    left: 50%;
+    top: -1px;
+    transform: translate(-50%,-100%);
+    z-index: 1;
+  }
+}

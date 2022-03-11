@@ -1,0 +1,36 @@
+
+
+// ++++++++++ Styles for Chosen elements (Using the Chosen library)
+
+
+// ===== Chosen Container
+
+.chosen-container {
+  width: 100% !important;
+}
+
+
+// ===== Chosen Choices
+
+.chosen-container-multi .chosen-choices {
+  width: 100%;
+  background-image: none;
+  border: 1px solid lighten($grey-neutral, 30%);
+  border-radius: 4px;
+
+  li.search-field {
+    width: 100%;
+
+    input[type="text"] {
+      height: auto;
+      font-size: rem(16);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.chosen-container-active .chosen-choices {
+  box-shadow: none;
+  border-color: $grey-dark;
+}

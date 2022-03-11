@@ -1,0 +1,14 @@
+
+
+// ++++++++++ 2 Column Split Layout
+
+.layout--twocol-split {
+
+  .layout__region--first,
+  .layout__region--second {
+    @include breakpoint($m-break) {
+      flex: 0 1 50%;
+      max-width: 50%;
+    }
+  }
+}

@@ -1,14 +1,29 @@
 
+
+
+// dont' forget config stuff in settings.local.php
+
 'use strict';
+var beep = require('beepbeep')
+var git = require('gulp-git');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var sassGlob = require('gulp-sass-glob');
-var runSequence = require('run-sequence');
+var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
+var pipeline = require('readable-stream').pipeline;
+var browserSync = require('browser-sync').create();
+var runSequence = require('gulp4-run-sequence');
 var rename = require('gulp-rename');
 var plumber = require ('gulp-plumber');
-var gutil = require('gulp-util');
+var del = require('del');
 var autoprefixer = require('gulp-autoprefixer');
+var imagemin = require('gulp-imagemin');
+var sassLint = require('gulp-sass-lint');
+var svgmin = require('gulp-svgmin');
+var webpackStream = require('webpack-stream');
+var webpackConfig = require('./webpack.config.js');
 
 
 
@@ -22,6 +37,16 @@ var autoprefixer = require('gulp-autoprefixer');
 var config = {
   proxyTarget: undefined
 };
+
+/*
+ * Configuration Overrides
+ * Include local file for overriding config, don't fail if it doesn't exist.
+ */
+try {
+  config = require('./config.json');
+} catch (error) {
+
+}
 
 config.drupal = {
   templatesDir: 'templates'
@@ -42,7 +67,7 @@ function isDirectory(dir) {
  * Report errors but keep on gulpin'.
  */
 var onError = function (err) {
-  gutil.beep();
+  beep();
   console.log(err.messageFormatted);
   this.emit('end'); // super crit
 };
@@ -69,26 +94,32 @@ var sassBuild = function() {
     .pipe(sourcemaps.init({largeFile: true}))
     .pipe(sassGlob())
     .pipe(sass())
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions']
-    }))
+    .pipe(autoprefixer())
     .pipe(sourcemaps.write('maps'))
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('dist/css'))
+    .pipe(browserSync.stream());
 };
 
-gulp.task('sass', sassBuild);
+gulp.task('sass', gulp.series(sassBuild));
 
 
 /*
  * JS compile task
  * Compiles js in src() to dest()
+ * Run JS through Babel.
  * Suffix .min.js to filename
  */
 
 var jsBuild = function() {
-  return gulp.src('src/scripts/js/**/*.js')
+  return gulp.src('src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js')
     .pipe(plumber({
       errorHandler: onError
+    }))
+    .pipe(babel({
+      presets: ['@babel/preset-env'],
+      ignore: [
+        "src/scripts/js/vendor",
+      ]
     }))
     .pipe(rename(function (path) {
       path.basename += ".min";
@@ -97,7 +128,19 @@ var jsBuild = function() {
     .pipe(gulp.dest('dist/scripts/js'));
 };
 
-gulp.task('js', jsBuild);
+var jsWebpackBuild = function() {
+  return gulp.src('src/scripts/js/**/*.webpack.js')
+    .pipe(webpackStream(webpackConfig, null, function(err, stats) {
+      /* Use stats to do more things if needed */
+    })).on('error',function (err) {
+      console.error('WEBPACK ERROR', err);
+      this.emit('end'); // Don't stop the rest of the task
+    })
+    .pipe(gulp.dest('dist/scripts/js'));
+};
+
+gulp.task('js', gulp.series(jsBuild));
+gulp.task('webpackJS', gulp.series(jsWebpackBuild));
 
 
 /*
@@ -106,11 +149,24 @@ gulp.task('js', jsBuild);
 */
 
 var imageBuild = function() {
-  return gulp.src('src/img/**/*')
+  return gulp.src('src/img/**/*.!(svg)')
     .pipe(gulp.dest('dist/img'));
 };
 
-gulp.task('images', imageBuild);
+var svgBuild = function() {
+  return gulp.src('src/img/**/*.svg')
+    .pipe(svgmin({
+      plugins: [{
+        cleanupIDs: false
+      }]
+    }))
+    .pipe(gulp.dest('dist/img'));
+};
+
+gulp.task('pixelimages', gulp.series(imageBuild));
+gulp.task('svg', gulp.series(svgBuild));
+
+gulp.task('images', gulp.parallel('pixelimages', 'svg'));
 
 
 /*
@@ -123,7 +179,33 @@ var fontBuild = function() {
     .pipe(gulp.dest('dist/fonts'));
 };
 
-gulp.task('fonts', fontBuild);
+gulp.task('fonts', gulp.series(fontBuild));
+
+
+/**
+ * Generates Pattern Lab front-end.
+ */
+
+// if (patternlab) {
+//   gulp.task('pl:generate', function () {
+//       return run('php ' + config.patternLab.dir + '/core/console --generate').exec();
+//   });
+// }
+
+
+/**
+ * Calls BrowserSync reload.
+ */
+
+gulp.task('bs:reload', function () {
+  browserSync.reload();
+});
+
+// BrowserSync Reload
+function browserSyncReload(done) {
+  browsersync.reload();
+  done();
+}
 
 
 
@@ -141,10 +223,37 @@ gulp.task('fonts', fontBuild);
 */
 
 gulp.task('watch', function() {
-  gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/scripts/js/**/*.js', ['js']);
-  gulp.watch('src/img/**/*', ['images']);
-  gulp.watch('src/fonts/**/*', ['fonts']);
+  const isDevInstance = process.env.DOCKER_DEV_ENV || false;
+
+  const browserSyncConfig = {
+    proxy: {
+      target: config.proxyTarget
+    },
+    open: true,
+    notify: false
+  };
+
+  if (isDevInstance) {
+    browserSyncConfig.proxy.target = 'http://php';
+    browserSyncConfig.port = 8080;
+    browserSyncConfig.open = false;
+    browserSyncConfig.ui = false;
+    browserSyncConfig.callbacks = {
+      ready: function() {
+        console.log('\x1b[44m\n');
+        console.log(`  View site at: ${process.env.BASE_URL}:8080  `);
+        console.log('\x1b[0m\n');
+      }
+    };
+  }
+
+  browserSync.init(browserSyncConfig);
+
+  gulp.watch('src/sass/**/*.scss', gulp.series('sass'));
+  gulp.watch(['src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js'], gulp.series('js'));
+  gulp.watch('src/scripts/js/**/*.webpack.js', gulp.series('webpackJS'));
+  gulp.watch('src/img/**/*', gulp.series('images'));
+  gulp.watch('src/fonts/**/*', gulp.series('fonts'));
 });
 
 
@@ -155,9 +264,170 @@ gulp.task('watch', function() {
 /* ----------------------------- */
 
 
-// Server Tasks
 
-gulp.task('default', function(callback) {
-  runSequence('watch',callback);
+// Lint Sass
+
+gulp.task('lint-sass', function () {
+  return gulp.src('./src/sass/**/*.scss')
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    // .pipe(sassLint.failOnError())
 });
 
+
+// Recompile Sass and git add the files.
+
+gulp.task('fix-css', function() {
+  return sassBuild().pipe(git.add());
+});
+
+
+// Recompile JS and git add the files.
+// Wait until fixcss runs, we don't want two git add operations happening at the
+// same time.
+// @todo Combine streams.
+
+gulp.task('fix-js', gulp.series('fix-css', function() {
+  return jsBuild().pipe(git.add());
+}));
+
+// Git rebase, fixcss and fixjs have to be completed first.
+
+gulp.task('rebase-continue', gulp.series('fix-css', 'fix-js', function() {
+  git.exec({
+    args: 'rebase --continue'
+  });
+}));
+
+gulp.task('fix', gulp.series('fix-css', 'fix-js', 'rebase-continue'));
+
+
+// Server Tasks
+
+gulp.task('default', function(done) {
+  runSequence('watch', done);
+});
+
+
+
+/* ///////////////////////////// */
+/*             BUILDS            */
+/* ///////////////////////////// */
+
+
+
+// Delete all files in dist directory in prep for final build
+
+gulp.task('clean', function(done) {
+  return del([
+      './dist/**/*'
+  ]).then(paths => {
+    console.log('Deleted files and folders: \n', paths.join('\n'));
+  });
+});
+
+
+//  Build All Task for production
+
+gulp.task('build-raw', function(done){
+
+  // rebuild pixel based images and minify
+  gulp.src('src/img/**/*.!(svg)')
+    .pipe(gulp.dest('dist/img/'));
+
+  // rebuild SVG images and minify
+  gulp.src('src/img/**/*.svg')
+    .pipe(svgmin({
+      plugins: [{
+        cleanupIDs: false
+      }]
+    }))
+    .pipe(gulp.dest('dist/img'));
+
+  // rebuild fonts
+  gulp.src('src/fonts/**/*')
+    .pipe(gulp.dest('dist/fonts'));
+
+  // rebuild css
+  gulp.src('src/sass/**/*.scss')
+    .pipe(sassGlob())
+    .pipe(sass())
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('dist/css'));
+
+  // rebuild and uglify js
+  gulp.src('src/scripts/js/**/*.js')
+    .pipe(babel({
+      presets: ['@babel/preset-env'],
+      ignore: [
+        "src/scripts/js/vendor",
+      ]
+    }))
+    .pipe(rename(function (path) {
+      path.basename += ".min";
+      path.extname = ".js"
+    }))
+    .pipe(gulp.dest('dist/scripts/js'));
+
+  done();
+});
+
+
+//  Build All Task for production
+
+gulp.task('build-all', function(done){
+
+  // rebuild pixel based images and minify
+  gulp.src('src/img/**/*.!(svg)')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist/img/'));
+
+  // rebuild SVG images and minify
+  gulp.src('src/img/**/*.svg')
+    .pipe(svgmin({
+      plugins: [{
+        cleanupIDs: false
+      }]
+    }))
+    .pipe(gulp.dest('dist/img'));
+
+  // rebuild fonts
+  gulp.src('src/fonts/**/*')
+    .pipe(gulp.dest('dist/fonts'));
+
+  // rebuild css
+  gulp.src('src/sass/**/*.scss')
+    .pipe(sassGlob())
+    .pipe(sass())
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('dist/css'));
+
+  // rebuild and uglify js
+  return pipeline(
+    gulp.src('src/scripts/js/**/*.js'),
+    babel({
+      presets: ['@babel/preset-env'],
+      ignore: [
+        "src/scripts/js/vendor",
+      ]
+    }),
+    rename(function (path) {
+      path.basename += ".min";
+      path.extname = ".js"
+    }),
+    uglify(),
+    gulp.dest('dist/scripts/js')
+  );
+
+  done();
+});
+
+
+// Clean out all assets and re-compile them for Development
+
+gulp.task('build-raw', gulp.series('clean', 'build-raw'));
+
+
+// Clean out all assets and re-compile them for Production
+
+gulp.task('build', gulp.series('clean', 'build-all'));

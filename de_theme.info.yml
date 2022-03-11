@@ -1,0 +1,74 @@
+name: DE Theme - Perth
+type: theme
+base theme: classy
+description: A default theme focused on providing more fleshed out appearances for components like Webforms, Navigation, Search, and elements at the atomic level.
+version: 1.0.0
+core_version_requirement: ^8 || ^9
+libraries:
+  # - de_theme/slick
+  - de_theme/fonts
+  - de_theme/base
+
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+        css/components/tabs.css: false
+        css/components/pager.css: false
+        css/components/forms.css: false
+        css/components/form.css: false
+        css/components/breadcrumb.css: false
+        css/components/inline-form.css: false
+        css/components/button.css: false
+
+  classy/media_library: claro/media_library.theme
+
+  core/jquery.ui:
+    css:
+      theme:
+        assets/vendor/jquery.ui/themes/base/theme.css: false
+
+  core/jquery.ui.dialog:
+    css:
+      component:
+        assets/vendor/jquery.ui/themes/base/dialog.css: false
+
+  classy/dialog: claro/claro.drupal.dialog
+
+  claro/global-styling:
+    css:
+      component:
+        css/components/form.css: {}
+        css/components/button.css: {}
+
+  responsive_menu/responsive_menu.mmenu: de_theme/mmenu
+  responsive_menu/responsive_menu.config: de_theme/de_responsive_menu.config
+
+libraries-extend:
+  media_library/ui:
+    - de_theme/layout_builder.media_library
+  core/jquery.ui:
+    - claro/claro.jquery.ui
+
+ckeditor_stylesheets:
+  - https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900,900i&display=swap
+  - dist/css/de_editor.css
+
+regions:
+    masthead_prefix: Masthead Prefix
+    masthead_primary__left: Masthead Primary Left
+    masthead_primary__right_top: Masthead Primary Right Top
+    masthead_primary__right_bottom: Masthead Primary Right Bottom
+    masthead_secondary: Masthead Secondary
+    masthead_suffix: Masthead Suffix
+
+    content_prefix: Content Prefix
+    content: Content
+    content_suffix: Content Suffix
+
+    sidebar_first: Sidebar First
+    sidebar_second: Sidebar Second
+
+    footer_first: Footer First
+    footer_second: Footer Second

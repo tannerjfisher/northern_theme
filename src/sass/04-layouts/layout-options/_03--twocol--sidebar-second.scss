@@ -1,0 +1,20 @@
+
+
+// ++++++++++ Sidebar Second Layout
+
+.layout--twocol-sidebar-second {
+
+  .layout__region--first {
+    @include breakpoint($m-break) {
+      flex: 0 1 67%;
+      max-width: 67%;
+    }
+  }
+
+  .layout__region--second {
+    @include breakpoint($m-break) {
+      flex: 0 1 33%;
+      max-width: 33%;
+    }
+  }
+}

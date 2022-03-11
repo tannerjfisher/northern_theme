@@ -1,0 +1,16 @@
+
+
+// ++++++++++ Webform Confirmation Element
+
+.webform-confirmation {
+  margin-top: rem(25);
+}
+
+
+// ===== Back To Form button
+
+.webform-confirmation__back {
+  a {
+    @include btn(secondary, small);
+  }
+}

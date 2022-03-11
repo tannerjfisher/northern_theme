@@ -1,0 +1,88 @@
+
+
+// +++++++++++ Menu Toggle UI Element General Styles
+
+.block-responsive-menu-toggle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+
+  @include breakpoint($m-break) {
+    padding-left: rem(25);
+  }
+
+  @include breakpoint($l-break) {
+    display: none;
+  }
+
+  .responsive-menu-toggle-icon {
+    transition: all 0.2s;
+    height: rem(54);
+    width: rem(54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: transparent;
+    border-radius: 2px;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      transition: border-color 0.2s;
+      border-color: $brand-secondary-1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    span.hamburger-inner {
+      &,
+      &::before,
+      &::after {
+        background-color: $brand-primary-1;
+      }
+    }
+
+    .label {
+      @include visually-hidden();
+    }
+  }
+
+
+  .hamburger-box {
+    width: 24px;
+    height: 22px;
+  }
+
+
+  .hamburger-inner {
+    &,
+    &::before,
+    &::after {
+      width: 24px;
+    }
+
+    &::before {
+      top: -8px;
+    }
+
+    &::after {
+      bottom: -8px;
+    }
+  }
+}
+
+
+// ====== Tabbing User
+
+.user-is-tabbing .menu-toggle-wrapper {
+  a:focus {
+    outline: 1px solid $brand-secondary-1;
+  }
+}
