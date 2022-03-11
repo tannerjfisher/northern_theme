@@ -1,4 +1,4 @@
-# de-d9-perth-theme
+# Drupal-Theme-Example
 
 A default theme focused on providing more fleshed out appearances for components like Webforms, Navigation, Search, and elements at the atomic level.
 
