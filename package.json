@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "private": true,
-  "description": "Digital Echidna's customizable theme for client projects",
-  "author": "Digital Echidna",
+  "description": "Northern's starterkit theme",
+  "author": "Northern",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "bootstrap": "^4.5.0",

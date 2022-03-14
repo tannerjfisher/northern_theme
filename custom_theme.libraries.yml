@@ -46,9 +46,9 @@ mmenu:
     - core/jquery.once
     - core/drupal
 
-de_responsive_menu.config:
+custom_responsive_menu.config:
   js:
-    dist/scripts/js/de-responsive-menu-config.min.js: {}
+    dist/scripts/js/custom-responsive-menu-config.min.js: {}
   dependencies:
     - core/jquery
     - core/drupalSettings
