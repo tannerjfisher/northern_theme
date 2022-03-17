@@ -7,7 +7,7 @@
 
   // ===== Add menu control to the custom close button in the mobile navigation panel
   $(function() {
-    var $subMenuToExpand = $('.de-simple-sidebar-menu .menu-item--expanded > ul');
+    var $subMenuToExpand = $('.custom-simple-sidebar-menu .menu-item--expanded > ul');
     $subMenuToExpand.before('<button class="sub-menu--toggle" aria-expanded="false"><span class="text visually-hidden">Show Sub Menu</span><span class="icon icon-chevron-down"></span></button>');
     var $subMenuToggle = $('.sub-menu--toggle');
 

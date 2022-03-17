@@ -11,11 +11,11 @@ base:
   js:
     # dist/scripts/js/main.build.js: {}
     dist/scripts/js/ui-togglers.min.js: {}
-    dist/scripts/js/de-search-toggle.min.js: {}
-    dist/scripts/js/de-search-facets.min.js: {}
-    dist/scripts/js/de-simple-menu.min.js: {}
+    dist/scripts/js/custom-search-toggle.min.js: {}
+    dist/scripts/js/custom-search-facets.min.js: {}
+    dist/scripts/js/custom-simple-menu.min.js: {}
     dist/scripts/js/tab-site-nav-identifier.min.js: {}
-    dist/scripts/js/de-simple-sidebar-menu.min.js: {}
+    dist/scripts/js/custom-simple-sidebar-menu.min.js: {}
     dist/scripts/js/table-wrap.min.js: {}
     dist/scripts/js/details-accordion--animation.min.js: {}
     dist/scripts/js/search-facets-accordion--handler.min.js: {}

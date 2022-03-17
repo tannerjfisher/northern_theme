@@ -10,9 +10,9 @@
   $(function() {
     var $html = $('html');
     var $searchToggle = $('.search-toggle');
-    var $deSearchToggle = $('.block-de-search-toggle .search-toggle');
-    var $searchBlock = $('#block-search-header');
-    var $searchBlockInput = $('#block-search-header .form-type-textfield input');
+    var $searchToggleButton = $('.block-search-toggle .search-toggle');
+    var $searchBlock = $('.region--search-overlay');
+    var $searchBlockInput = $('.region--search-overlay .form-type-textfield input');
 
     function toggleSearch() {
       $searchBlock.toggleClass('show');
@@ -38,7 +38,7 @@
 
       // Focus the search toggle if closed
       else {
-        $deSearchToggle.focus();
+        $searchToggleButton.focus();
       }
     }
 

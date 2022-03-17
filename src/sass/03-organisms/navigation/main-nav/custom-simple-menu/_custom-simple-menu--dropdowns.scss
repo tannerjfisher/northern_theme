@@ -2,8 +2,8 @@
 
 // ++++++++++ Main Navigation Style For Three Level Dropdown ( Dropdowns )
 
-.de-simple-menu > ul ul,
-.de-simple-menu nav > ul ul {
+.custom-simple-menu > ul ul,
+.custom-simple-menu nav > ul ul {
   width: 300px;
   height: auto;
   padding-left: 0;
@@ -142,7 +142,7 @@
 
       & > a {
         justify-content: flex-start;
-        
+
         .icon {
           order: -1;
           margin-left: 0;

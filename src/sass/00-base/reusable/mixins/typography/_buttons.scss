@@ -152,7 +152,7 @@
 
   @if $icon != null and $icon-type == icon-font {
     &::before {
-      @include icon($icon-arrow-right);
+      @include icon($icon-arrow-forward);
       content: $icon;
       display: block;
     }
@@ -183,6 +183,3 @@
     }
   }
 }
-
-
-

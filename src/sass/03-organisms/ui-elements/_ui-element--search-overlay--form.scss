@@ -1,0 +1,206 @@
+
+
+// ++++++++++ Search Overlay Form
+
+.region--search-overlay {
+
+  // ===== Search Form
+
+  .search-block-form,
+  .block-views-exposed-filter-block--acquia-search-block-1 {
+    @include layout-container();
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 100%;
+    -webkit-transform: translate(-50%,-48%);
+    transform: translate(-50%,-48%);
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+
+
+  // ===== Reset spacing on form items
+
+  .form-item,
+  .form-actions {
+    margin: 0;
+    padding: 0;
+    flex: 1 1 auto;
+  }
+
+  h2 {
+    @include visually-hidden();
+  }
+
+
+  // ===== Search Input
+
+  form {
+    display: flex;
+    width: 100%;
+    animation-delay: 0.4s;
+    z-index: 100;
+    margin-left: auto;
+    margin-right: auto;
+
+    .form--inline {
+      display: flex;
+    }
+
+
+    // ===== Label
+
+    label {
+      @include visually-hidden();
+      font-size: 0;
+    }
+
+
+    // ===== Search Input
+
+    .form-type-textfield,
+    .form-type-search,
+    .form-type-search-api-autocomplete {
+      flex: 1 1 0%;
+      display: flex;
+
+      input {
+        transition: all 0.3s;
+        color: $black !important;
+        background-color: transparent;
+        font-size: rem(20);
+        border-radius: 0;
+        border: none;
+        border-bottom: 2px solid $black;
+        padding-left: 0;
+
+        @include breakpoint($s-break) {
+          font-size: rem(22);
+          line-height: rem(27);
+          padding-top: rem(16);
+          padding-bottom: rem(16);
+        }
+
+        @include breakpoint($l-break) {
+          font-size: rem(28);
+          line-height: rem(34);
+        }
+
+        &:hover,
+        &:focus {
+          border-bottom-color: $brand-primary-1;
+        }
+      }
+    }
+
+
+    // ===== Submit Button
+
+    .form-actions  {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+      width: rem(46);
+
+      @include breakpoint($s-break) {
+        width: rem(50);
+      }
+
+      @include breakpoint($l-break) {
+        width: rem(50);
+      }
+
+      input {
+        transition: border-color 0.2s;
+        flex: 1 1 100%;
+        font-size: 0;
+        padding: 0;
+        height: 100%;
+        border-radius: 0;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid $black;
+        margin: 0;
+        background-image: url('../../dist/img/iconography/search-icon.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: rem(20) rem(20);
+        transform: scaleX(-1);
+
+        @include breakpoint($l-break) {
+          background-size: rem(26) rem(26);
+        }
+
+        &:hover,
+        &:focus {
+          border-bottom-color: $brand-primary-1;
+        }
+
+        &:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+
+        &:focus {
+          outline: 1px dashed $brand-primary-1;
+          outline-offset: -2px;
+        }
+      }
+    }
+  }
+
+  &.show .region--search-overlay {
+    animation: fade-up-centered 0.5s forwards cubic-bezier(0.39, 0.01, 0, 1), fade-in 0.3s forwards ease;
+  }
+}
+
+
+// +++++++++ Tabbing User
+
+.user-is-tabbing #block-globalsearch {
+  .form-submit:focus {
+    outline: none;
+    background-color: $brand-secondary-1;
+    border-color: $brand-secondary-1;
+  }
+}
+
+
+// +++++++++ Auto Complete
+
+html.search-active .ui-autocomplete {
+  position: fixed;
+}
+
+.search-input {
+  position: relative;
+}
+
+.ui-autocomplete-input + .custom-autocomplete-throbber {
+  display: none;
+}
+
+.ui-autocomplete-input.ui-autocomplete-loading + .custom-autocomplete-throbber {
+  display: flex;
+}
+
+
+// +++++++++ Auto Complete Dropdown
+
+.ui-widget.ui-widget-content.ui-autocomplete {
+  border: 1px solid $grey-xlight;
+  border-radius: 0 0 7px 7px;
+  overflow: scroll;
+  max-height: 200px;
+}
+
+.search-api-autocomplete-search .ui-menu-item {
+  border-bottom: solid 1px $grey-xlight;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

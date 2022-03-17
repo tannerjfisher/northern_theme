@@ -1,0 +1,19 @@
+
+
+// ++++++++++ Animated Link Underline
+
+@mixin animated-link-underline($color: currentColor, $height: 2px) {
+  & {
+    text-decoration: none;
+    background-image: linear-gradient($color, $color);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% $height;
+    transition: background-size .3s, color 0.2s;
+  }
+
+  &:hover, 
+  &:focus {
+    background-size: 100% $height;
+  }
+}

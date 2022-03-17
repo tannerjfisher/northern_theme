@@ -2,10 +2,10 @@
 
 // ++++++++++ Main Navigation Style For Three Level Dropdown ( First Level )
 
-.de-simple-menu > ul,
-.de-simple-menu nav > ul {
+.custom-simple-menu > ul,
+.custom-simple-menu nav > ul {
   justify-content: flex-end;
-  
+
   & > li {
     flex: 0 1 auto;
 

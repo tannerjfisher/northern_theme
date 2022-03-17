@@ -1,0 +1,129 @@
+// ++++++++++ Search Overlay
+
+// ===== header z-index and position reset
+
+.search-active {
+  #header {
+    position: relative;
+    z-index: 5;
+  }
+}
+
+
+// ===== Search Overlay Region
+
+.region--search-overlay {
+  @include header-padding();
+  transition: opacity 0.2s;
+  transition-delay: 0s;
+  opacity: 0;
+  display: block;
+  visibility: hidden;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  transition: opacity 0.4s 0.2s;
+  background-color: rgba(255, 255, 255, 1);
+
+  @include breakpoint($m-break) {
+    padding-left: rem(50);
+    padding-right: rem(50);
+  }
+
+  &.show {
+    display: block;
+    transition-delay: 0.3s;
+    visibility: visible;
+    opacity: 1;
+    z-index: 20;
+  }
+
+
+  // ===== Inner Region
+
+  .region__inner {
+    display: flex;
+    height: rem($header-height--mobile);
+
+    @include breakpoint($m-break) {
+      height: rem($header-height--desktop);
+    }
+  }
+
+
+  // ===== Branding Block
+
+  .block-system-branding-block {
+    img {
+      max-width: rem(143);
+
+      @include breakpoint($m-break) {
+        max-width: none;
+      }
+    }
+  }
+}
+
+
+// ===== Search Toggle Block - Close
+
+.region--search-overlay {
+  .block-search-toggle {
+    @include header-padding();
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: rem($header-height--mobile);
+    padding-left: 0;
+
+    @include breakpoint($s-break) {
+      height: rem($header-height--tablet);
+    }
+
+    @include breakpoint($m-break) {
+      height: rem($header-height--desktop);
+    }
+
+    .search-toggle {
+      &:hover {
+        background-color: unset;
+      }
+    }
+
+    .container {
+      padding: 0;
+    }
+
+    button.search-toggle {
+      &:hover,
+      &:focus {
+        border-color: $brand-primary-1;
+
+        .icon {
+          fill: $brand-primary-1;
+        }
+      }
+
+      .icon {
+        fill: $black;
+      }
+    }
+  }
+}
+
+
+// ===== Handle Drupal Toolbar
+
+.toolbar-fixed .region--search-overlay {
+  padding-top: 39px;
+}
+
+.toolbar-horizontal.toolbar-tray-open .region--search-overlay {
+  padding-top: 79px;
+}

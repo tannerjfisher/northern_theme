@@ -1,6 +1,6 @@
 /**
  * @file
- * Attaches functionality for three level dropdown to '.de-simple-menu'
+ * Attaches functionality for three level dropdown to '.custom-simple-menu'
  */
 
 (function ($, Drupal) {
@@ -9,7 +9,7 @@
   if (typeof Math.sign === 'undefined') { Math.sign = function (x) { return x > 0 ? 1 : x < 0 ? -1 : x; } }
 
   function DE_simpleMenu() {
-    $('.de-simple-menu').each(function() {
+    $('.custom-simple-menu').each(function() {
 
       // Menu <nav> element
       var $menu = '';
@@ -248,4 +248,3 @@
   $(document).ready(DE_simpleMenu);
 
 })(jQuery, Drupal);
-

@@ -2,6 +2,9 @@
 
 // ++++++++++ Main Navigation
 
+$menu-breakpoint--medium: 1060px;
+$menu-breakpoint--large: 1228px;
+
 .block-responsive-menu-horizontal-menu,
 .block--menu--main {
   display: none;

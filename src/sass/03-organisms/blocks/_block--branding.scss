@@ -42,7 +42,11 @@
   height: 100%;
   align-items: center;
   padding-right: rem(13);
-  max-width: rem(300);
+  max-width: rem(170);
+
+  @include breakpoint($xs-break) {
+    max-width: rem(220);
+  }
 
   @include breakpoint($xxxs-break) {
     padding-right: rem(18);
