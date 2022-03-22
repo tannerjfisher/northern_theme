@@ -16,7 +16,7 @@
     color: $brand-primary-1;
 
     .link-inner {
-      background-size: 100% 3px;
+      background-size: 100% 2px;
     }
   }
 
@@ -41,8 +41,6 @@
     text-decoration: none;
 
     @include breakpoint($menu-breakpoint--large) {
-      font-size: rem(18);
-      line-height: rem(22);
       padding: 0 rem(23);
     }
 
@@ -103,7 +101,7 @@
       position: relative;
 
       .link-inner {
-        background-size: 100% 3px;
+        background-size: 100% 2px;
       }
     }
   }

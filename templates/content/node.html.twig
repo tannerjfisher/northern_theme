@@ -74,7 +74,8 @@
   ]
 %}
 
-{% set changedDate = node.getChangedTime|date('M jS, Y') %}
+{% set changed_date = node.getChangedTime|date('M jS, Y') %}
+{% set created_date = node.getCreatedTime|date('M jS, Y') %}
 
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
@@ -91,7 +92,7 @@
     <footer class="node__meta">
       {{ author_picture }}
       <div{{ author_attributes.addClass('node__submitted') }}>
-        {% trans %}Updated on <b>{{ changedDate }}</b>{% endtrans %}
+        {% trans %}Created on <b>{{ created_date }}</b>{% endtrans %}
         {{ metadata }}
       </div>
     </footer>

@@ -4,6 +4,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: $title-font-family;
   margin: rem(50) 0 rem(29) 0;
   color: $grey-dark;
 }
@@ -34,7 +35,6 @@ h2 {
 h3 {
   font-size: rem(24);
   line-height: rem(29);
-  font-weight: $extra-bold;
 
   @include breakpoint($m-break) {
     font-size: rem(30);
@@ -53,7 +53,6 @@ h4 {
 }
 
 h5 {
-  font-weight: $extra-bold;
   font-size: rem(19);
   line-height: rem(24);
 }

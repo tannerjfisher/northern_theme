@@ -1241,7 +1241,7 @@ html {
     padding-right: 1rem; } }
 
 body.cke_editable {
-  font-family: "Nunito Sans", Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   display: block;
   padding: 0.625rem; }
 
@@ -1394,7 +1394,7 @@ body:not(.cke_editable) .template--accordion .accordion-content.accordion-closed
             flex: 1 1 0%; }
     .template--fancy-list .right-region .item-title {
       font-size: 1.5rem;
-      font-weight: 900;
+      font-weight: 700;
       line-height: 1.8125rem;
       margin-top: 1rem;
       margin-bottom: 1.25rem;
@@ -2255,7 +2255,7 @@ iframe {
     width: calc(25% - 25px); } }
 
 body {
-  font-family: "Nunito Sans", Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.75rem;
   color: #000000; }
@@ -3009,6 +3009,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: "Source Serif Pro", Garamond, serif;
   margin: 3.125rem 0 1.8125rem 0;
   color: #17171A; }
 
@@ -3033,8 +3034,7 @@ h2 {
 
 h3 {
   font-size: 1.5rem;
-  line-height: 1.8125rem;
-  font-weight: 900; }
+  line-height: 1.8125rem; }
   @media (min-width: 48em) {
     h3 {
       font-size: 1.875rem;
@@ -3049,7 +3049,6 @@ h4 {
       line-height: 2.0625rem; } }
 
 h5 {
-  font-weight: 900;
   font-size: 1.1875rem;
   line-height: 1.5rem; }
 
