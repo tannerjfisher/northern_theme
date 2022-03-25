@@ -11,8 +11,6 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var sassGlob = require('gulp-sass-glob');
 var uglify = require('gulp-uglify');
-var babel = require('gulp-babel');
-var pipeline = require('readable-stream').pipeline;
 var browserSync = require('browser-sync').create();
 var runSequence = require('gulp4-run-sequence');
 var rename = require('gulp-rename');
@@ -22,8 +20,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 var sassLint = require('gulp-sass-lint');
 var svgmin = require('gulp-svgmin');
-var webpackStream = require('webpack-stream');
-var webpackConfig = require('./webpack.config.js');
 
 
 
@@ -111,15 +107,9 @@ gulp.task('sass', gulp.series(sassBuild));
  */
 
 var jsBuild = function() {
-  return gulp.src('src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js')
+  return gulp.src('src/scripts/js/**/*.js')
     .pipe(plumber({
       errorHandler: onError
-    }))
-    .pipe(babel({
-      presets: ['@babel/preset-env'],
-      ignore: [
-        "src/scripts/js/vendor",
-      ]
     }))
     .pipe(rename(function (path) {
       path.basename += ".min";
@@ -128,20 +118,7 @@ var jsBuild = function() {
     .pipe(gulp.dest('dist/scripts/js'));
 };
 
-var jsWebpackBuild = function() {
-  return gulp.src('src/scripts/js/**/*.webpack.js')
-    .pipe(webpackStream(webpackConfig, null, function(err, stats) {
-      /* Use stats to do more things if needed */
-    })).on('error',function (err) {
-      console.error('WEBPACK ERROR', err);
-      this.emit('end'); // Don't stop the rest of the task
-    })
-    .pipe(gulp.dest('dist/scripts/js'));
-};
-
 gulp.task('js', gulp.series(jsBuild));
-gulp.task('webpackJS', gulp.series(jsWebpackBuild));
-
 
 /*
 * Move image assets task
@@ -250,8 +227,7 @@ gulp.task('watch', function() {
   browserSync.init(browserSyncConfig);
 
   gulp.watch('src/sass/**/*.scss', gulp.series('sass'));
-  gulp.watch(['src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js'], gulp.series('js'));
-  gulp.watch('src/scripts/js/**/*.webpack.js', gulp.series('webpackJS'));
+  gulp.watch('src/scripts/js/**/*.js', gulp.series('js'));
   gulp.watch('src/img/**/*', gulp.series('images'));
   gulp.watch('src/fonts/**/*', gulp.series('fonts'));
 });
@@ -357,12 +333,6 @@ gulp.task('build-raw', function(done){
 
   // rebuild and uglify js
   gulp.src('src/scripts/js/**/*.js')
-    .pipe(babel({
-      presets: ['@babel/preset-env'],
-      ignore: [
-        "src/scripts/js/vendor",
-      ]
-    }))
     .pipe(rename(function (path) {
       path.basename += ".min";
       path.extname = ".js"
@@ -403,22 +373,13 @@ gulp.task('build-all', function(done){
     .pipe(gulp.dest('dist/css'));
 
   // rebuild and uglify js
-  return pipeline(
-    gulp.src('src/scripts/js/**/*.js'),
-    babel({
-      presets: ['@babel/preset-env'],
-      ignore: [
-        "src/scripts/js/vendor",
-      ]
-    }),
-    rename(function (path) {
+  gulp.src('src/scripts/js/**/*.js')
+    .pipe(rename(function (path) {
       path.basename += ".min";
       path.extname = ".js"
-    }),
-    uglify(),
-    gulp.dest('dist/scripts/js')
-  );
-
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/scripts/js'));
   done();
 });
 
