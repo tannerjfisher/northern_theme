@@ -1,12 +1,6 @@
-fonts:
-  css:
-    theme:
-      https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900,900i&display=swap: { type: external }
-
 base:
   css:
     theme:
-      dist/css/custom_theme.css: {}
       dist/css/print.css: {}
   js:
     # dist/scripts/js/main.build.js: {}

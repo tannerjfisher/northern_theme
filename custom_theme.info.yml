@@ -63,8 +63,6 @@ regions:
     masthead_secondary: Masthead Secondary
     masthead_suffix: Masthead Suffix
 
-    search_overlay: Search Overlay
-
     content_prefix: Content Prefix
     content: Content
     content_suffix: Content Suffix
