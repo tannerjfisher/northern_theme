@@ -4,7 +4,7 @@ A default theme focused on providing more fleshed out appearances for components
 
 ## Cloning
 Clone this project with a custom directory name using the following command: 
-`git clone git@github.com:tannerjfisher/Drupal-Theme-Example.git custom_theme`
+`git clone git@github.com:tannerjfisher/Drupal-Theme-Example.git northern_theme`
 
 ## Requirements
 - **Node version** `14.x`. Highly recommended to use [nvm](#node-version-requirements).

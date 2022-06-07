@@ -1,7 +1,7 @@
 base:
   css:
     theme:
-      dist/css/custom_theme.css: {}
+      dist/css/northern_theme.css: {}
       dist/css/print.css: {}
   js:
     # dist/scripts/js/main.build.js: {}

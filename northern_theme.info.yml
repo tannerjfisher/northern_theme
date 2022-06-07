@@ -5,9 +5,9 @@ description: A default theme focused on providing more fleshed out appearances f
 version: 2.0.0
 core_version_requirement: ^8 || ^9
 libraries:
-  # - custom_theme/slick
-  - custom_theme/fonts
-  - custom_theme/base
+  # - northern_theme/slick
+  - northern_theme/fonts
+  - northern_theme/base
 
 libraries-override:
   classy/base:
@@ -42,18 +42,18 @@ libraries-override:
         css/components/form.css: {}
         css/components/button.css: {}
 
-  responsive_menu/responsive_menu.mmenu: custom_theme/mmenu
-  responsive_menu/responsive_menu.config: custom_theme/custom_responsive_menu.config
+  responsive_menu/responsive_menu.mmenu: northern_theme/mmenu
+  responsive_menu/responsive_menu.config: northern_theme/custom_responsive_menu.config
 
 libraries-extend:
   media_library/ui:
-    - custom_theme/layout_builder.media_library
+    - northern_theme/layout_builder.media_library
   core/jquery.ui:
     - claro/claro.jquery.ui
 
 ckeditor_stylesheets:
   - https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900,900i&display=swap
-  - dist/css/custom_editor.css
+  - dist/css/northern_editor.css
 
 regions:
     masthead_prefix: Masthead Prefix
