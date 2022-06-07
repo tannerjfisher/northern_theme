@@ -5,10 +5,6 @@ description: A default theme focused on providing more fleshed out appearances f
 version: 2.0.0
 core_version_requirement: ^8 || ^9
 libraries:
-  # - northern_theme/slick
-  - northern_theme/fonts
-  - northern_theme/base
-
 libraries-override:
   classy/base:
     css:
@@ -62,8 +58,6 @@ regions:
     masthead_primary__right_bottom: Masthead Primary Right Bottom
     masthead_secondary: Masthead Secondary
     masthead_suffix: Masthead Suffix
-
-    search_overlay: Search Overlay
 
     content_prefix: Content Prefix
     content: Content
