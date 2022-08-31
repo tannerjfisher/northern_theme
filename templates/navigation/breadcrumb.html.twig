@@ -8,7 +8,7 @@
  */
 #}
 
-{% if breadcrumb and breadcrumb|length > 1 %}
+{% if breadcrumb and breadcrumb|length > 2 %}
   <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
     <ol>
     {% for item in breadcrumb %}
@@ -20,7 +20,7 @@
           </a>
           <span class="breadcrumb-separator">/</span>
         {% else %}
-          {% if item.url %}
+          {% if item.url and item.url != '/node' %}
             <a href="{{ item.url }}">{{ item.text }}</a>
             <span class="breadcrumb-separator">/</span>
           {% else %}
