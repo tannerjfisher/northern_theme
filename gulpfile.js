@@ -4,13 +4,15 @@
 // dont' forget config stuff in settings.local.php
 
 'use strict';
-var beep = require('beepbeep')
+var beep = require('beepbeep');
 var git = require('gulp-git');
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var sourcemaps = require('gulp-sourcemaps');
 var sassGlob = require('gulp-sass-glob');
 var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
+var pipeline = require('readable-stream').pipeline;
 var browserSync = require('browser-sync').create();
 var runSequence = require('gulp4-run-sequence');
 var rename = require('gulp-rename');
@@ -19,8 +21,8 @@ var del = require('del');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 var sassLint = require('gulp-sass-lint');
-var svgmin = require('gulp-svgmin');
-
+var webpackStream = require('webpack-stream');
+var webpackConfig = require('./webpack.config.js');
 
 
 /* ----------------------------- */
@@ -89,7 +91,9 @@ var sassBuild = function() {
     }))
     .pipe(sourcemaps.init({largeFile: true}))
     .pipe(sassGlob())
-    .pipe(sass())
+    .pipe(sass({
+      includePaths: ['node_modules', 'vendor']
+    }))
     .pipe(autoprefixer())
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dist/css'))
@@ -107,18 +111,37 @@ gulp.task('sass', gulp.series(sassBuild));
  */
 
 var jsBuild = function() {
-  return gulp.src('src/scripts/js/**/*.js')
-    .pipe(plumber({
-      errorHandler: onError
-    }))
-    .pipe(rename(function (path) {
-      path.basename += ".min";
-      path.extname = ".js";
-    }))
-    .pipe(gulp.dest('dist/scripts/js'));
+  return gulp.src('src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js')
+             .pipe(plumber({
+               errorHandler: onError
+             }))
+             .pipe(babel({
+               presets: ['@babel/preset-env'],
+               ignore: [
+                 "src/scripts/js/vendor",
+               ]
+             }))
+             .pipe(rename(function (path) {
+               path.basename += ".min";
+               path.extname = ".js";
+             }))
+             .pipe(gulp.dest('dist/scripts/js'));
 };
 
-gulp.task('js', gulp.series(jsBuild));
+var jsWebpackBuild = function() {
+  return gulp.src('src/scripts/js/**/*.webpack.js')
+             .pipe(webpackStream(webpackConfig, null, function(err, stats) {
+               /* Use stats to do more things if needed */
+             })).on('error',function (err) {
+      console.error('WEBPACK ERROR', err);
+      this.emit('end'); // Don't stop the rest of the task
+    })
+             .pipe(gulp.dest('dist/scripts/js'));
+};
+
+gulp.task('js', gulp.series(jsBuild, jsWebpackBuild));
+gulp.task('webpackJS', gulp.series(jsWebpackBuild));
+
 
 /*
 * Move image assets task
@@ -126,24 +149,11 @@ gulp.task('js', gulp.series(jsBuild));
 */
 
 var imageBuild = function() {
-  return gulp.src('src/img/**/*.!(svg)')
-    .pipe(gulp.dest('dist/img'));
+  return gulp.src('src/img/**/*')
+             .pipe(gulp.dest('dist/img'));
 };
 
-var svgBuild = function() {
-  return gulp.src('src/img/**/*.svg')
-    .pipe(svgmin({
-      plugins: [{
-        cleanupIDs: false
-      }]
-    }))
-    .pipe(gulp.dest('dist/img'));
-};
-
-gulp.task('pixelimages', gulp.series(imageBuild));
-gulp.task('svg', gulp.series(svgBuild));
-
-gulp.task('images', gulp.parallel('pixelimages', 'svg'));
+gulp.task('images', gulp.series(imageBuild));
 
 
 /*
@@ -153,7 +163,7 @@ gulp.task('images', gulp.parallel('pixelimages', 'svg'));
 
 var fontBuild = function() {
   return gulp.src('src/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'));
+             .pipe(gulp.dest('dist/fonts'));
 };
 
 gulp.task('fonts', gulp.series(fontBuild));
@@ -200,9 +210,10 @@ function browserSyncReload(done) {
 */
 
 gulp.task('watch', function() {
-  const isDevInstance = process.env.DOCKER_DEV_ENV || false;
 
-  const browserSyncConfig = {
+  const isLandoInstance = process.env.LANDO || false;
+
+  let browserSyncConfig = {
     proxy: {
       target: config.proxyTarget
     },
@@ -210,24 +221,32 @@ gulp.task('watch', function() {
     notify: false
   };
 
-  if (isDevInstance) {
-    browserSyncConfig.proxy.target = 'http://php';
-    browserSyncConfig.port = 8080;
-    browserSyncConfig.open = false;
-    browserSyncConfig.ui = false;
-    browserSyncConfig.callbacks = {
-      ready: function() {
-        console.log('\x1b[44m\n');
-        console.log(`  View site at: ${process.env.BASE_URL}:8080  `);
-        console.log('\x1b[0m\n');
-      }
-    };
+  if (isLandoInstance === 'ON') {
+    // Check for environment variable set in .lando.yml
+    if ('BROWSER_SYNC_PROXY_TARGET' in process.env) {
+      browserSyncConfig.proxy.target = process.env.BROWSER_SYNC_PROXY_TARGET;
+      browserSyncConfig.open         = false;
+      browserSyncConfig.ui           = false;
+      browserSyncConfig.callbacks    = {
+        ready: function () {
+          console.log('\x1b[44m\n');
+          console.log(`  View site at: ${process.env.BROWSER_SYNC_PROXY_TARGET} `);
+          console.log('\x1b[0m\n');
+        }
+      };
+    }
+    else {
+      browserSyncConfig = null;
+    }
   }
 
-  browserSync.init(browserSyncConfig);
+  if (browserSyncConfig) {
+    browserSync.init(browserSyncConfig);
+  }
 
   gulp.watch('src/sass/**/*.scss', gulp.series('sass'));
-  gulp.watch('src/scripts/js/**/*.js', gulp.series('js'));
+  gulp.watch(['src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js'], gulp.series('js'));
+  gulp.watch('src/scripts/js/**/*.webpack.js', gulp.series('webpackJS'));
   gulp.watch('src/img/**/*', gulp.series('images'));
   gulp.watch('src/fonts/**/*', gulp.series('fonts'));
 });
@@ -245,9 +264,9 @@ gulp.task('watch', function() {
 
 gulp.task('lint-sass', function () {
   return gulp.src('./src/sass/**/*.scss')
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-    // .pipe(sassLint.failOnError())
+             .pipe(sassLint())
+             .pipe(sassLint.format())
+  // .pipe(sassLint.failOnError())
 });
 
 
@@ -296,7 +315,7 @@ gulp.task('default', function(done) {
 
 gulp.task('clean', function(done) {
   return del([
-      './dist/**/*'
+    './dist/**/*'
   ]).then(paths => {
     console.log('Deleted files and folders: \n', paths.join('\n'));
   });
@@ -308,36 +327,54 @@ gulp.task('clean', function(done) {
 gulp.task('build-raw', function(done){
 
   // rebuild pixel based images and minify
-  gulp.src('src/img/**/*.!(svg)')
-    .pipe(gulp.dest('dist/img/'));
-
-  // rebuild SVG images and minify
-  gulp.src('src/img/**/*.svg')
-    .pipe(svgmin({
-      plugins: [{
-        cleanupIDs: false
-      }]
-    }))
-    .pipe(gulp.dest('dist/img'));
+  gulp.src('src/img/**/*')
+      .pipe(gulp.dest('dist/img/'));
 
   // rebuild fonts
   gulp.src('src/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'));
+      .pipe(gulp.dest('dist/fonts'));
 
   // rebuild css
   gulp.src('src/sass/**/*.scss')
-    .pipe(sassGlob())
-    .pipe(sass())
-    .pipe(autoprefixer())
-    .pipe(gulp.dest('dist/css'));
+      .pipe(sassGlob())
+      .pipe(sass({
+        includePaths: ['node_modules', 'vendor']
+      }))
+      .pipe(autoprefixer())
+      .pipe(gulp.dest('dist/css'));
+
+  gulp.src('src/scripts/js/**/*.webpack.js')
+      .pipe(webpackStream(webpackConfig, null, function(err, stats) {
+        /* Use stats to do more things if needed */
+      })).on('error',function (err) {
+        console.error('WEBPACK ERROR', err);
+        this.emit('end'); // Don't stop the rest of the task
+      })
+      .pipe(gulp.dest('dist/scripts/js'));
 
   // rebuild and uglify js
-  gulp.src('src/scripts/js/**/*.js')
-    .pipe(rename(function (path) {
+  return pipeline(
+    gulp.src(['src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js']),
+    babel({
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            'modules': false
+          }
+        ]
+      ],
+      ignore: [
+        "src/scripts/js/vendor",
+      ]
+    }),
+    rename(function (path) {
       path.basename += ".min";
       path.extname = ".js"
-    }))
-    .pipe(gulp.dest('dist/scripts/js'));
+    }),
+    uglify(),
+    gulp.dest('dist/scripts/js')
+  );
 
   done();
 });
@@ -348,38 +385,56 @@ gulp.task('build-raw', function(done){
 gulp.task('build-all', function(done){
 
   // rebuild pixel based images and minify
-  gulp.src('src/img/**/*.!(svg)')
-    .pipe(imagemin())
-    .pipe(gulp.dest('dist/img/'));
-
-  // rebuild SVG images and minify
-  gulp.src('src/img/**/*.svg')
-    .pipe(svgmin({
-      plugins: [{
-        cleanupIDs: false
-      }]
-    }))
-    .pipe(gulp.dest('dist/img'));
+  gulp.src('src/img/**/*')
+      .pipe(imagemin())
+      .pipe(gulp.dest('dist/img/'));
 
   // rebuild fonts
   gulp.src('src/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'));
+      .pipe(gulp.dest('dist/fonts'));
 
   // rebuild css
   gulp.src('src/sass/**/*.scss')
-    .pipe(sassGlob())
-    .pipe(sass())
-    .pipe(autoprefixer())
-    .pipe(gulp.dest('dist/css'));
+      .pipe(sassGlob())
+      .pipe(sass({
+        includePaths: ['node_modules', 'vendor']
+      }))
+      .pipe(autoprefixer())
+      .pipe(gulp.dest('dist/css'));
+
+  gulp.src('src/scripts/js/**/*.webpack.js')
+      .pipe(webpackStream(webpackProdConfig, null, function(err, stats) {
+        /* Use stats to do more things if needed */
+      })).on('error',function (err) {
+        console.error('WEBPACK ERROR', err);
+        this.emit('end'); // Don't stop the rest of the task
+      })
+      .pipe(gulp.dest('dist/scripts/js'));
 
   // rebuild and uglify js
-  gulp.src('src/scripts/js/**/*.js')
-    .pipe(rename(function (path) {
+  return pipeline(
+    gulp.src(['src/scripts/js/**/*.js', '!src/scripts/js/**/*.webpack.js']),
+    babel({
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            'modules': false
+          }
+        ]
+      ],
+      ignore: [
+        "src/scripts/js/vendor",
+      ]
+    }),
+    rename(function (path) {
       path.basename += ".min";
       path.extname = ".js"
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/scripts/js'));
+    }),
+    uglify(),
+    gulp.dest('dist/scripts/js')
+  );
+
   done();
 });
 

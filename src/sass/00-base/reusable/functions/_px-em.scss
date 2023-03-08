@@ -7,5 +7,5 @@
 $browser-context: 16; // Default
 
 @function em($pixels, $context: $browser-context) {
-  @return #{strip-unit($pixels)/$context}em;
+  @return #{math.div(strip-unit($pixels), $context)}em;
 }
